@@ -1,2 +1,2 @@
 job:
-script: docker build -t alpine:1.0.0
+script: docker-compose up
