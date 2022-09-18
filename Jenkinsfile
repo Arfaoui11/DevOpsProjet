@@ -1,2 +1,2 @@
 job:
-script: docker build -t backend .
+script: docker-compose up
