@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.esprit.examen.entities.Produit;
-import lombok.val;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +49,8 @@ public class ProduitServiceImplTest {
 
         assertEquals(expected+1, produitService.retrieveAllProduits().size());
         assertNotNull(savedProduit.getLibelleProduit());
-     //  produitService.deleteProduit(savedProduit.getIdProduit());
-     //  stockService.deleteStock(savedStock.getIdStock());
+       produitService.deleteProduit(savedProduit.getIdProduit());
+       stockService.deleteStock(savedStock.getIdStock());
 
     }
 
@@ -114,8 +114,8 @@ public class ProduitServiceImplTest {
         assertSame("test 10:35", updatedProduit.getLibelleProduit());
         assertTrue(updatedProduit.getPrix()>221F);
 
-       // produitService.deleteProduit(savedProduit.getIdProduit());
-       // stockService.deleteStock(savedStock.getIdStock());
+        produitService.deleteProduit(savedProduit.getIdProduit());
+        stockService.deleteStock(savedStock.getIdStock());
 
 
     }
