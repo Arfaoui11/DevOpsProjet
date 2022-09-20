@@ -18,7 +18,7 @@ RUN mvn clean install -DskipTests
 
 
 # Docker Build Stage
-FROM openjdk:8
+FROM openjdk:81
 
 COPY --from=build /opt/app/target/*.jar app.jar
 
