@@ -20,10 +20,10 @@ node {
                   sh "docker run --name springproject -d -p 8080:8080 springproject:${env.BUILD_NUMBER}"
           }
     }catch(e){
-//         currentBuild.result = "FAILED"
+         currentBuild.result = "FAILED"
         throw e
     }finally{
-//         notifyBuild(currentBuild.result)
+         notifyBuild(currentBuild.result)
     }
 }
 
