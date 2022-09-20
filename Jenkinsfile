@@ -8,7 +8,7 @@ node {
             // for display purposes
             // Get some code from a GitHub repository
             git url: 'https://github.com/Arfaoui11/DevOpsProjet.git',
-                branch: 'main'
+                branch: 'master'
          }
           stage('Build docker') {
                  dockerImage = docker.build("SpringProject:${env.BUILD_NUMBER}")
