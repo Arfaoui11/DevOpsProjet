@@ -20,8 +20,8 @@ RUN mvn clean install -DskipTests
 # Docker Build Stage
 FROM openjdk:8-jdk-alpine
 
-ADD /opt/app/target/*.jar app.jar
 
+ADD target/tpAchatProject-1.0.jar app.jar
 
 ENV PORT 8081
 EXPOSE $PORT
