@@ -1,6 +1,6 @@
 node {
     def WORKSPACE = "/var/lib/jenkins/workspace/SpringProject"
-    def dockerImageTag = "SpringProject${env.BUILD_NUMBER}"
+    def dockerImageTag = "springProject${env.BUILD_NUMBER}"
 
     try{
 //          notifyBuild('STARTED')
@@ -11,13 +11,13 @@ node {
                 branch: 'master'
          }
           stage('Build docker') {
-                 dockerImage = docker.build("SpringProject:${env.BUILD_NUMBER}")
+                 dockerImage = docker.build("springProject:${env.BUILD_NUMBER}")
           }
 
           stage('Deploy docker'){
                   echo "Docker Image Tag Name: ${dockerImageTag}"
-                  sh "docker stop SpringProject || true && docker rm SpringProject || true"
-                  sh "docker run --name SpringProject -d -p 8080:8080 SpringProject:${env.BUILD_NUMBER}"
+                  sh "docker stop springProject || true && docker rm springProject || true"
+                  sh "docker run --name springProject -d -p 8080:8080 springProject:${env.BUILD_NUMBER}"
           }
     }catch(e){
 //         currentBuild.result = "FAILED"
