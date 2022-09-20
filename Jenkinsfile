@@ -15,8 +15,9 @@ node {
           }
 
           stage('Deploy docker'){
-                  sh "docker-composer build"
-                  sh "docker-compose up -d"
+                  echo "Docker Image Tag Name: ${dockerImageTag}"
+                  sh "docker stop springproject || true && docker rm springproject || true"
+                  sh "docker run --name springproject -d -p 8089:8089 springproject:${env.BUILD_NUMBER}"
           }
     }catch(e){
          currentBuild.result = "FAILED"
