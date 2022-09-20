@@ -1,5 +1,5 @@
 node {
-    def WORKSPACE = "/var/lib/jenkins/workspace/SpringProject"
+    def WORKSPACE = "/var/lib/jenkins/workspace/SpringIOC"
     def dockerImageTag = "springproject${env.BUILD_NUMBER}"
 
     try{
