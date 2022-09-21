@@ -18,6 +18,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DetailFacture implements Serializable {
+	
+	public DetailFacture(Integer qteCommandee, float prixTotalDetail, Integer pourcentageRemise, float montantRemise) {
+		super();
+		this.qteCommandee = qteCommandee;
+		this.prixTotalDetail = prixTotalDetail;
+		this.pourcentageRemise = pourcentageRemise;
+		this.montantRemise = montantRemise;
+	}
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
