@@ -9,5 +9,5 @@
 FROM openjdk:8-jdk-alpine
 VOLUME /main-app
 ADD target/tpAchatProject-1.0.jar app.jar
-EXPOSE 8080
+EXPOSE 8089
 ENTRYPOINT ["java", "-jar","/app.jar"]
