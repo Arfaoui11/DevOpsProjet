@@ -1,6 +1,6 @@
 FROM maven:3.8.2-jdk-8
 
-WORKDIR /tpAchatProject
+WORKDIR /DevOpsProjet
 COPY . .
 RUN mvn clean install
 EXPOSE 8089
