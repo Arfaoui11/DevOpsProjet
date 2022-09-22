@@ -3,7 +3,7 @@ node {
     def dockerImageTag = "springproject${env.BUILD_NUMBER}"
 
     try{
-          notifyBuild('STARTED')
+//          notifyBuild('STARTED')
          stage('Clone Repo') {
             // for display purposes
             // Get some code from a GitHub repository
@@ -13,10 +13,10 @@ node {
 
 
           stage('Build & Deploy docker'){
-                 // sh "docker network create data-mysql"
-                  sh "docker container run --name mysqldb --network data-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=devopsDB -d mysql:8"
-                  sh "docker image build -t devops-jdbc ."
-                  sh "docker container run --network data-mysql --name devops-container -p 8089:8089 -d devops-jdbc"
+                  sh "docker network create dataa-mysql"
+                  sh "docker container run --name mysqldb --network dataa-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=devopsDB -d mysql:8"
+                  sh "docker image build -t devops-jdbcc ."
+                  sh "docker container run --network dataa-mysql --name devops-jdbc-container -p 8089:8089 -d devops-jdbcc"
           }
     }catch(e){
          currentBuild.result = "FAILED"
