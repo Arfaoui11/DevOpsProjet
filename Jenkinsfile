@@ -10,13 +10,16 @@ node {
             git url: 'https://github.com/Arfaoui11/DevOpsProjet.git',
                 branch: 'master'
          }
+          stage('Build docker') {
+                          dockerImage = docker.build("springproject:${env.BUILD_NUMBER}")
+                   }
 
 
           stage('Build & Deploy docker'){
                //   sh "docker network create dataa-mysql"
                  // sh "docker container run --name mysqldbb --network dataa-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=devopsDB -d mysql:8"
-                  sh "docker image build -t devops-jdbcc ."
-                  sh "docker container run --network dataa-mysql --name devops-jdbc-container -p 8089:8089 -d devops-jdbcc"
+                 // sh "docker image build -t devops-jdbcc ."
+                  sh "docker container run --network dataa-mysql --name devops-jdbc-container -p 8089:8089 -d springproject:${env.BUILD_NUMBER}"
           }
     }catch(e){
          currentBuild.result = "FAILED"
