@@ -17,7 +17,7 @@ node {
 
 
           stage('Build & Deploy docker'){
-                  sh "docker network create dataa-mysql"
+                 // sh "docker network create dataa-mysql"
                   sh "docker container run --name mysqldbb --network dataa-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=devopsDB -d mysql:8"
                  // sh "docker image build -t devops-jdbcc ."
                   sh "docker container run --network dataa-mysql --name devops-jdbcc-container -p 8089:8089 -d devops-jdbc:${env.BUILD_NUMBER}"
