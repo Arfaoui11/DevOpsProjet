@@ -67,7 +67,7 @@ pipeline {
             stage('Checkout GIT'){
                 steps{
                     echo 'Pulling...';
-                    git branch: 'chaima_back',
+                    git branch: 'MahdiBack',
                     url : 'https://github.com/Arfaoui11/DevOpsProjet.git';
                              }
                              }
