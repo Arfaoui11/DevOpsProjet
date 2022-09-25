@@ -1,4 +1,4 @@
-/*
+
 node {
     def WORKSPACE = "/var/lib/jenkins/workspace/DevOps-IOC"
     def dockerImageTag = "springproject${env.BUILD_NUMBER}"
@@ -9,7 +9,7 @@ node {
             // for display purposes
             // Get some code from a GitHub repository
             git url: 'https://github.com/Arfaoui11/DevOpsProjet.git',
-                branch: 'master'
+                branch: 'MahdiBack'
          }
           stage('Build docker') {
                           dockerImage = docker.build("devops-jdbc:${env.BUILD_NUMBER}")
@@ -55,8 +55,8 @@ def notifyBuild(String buildStatus = 'STARTED'){
          recipientProviders: [[$class: 'DevelopersRecipientProvider']]
        )
 }
-*/
 
+/*
 import java.text.SimpleDateFormat
 
 pipeline {
@@ -84,3 +84,4 @@ pipeline {
         }
         }
 
+*/
