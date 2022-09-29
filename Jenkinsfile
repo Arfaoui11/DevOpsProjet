@@ -1,4 +1,4 @@
-
+/*
 node {
     def WORKSPACE = "/var/lib/jenkins/workspace/DevOps-IOC"
     def dockerImageTag = "springproject${env.BUILD_NUMBER}"
@@ -55,8 +55,8 @@ def notifyBuild(String buildStatus = 'STARTED'){
          recipientProviders: [[$class: 'DevelopersRecipientProvider']]
        )
 }
+*/
 
-/*
 import java.text.SimpleDateFormat
 
 pipeline {
@@ -82,6 +82,25 @@ pipeline {
                              }
 
         }
+
+            stage('MVN CLEAN'){
+            steps{
+            sh 'mvn clean'
+            }
+            }
+
+            stage('MVN COMPILE'){
+            steps{
+            sh 'mvn compile'
+            }
+            }
+
+            stage('MVN SONARQUBE')
+            {
+            steps {
+            sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+            }
+            }
+
         }
 
-*/
