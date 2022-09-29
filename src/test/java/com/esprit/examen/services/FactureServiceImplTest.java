@@ -61,7 +61,7 @@ public class FactureServiceImplTest {
 		Facture f = new Facture(20f,200f,date1,date2,true);
 		Facture savedFactrure= factureService.addFacture(f);
 		factureService.cancelFacture(savedFactrure.getIdFacture());
-	    assertEquals(savedFactrure.getArchivee(),true);
+	    assertEquals(true, savedFactrure.getArchivee());
 
      }
 	@Test
@@ -114,7 +114,7 @@ public class FactureServiceImplTest {
 	}
 	@Test
 	public void testassignOperateurToFacture() throws ParseException{
-		Long a = new Long(1);
+		Long a = Long.valueOf(1);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date1 = dateFormat.parse("30/09/2000");
 		Date date2 = dateFormat.parse("30/09/2000");
