@@ -79,7 +79,7 @@ public class FactureServiceImplTest {
 	}
 		@Test
 		public void testRetrieveFacturesById() throws ParseException {
-		    Long a = new Long(1);
+			Long a = 1L;
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 			Date date1 = dateFormat.parse("30/09/2000");
 			Date date2 = dateFormat.parse("30/09/2000");
@@ -87,14 +87,14 @@ public class FactureServiceImplTest {
 			Facture savedFactrure= factureService.addFacture(f);
 			factureService.retrieveFacture(a);
 			factureService.cancelFacture(savedFactrure.getIdFacture());
-
+			assertNotNull(f.getIdFacture());
 			
 
 
 	}
 	@Test
 	public void testgetFacturesByFournisseur() throws ParseException  {
-		Long a = new Long(1);
+		Long a = 1L;
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date1 = dateFormat.parse("30/09/2000");
 		Date date2 = dateFormat.parse("30/09/2000");
@@ -122,7 +122,8 @@ public class FactureServiceImplTest {
 		Operateur o = new Operateur(a,"chaima","yahyaoui","123");
 		Facture savedFactrure= factureService.addFacture(f);
 		Operateur operateurSaved =  operateurService.addOperateur(o);
-		factureService.assignOperateurToFacture(a,a); 	
+		factureService.assignOperateurToFacture(a,a);
+		assertNotNull(savedFactrure.getIdFacture());
 	}
 	/*
 	 @Test
