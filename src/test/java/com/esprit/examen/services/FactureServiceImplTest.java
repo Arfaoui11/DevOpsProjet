@@ -114,7 +114,7 @@ public class FactureServiceImplTest {
 	}
 	@Test
 	public void testassignOperateurToFacture() throws ParseException{
-		Long a = Long.valueOf(1);
+		Long a = 1L;
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date date1 = dateFormat.parse("30/09/2000");
 		Date date2 = dateFormat.parse("30/09/2000");
