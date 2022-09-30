@@ -110,7 +110,7 @@ pipeline {
 
         registry = "mahdijr/devops-projet"
 
-        registryCredential = 'dockerhub_id'
+        registryCredential = 'mahdijr'
 
         dockerImage = ''
 
