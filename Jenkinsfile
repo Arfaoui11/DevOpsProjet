@@ -200,7 +200,7 @@ pipeline {
 
         stage('Build jar') {
             steps {
-                sh "mvn -f scheduler/pom.xml package -DskipTests -X"
+                sh "mvn -f DevOpsProjet/pom.xml package -DskipTests -X"
                 echo 'Build jar Completed'
             }
         }
