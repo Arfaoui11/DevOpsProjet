@@ -1,4 +1,4 @@
-/*
+
 node {
     def WORKSPACE = "/var/lib/jenkins/workspace/DevOps-IOC"
     def dockerImageTag = "springproject${env.BUILD_NUMBER}"
@@ -14,14 +14,30 @@ node {
           stage('Build docker') {
                           dockerImage = docker.build("devops-jdbc:${env.BUILD_NUMBER}")
                    }
+      stage('Deploy our image') {
 
+            steps {
 
-          stage('Build & Deploy docker'){
+                script {
+
+                    docker.withRegistry( '', 'devops-jdbc' ) {
+
+                        dockerImage.push()
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        /*  stage('Build & Deploy docker'){
                  // sh "docker network create dataa-mysql"
                   sh "docker container run --name mysqldbb --network dataa-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=devopsDB -d mysql:8"
                  // sh "docker image build -t devops-jdbcc ."
                   sh "docker container run --network dataa-mysql --name devops-jdbcc-container -p 8089:8089 -d devops-jdbc:${env.BUILD_NUMBER}"
-          }
+          }*/
     }catch(e){
          currentBuild.result = "FAILED"
         throw e
@@ -56,7 +72,7 @@ def notifyBuild(String buildStatus = 'STARTED'){
        )
 }
 
-
+/*
 import java.text.SimpleDateFormat
 
 pipeline {
@@ -102,7 +118,7 @@ pipeline {
 
         }
         }
-*/
+
 
 pipeline {
 
@@ -162,7 +178,7 @@ pipeline {
 
         }
 
-     /*   stage('Cleaning up') {
+        stage('Cleaning up') {
 
             steps {
 
@@ -171,8 +187,8 @@ pipeline {
             }
 
         }
-    */
+
     }
 
 }
-
+*/
