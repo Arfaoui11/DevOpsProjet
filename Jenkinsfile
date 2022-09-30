@@ -108,7 +108,7 @@ pipeline {
 
     environment {
 
-        registry = "mahdijr/Devops-projet"
+        registry = "mahdijr/devops-projet"
 
         registryCredential = 'dockerhub_id'
 
