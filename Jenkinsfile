@@ -102,7 +102,7 @@ pipeline {
 
         }
         }
-
+*/
 
 pipeline {
 
@@ -162,7 +162,7 @@ pipeline {
 
         }
 
-        stage('Cleaning up') {
+     /*   stage('Cleaning up') {
 
             steps {
 
@@ -171,53 +171,8 @@ pipeline {
             }
 
         }
-
+    */
     }
 
 }
-*/
-pipeline {
-    agent any
 
-    environment {
-        dockerImage=''
-
-    }
-    tools {
-        // Install the Maven version configured as "M3" and add it to the path.
-        maven "maven3"
-
-    }
-
-    stages {
-        stage('Clone') {
-            steps {
-                // Get some code from a GitHub repository
-                git branch: 'MahdiBack', poll: false, url: 'https://github.com/Arfaoui11/DevOpsProjet.git'
-            }
-
-        }
-
-        stage('Build jar') {
-            steps {
-                sh "mvn -f DevOpsProjet/pom.xml package -DskipTests -X"
-                echo 'Build jar Completed'
-            }
-        }
-
-       stage('Build image') {
-             steps {
-                   echo 'Starting to build docker image'
-                     dir('Birthday-Scheduling-App/scheduler') {
-                       script {
-                           def  dockerImage=docker.build("mahdijr/demo")
-                           echo 'Build Image Completed'
-                       }
-                   }
-               }
-       }
-
-    }
-
-
-}
