@@ -129,6 +129,11 @@ pipeline {
                           url : 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
+         stage("Build the package"){
+                            steps {
+                                sh 'mvn clean package'
+                            }
+                        }
 
         stage('Building our image') {
 
