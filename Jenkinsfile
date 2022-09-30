@@ -205,16 +205,17 @@ pipeline {
             }
         }
 
-        stage('Build image') {
-            steps {
-
-            echo 'Starting to build docker image'
-                script {
-                    def  dockerImage=docker.build("mahdijr/demo","-f scheduler/Dockerfile .")
-                    echo 'Build Image Completed'
-            }
-            }
-        }
+       stage('Build image') {
+             steps {
+                   echo 'Starting to build docker image'
+                     dir('Birthday-Scheduling-App/scheduler') {
+                       script {
+                           def  dockerImage=docker.build("mahdijr/demo")
+                           echo 'Build Image Completed'
+                       }
+                   }
+               }
+       }
 
     }
 
