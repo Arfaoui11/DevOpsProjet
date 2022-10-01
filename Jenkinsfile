@@ -3,8 +3,8 @@ import java.text.SimpleDateFormat
 pipeline {
            environment
            {
-               def WORKSPACE = "/var/lib/jenkins/workspace/DevOpsProjet"
-               def dockerImageTag = "DevOpsProjet${env.BUILD_NUMBER}"
+               def WORKSPACE = "/var/lib/jenkins/workspace/Devops"
+               def dockerImageTag = "Devops${env.BUILD_NUMBER}"
             }
        agent any
        
@@ -32,6 +32,9 @@ pipeline {
                     sh 'mvn clean package'
                   }
           }
+           stage('Build docker') {
+                       dockerImage = docker.build("springboot-deploy:${env.BUILD_NUMBER}")
+                }
               
         }
         }
