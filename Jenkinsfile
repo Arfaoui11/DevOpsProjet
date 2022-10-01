@@ -1,6 +1,10 @@
 import java.text.SimpleDateFormat
 
-pipeline { 
+pipeline {
+           environment
+           {
+           dockerImage = ''
+            }
        agent any
        
        
@@ -21,6 +25,12 @@ pipeline {
                              }   
                              } 
                              }
+
+         stage("Test,Build"){
+          steps{
+          bat """mvn clean package -Dmaven.test.failure.ignore=true"""
+          }
+          }
               
         }
         }
