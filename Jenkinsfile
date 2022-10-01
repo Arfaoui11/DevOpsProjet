@@ -6,7 +6,7 @@ pipeline {
                registry ="/var/lib/jenkins/workspace/Devops"
                registryCredential= 'chaima'
 
-              dockerImageTag = "Devops${BUILD_NUMBER}"
+              dockerImage=''
             }
        agent any
        
