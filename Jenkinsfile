@@ -3,8 +3,7 @@ import java.text.SimpleDateFormat
 pipeline {
            environment
            {
-               registry ="/var/lib/jenkins/workspace/Devops"
-               registryCredential= 'chaima'
+
 
               dockerImage=''
             }
