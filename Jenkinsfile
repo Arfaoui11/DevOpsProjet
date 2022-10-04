@@ -36,7 +36,7 @@ pipeline {
            stage('Build docker') {
             steps {
                   script {
-                 dockerImage = docker.build("devops:${env.BUILD_NUMBER}")
+                    dockerImage = docker.build WORKSPACE + ":$BUILD_NUMBER"
                    }
                  }
                 }
