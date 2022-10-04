@@ -1,11 +1,11 @@
 
 # Inject the JAR file into a new container to keep the file small
-FROM openjdk:8-jre-alpine
-WORKDIR /app
-COPY --from=build /app/target/tpAchatProject-1.0.jar /app/app.jar
+
+FROM openjdk:8-jdk-alpine
+ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \JAVA_OPTS=""
 EXPOSE  8089
-ENTRYPOINT ["sh", "-c"]
-CMD ["java -jar app.jar"]
+ADD target/*.jar /
+ENTRYPOINT ["java","-jar","/tpAchatProject-1.0.jar"]
 
 #FROM maven:3.8.2-jdk-8
 
