@@ -6,7 +6,6 @@ pipeline {
                  def WORKSPACE = "/var/lib/jenkins/workspace/Devops"
                  def dockerImageTag = "Devops${env.BUILD_NUMBER}"
 
-
             }
        agent any
        
@@ -37,7 +36,8 @@ pipeline {
            stage('Build docker') {
             steps {
                   script {
-                     dockerImage= docker.build registry + ":$BUILD_NUMBER"
+                 dockerImage = docker.build("Devops:${env.BUILD_NUMBER}")
+
                   }
                  }
                 }
