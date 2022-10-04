@@ -4,7 +4,7 @@ pipeline {
            environment
            {
                  registry = "var/lib/jenkins/workspace/devops_chaima"
-                 def dockerImageTag = "devops_chaima${env.BUILD_NUMBER}"
+                dockerImage = ''
 
             }
        agent any
