@@ -37,7 +37,7 @@ pipeline {
             steps {
                   script {
                  dockerImage = docker.build("devops:${env.BUILD_NUMBER}")
-                  }
+                   }
                  }
                 }
               
