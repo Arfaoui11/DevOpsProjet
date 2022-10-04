@@ -6,7 +6,6 @@ pipeline {
                  def WORKSPACE = "/var/lib/jenkins/workspace/Devops"
                  def dockerImageTag = "Devops${env.BUILD_NUMBER}"
 
-
             }
        agent any
        
