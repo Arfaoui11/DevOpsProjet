@@ -3,8 +3,8 @@ import java.text.SimpleDateFormat
 pipeline {
            environment
            {
-                 registry = "var/lib/jenkins/workspace/Devops"
-                 def dockerImageTag = "Devops${env.BUILD_NUMBER}"
+                 registry = "var/lib/jenkins/workspace/devops_chaima"
+                 def dockerImageTag = "devops_chaima${env.BUILD_NUMBER}"
 
             }
        agent any
