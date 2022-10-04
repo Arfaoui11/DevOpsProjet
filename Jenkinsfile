@@ -1,10 +1,11 @@
 import java.text.SimpleDateFormat
 
 pipeline {
-           environment
+           node
            {
+                 def WORKSPACE = "/var/lib/jenkins/workspace/Devops"
 
-              dockerImage=''
+
             }
        agent any
        
