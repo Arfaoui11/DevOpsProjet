@@ -152,7 +152,7 @@ pipeline {
                 }
             }
         }
-/*
+
         stage('Deploy our image') {
             steps {
                 script {
@@ -161,7 +161,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         stage("Sonar Quality Check"){
 		steps{
 		    script{
