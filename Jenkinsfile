@@ -131,18 +131,14 @@ pipeline {
          }*/
 
          stage('Test - To check MYSQL connect') {
-             def dockerfile = 'Dockerfile'
-             docker.build("rds-latest", "-f ${dockerfile} .")
-             def rds_test_image = docker.image('rds-test:latest')
+
              docker.image('mysql:5.6').withRun('-e MYSQL_ROOT_PASSWORD=root --name=mysql_server -p 3306:3306') { container ->
                  docker.image('mysql:5.6').inside("--link ${container.id}:mysql") {
 
                      sh 'while ! mysqladmin ping -hmysql --silent; do sleep 1; done'
                  }
 
-                 rds_test_image.inside("--link ${container.id}:mysql -e MYSQL_HOST=mysql -e MYSQL_PWD=root -e USER=root "){
-                     sh 'bash scripts/test_script.sh'
-                 }
+
              }
          }
         stage('Building our image') {
