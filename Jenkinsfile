@@ -124,11 +124,11 @@ pipeline {
                                 sh 'mvn clean package'
                             }
                         }
-         stage("nexus deploy"){
+      /*   stage("nexus deploy"){
               steps {
                   sh 'mvn clean deploy'
                      }
-         }
+         }*/
 
        /*  stage('Test - To check MYSQL connect') {
              def dockerfile = 'Dockerfile.test'
