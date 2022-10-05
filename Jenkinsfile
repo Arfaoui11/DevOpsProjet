@@ -153,7 +153,7 @@ pipeline {
             }
         }
 
-        stage('Deploy our image') {
+      /*  stage('Deploy our image') {
             steps {
                 script {
                     docker.withRegistry( '', registryCredential ) {
@@ -161,7 +161,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         stage("Sonar Quality Check"){
 		steps{
 		    script{
