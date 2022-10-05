@@ -132,8 +132,8 @@ pipeline {
 
          stage('Test - To check MYSQL connect') {
 
-             docker.image('mysql:5.6').withRun('-e MYSQL_ROOT_PASSWORD=root --name=mysql_server -p 3306:3306') { container ->
-                 docker.image('mysql:5.6').inside("--link ${container.id}:mysql") {
+             docker.image('mysql:5.6').withRun('-e MYSQL_ROOT_PASSWORD=root --name=mysql_server -p 3306:3306') { c ->
+                 docker.image('mysql:5.6').inside("--link ${c.id}:mysql") {
 
                      sh 'while ! mysqladmin ping -hmysql --silent; do sleep 1; done'
                  }
