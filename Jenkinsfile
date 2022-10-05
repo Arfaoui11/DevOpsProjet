@@ -105,28 +105,18 @@ pipeline {
 
 */
 pipeline {
-
-
-
     environment {
-
         registry = "mahdijr/devops-projet"
-
         registryCredential = 'a8e9ee1f-1fa3-47e5-bef7-5d65e3d019f4'
-
         dockerImage = ''
-
     }
-
     agent any
-
     stages {
-
         stage('Checkout GIT'){
                       steps{
                           echo 'Pulling...';
                           git branch: 'MahdiBack',
-                          url : 'https://github.com/Arfaoui11/DevOpsProjet.git';
+                          url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
          stage("Build the package"){
@@ -134,40 +124,63 @@ pipeline {
                                 sh 'mvn clean package'
                             }
                         }
+         stage("nexus deploy"){
+              steps {
+                  sh 'mvn clean deploy'
+                     }
+         }
 
+       /*  stage('Test - To check MYSQL connect') {
+             def dockerfile = 'Dockerfile.test'
+             docker.build("rds-latest", "-f ${dockerfile} .")
+             def rds_test_image = docker.image('rds-test:latest')
+             docker.image('mysql:5.6').withRun('-e MYSQL_ROOT_PASSWORD=root --name=mysql_server -p 3306:3306') { container ->
+                 docker.image('mysql:5.6').inside("--link ${container.id}:mysql") {
+
+                     sh 'while ! mysqladmin ping -hmysql --silent; do sleep 1; done'
+                 }
+
+                 rds_test_image.inside("--link ${container.id}:mysql -e MYSQL_HOST=mysql -e MYSQL_PWD=root -e USER=root "){
+                     sh 'bash scripts/test_script.sh'
+                 }
+             }
+         }*/
         stage('Building our image') {
-
             steps {
-
                 script {
-
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
-
                 }
-
             }
-
         }
 
         stage('Deploy our image') {
-
             steps {
-
                 script {
-
                     docker.withRegistry( '', registryCredential ) {
-
                         dockerImage.push()
-
                     }
-
                 }
-
             }
+        }
+        stage("Sonar Quality Check"){
+		steps{
+		    script{
+		     withSonarQubeEnv(installationName: 'sonar-9', credentialsId: 'jenkins-sonar-token') {
+		     sh 'mvn sonar:sonar'
+	    	}
+	    	 timeout(time: 1, unit: 'HOURS') {
+              def qg = waitForQualityGate()
+              if (qg.status != 'OK') {
+                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+         }
 
+		    }
+            }
         }
 
-     /*   stage('Cleaning up') {
+
+
+        stage('Cleaning up') {
 
             steps {
 
@@ -176,8 +189,16 @@ pipeline {
             }
 
         }
-    */
+
     }
 
-}
+    post {
+            success {
+                mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'mahdi.arfaoui1@esprit.tn'
+            }
+            failure {
+                mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'mahdi.arfaoui1@esprit.tn'
+             }
+        }
 
+}
