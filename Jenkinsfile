@@ -106,7 +106,7 @@ pipeline {
 */
 pipeline {
     environment {
-        registry = "mahdijr/devops-projet"
+        registry = "mahdijr/devops-tp"
         registryCredential = 'a8e9ee1f-1fa3-47e5-bef7-5d65e3d019f4'
         dockerImage = ''
     }
