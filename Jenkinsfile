@@ -121,9 +121,8 @@ pipeline {
         }
          stage("Build the package"){
                             steps {
-                                sh 'docker-compose down'
-                                sh 'docker-compose up -d'
-                                sh 'docker-compose rm'
+                                sh 'docker-compose up -d --renew-anon-volumes'
+
                             }
                         }
       /*   stage("nexus deploy"){
