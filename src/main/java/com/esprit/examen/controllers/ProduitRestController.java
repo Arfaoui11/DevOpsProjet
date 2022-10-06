@@ -21,7 +21,7 @@ public class ProduitRestController {
 	IProduitService produitService;
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
-	@GetMapping("/retrieve-all-produits")
+	@GetMapping("/get-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
 		return produitService.retrieveAllProduits();
