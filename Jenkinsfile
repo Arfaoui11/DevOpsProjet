@@ -121,6 +121,7 @@ pipeline {
         }
          stage("Build the package"){
                             steps {
+                                sh 'docker compose down'
                                 sh 'docker-compose up -d'
                             }
                         }
