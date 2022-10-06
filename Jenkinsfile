@@ -123,7 +123,7 @@ pipeline {
                             steps {
                                 sh 'docker-compose up -d'
                             }
-                        }///////////////////////
+                        }
       /*   stage("nexus deploy"){
               steps {
                   sh 'mvn clean deploy'
