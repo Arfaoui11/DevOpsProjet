@@ -121,7 +121,7 @@ pipeline {
         }
          stage("Build the package"){
                             steps {
-                                sh 'mvn clean package'
+                                sh 'docker compose up -d'
                             }
                         }
       /*   stage("nexus deploy"){
@@ -144,14 +144,14 @@ pipeline {
                      sh 'bash scripts/test_script.sh'
                  }
              }
-         }*/
+         }
         stage('Building our image') {
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
-        }
+        }*/
 /*
         stage('Deploy our image') {
             steps {
@@ -161,7 +161,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
         stage("Sonar Quality Check"){
 		steps{
 		    script{
@@ -173,12 +173,12 @@ pipeline {
               if (qg.status != 'OK') {
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
          }
-        */
+
 		    }
             }
         }
 
-        /*
+
 
         stage('Cleaning up') {
 
