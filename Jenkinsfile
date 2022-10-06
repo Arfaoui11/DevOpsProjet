@@ -123,6 +123,7 @@ pipeline {
                             steps {
                                 sh 'docker-compose down'
                                 sh 'docker-compose up'
+                                sh 'docker-compose rm'
                             }
                         }
       /*   stage("nexus deploy"){
