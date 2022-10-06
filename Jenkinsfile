@@ -121,7 +121,7 @@ pipeline {
         }
          stage("Build the package"){
                             steps {
-                                sh 'docker-compose up -d'
+                                sh 'docker-compose up'
                             }
                         }
       /*   stage("nexus deploy"){
