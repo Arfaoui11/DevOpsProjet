@@ -1,5 +1,5 @@
 ---
-- name: devops_playbook
+- name: devops_playbook with ansible
   hosts: dev-servers
   tasks:
     - name: Run nexus container

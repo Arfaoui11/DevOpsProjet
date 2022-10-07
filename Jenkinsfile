@@ -56,6 +56,12 @@ pipeline {
     }
     agent any
     stages {
+
+         stage("Run the container with ansible"){
+                      steps {
+                          sh 'ansible-playbook ansible-playbook.yml'
+                             }
+                 }
         stage('Checkout GIT'){
                       steps{
                           echo 'Pulling...';
