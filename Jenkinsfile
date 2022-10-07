@@ -109,6 +109,7 @@ pipeline {
         registry = "mahdijr/devops-tp"
         registryCredential = 'a8e9ee1f-1fa3-47e5-bef7-5d65e3d019f4'
         dockerImage = ''
+        def now = new Date()
     }
     agent any
     stages {
@@ -197,10 +198,10 @@ pipeline {
 
     post {
             success {
-                mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'mahdi.arfaoui1@esprit.tn'
+                mail bcc: '', body: 'Pipeline build successfully - Time: ${now}', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success - Time: ${now}', to: 'mahdi.arfaoui1@esprit.tn'
             }
             failure {
-                mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'mahdi.arfaoui1@esprit.tn'
+                mail bcc: '', body: 'Pipeline build not success - Time: ${now}', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed - Time: ${now}', to: 'mahdi.arfaoui1@esprit.tn'
              }
         }
 
