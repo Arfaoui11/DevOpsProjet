@@ -1,4 +1,42 @@
-node {
+import java.text.SimpleDateFormat
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout GIT') {
+            steps {
+                echo 'Pulling...';
+                git branch: 'omarBack',
+                url : 'https://github.com/Arfaoui11/DevOpsProjet.git'
+            }
+        }
+
+        stage('Date') {
+                steps {
+                     script{
+                     def date = new Date()
+                     sdf = new SimpleDateFormat("MM/dd/yyyy")
+                     println(sdf.format(date))
+                             }
+                             }
+                             }
+
+        stage('MVN CLEAN'){
+            steps{
+                sh  'mvn clean'
+            }
+        }
+
+        stage('MVN COMPILE'){
+            steps{
+                sh  'mvn compile'
+            }
+        }
+    }
+}
+
+/*node {
     def WORKSPACE = "/var/lib/jenkins/workspace/SpringIOC"
     def dockerImageTag = "springproject${env.BUILD_NUMBER}"
 
@@ -51,5 +89,5 @@ def notifyBuild(String buildStatus = 'STARTED'){
          body: details,
          recipientProviders: [[$class: 'DevelopersRecipientProvider']]
        )
-}
+}*/
 
