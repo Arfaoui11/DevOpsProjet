@@ -21,6 +21,6 @@ public class TpAchatProjectApplication {
 
 	@GetMapping("/")
 	public String home(){
-		return "Welcome Home new mahdi change 2023 tt";
+		return "Welcome Home new mahdi change venredi";
 	}
 }
