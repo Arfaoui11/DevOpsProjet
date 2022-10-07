@@ -109,7 +109,6 @@ pipeline {
         registry = "mahdijr/devops-tp"
         registryCredential = 'a8e9ee1f-1fa3-47e5-bef7-5d65e3d019f4'
         dockerImage = ''
-        def now = new Date()
     }
     agent any
     stages {
@@ -125,6 +124,7 @@ pipeline {
                                 sh 'mvn clean package'
                                // sh 'docker-compose down -v'
                                 sh 'docker-compose up -d --build'
+
 
                             }
                         }
@@ -197,11 +197,18 @@ pipeline {
     }
 
     post {
+     script{
+                         def date = new Date()
+                         sdf = new SimpleDateFormat("MM/dd/yyyy")
+                         println(sdf.format(date))
+                                 }
+                                 }
+                                 }
             success {
-                mail bcc: '', body: 'Pipeline build successfully - Time: ${now}', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success - Time: ${now}', to: 'mahdi.arfaoui1@esprit.tn'
+                mail bcc: '', body: 'Pipeline build successfully - Time: ${sdf.format(date)}', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success - Time: ${sdf.format(date)}', to: 'mahdi.arfaoui1@esprit.tn'
             }
             failure {
-                mail bcc: '', body: 'Pipeline build not success - Time: ${now}', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed - Time: ${now}', to: 'mahdi.arfaoui1@esprit.tn'
+                mail bcc: '', body: 'Pipeline build not success - Time: ${sdf.format(date)}', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed - Time: ${sdf.format(date)}', to: 'mahdi.arfaoui1@esprit.tn'
              }
         }
 
