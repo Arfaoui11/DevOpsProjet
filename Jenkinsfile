@@ -122,7 +122,7 @@ pipeline {
          stage("Build the package"){
                             steps {
                                 sh 'docker-compose down --volumes'
-                                sh 'docker-compose up -d --renew-anon-volumes'
+                                sh 'docker-compose up'
 
                             }
                         }
