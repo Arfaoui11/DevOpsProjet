@@ -198,17 +198,12 @@ pipeline {
 
     post {
      script{
-                         def date = new Date()
-                         sdf = new SimpleDateFormat("MM/dd/yyyy")
-                         println(sdf.format(date))
-                                 }
-                                 }
-                                 }
+
             success {
-                mail bcc: '', body: 'Pipeline build successfully - Time: ${sdf.format(date)}', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success - Time: ${sdf.format(date)}', to: 'mahdi.arfaoui1@esprit.tn'
+                mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'mahdi.arfaoui1@esprit.tn'
             }
             failure {
-                mail bcc: '', body: 'Pipeline build not success - Time: ${sdf.format(date)}', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed - Time: ${sdf.format(date)}', to: 'mahdi.arfaoui1@esprit.tn'
+                mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'mahdi.arfaoui1@esprit.tn'
              }
         }
 
