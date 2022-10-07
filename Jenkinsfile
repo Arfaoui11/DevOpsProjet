@@ -197,8 +197,6 @@ pipeline {
     }
 
     post {
-     script{
-
             success {
                 mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'mahdi.arfaoui1@esprit.tn'
             }
