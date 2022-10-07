@@ -1,18 +1,16 @@
 ---
-- name: sample_book
+- name: devops_playbook
   hosts: dev-servers
-  remote_user: root
-  become: true
   tasks:
-    - name: install httpd
-      yum:
-        name: httpd
-        state: latest
-    - name: run httpd
-      service:
-        name: httpd
-        state: started
-    - name: create content
-      copy:
-        content: "Congrats on installing ansible"
-        dest: /var/www/html/index.html
+    - name: Run nexus container
+      command: docker start nexus
+      ignore_errors: yes
+    - name: Run sonarQube container
+      command: docker start 1ddc95ed56f4
+      ignore_errors: yes
+    - name: Run prometheus container
+      command: docker start prometheus
+      ignore_errors: yes
+    - name: Run grafana container
+      command: docker start grafana
+      ignore_errors: yes
