@@ -121,6 +121,7 @@ pipeline {
         }
          stage("Build the package"){
                             steps {
+                                sh 'mvn clean package'
                                 sh 'docker-compose down -v'
                                 sh 'docker-compose up -d --build'
 
