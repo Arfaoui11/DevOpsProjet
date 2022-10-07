@@ -21,6 +21,6 @@ public class TpAchatProjectApplication {
 
 	@GetMapping("/")
 	public String home(){
-		return "Welcome Home";
+		return "Welcome Home new tab";
 	}
 }
