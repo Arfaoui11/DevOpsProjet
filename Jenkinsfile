@@ -57,11 +57,7 @@ pipeline {
     agent any
     stages {
 
-         stage("Run the container with ansible"){
-                      steps {
-                          sh 'ansible-playbook ansible-playbook.yml'
-                             }
-                 }
+
         stage('Checkout GIT'){
                       steps{
                           echo 'Pulling...';
@@ -69,6 +65,11 @@ pipeline {
                           url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
+        stage("Run the container with ansible"){
+                              steps {
+                                  sh 'ansible-playbook ansible-playbook.yml'
+                                     }
+                         }
          stage("Build the package"){
                             steps {
                                 sh 'mvn clean package'
