@@ -79,11 +79,11 @@ pipeline {
 
                             }
                         }
-         stage("nexus deploy"){
+        /* stage("nexus deploy"){
               steps {
                   sh 'mvn clean deploy'
                      }
-         }
+         }*/
 
           /*
         stage('Building our image') {
