@@ -2,8 +2,8 @@ import java.text.SimpleDateFormat
 
 pipeline {
            environment
-           {
-                 registry = "var/lib/jenkins/workspace/devops_chaima"
+           {    registry = "chaimayahyaoui/devops_project"
+                 registryCredential = 'dockerhub_id'
                 dockerImage = ''
 
             }
@@ -33,14 +33,38 @@ pipeline {
                     sh 'mvn clean package'
                   }
           }
-           stage('Build docker') {
-            steps {
-                  script {
+      stage('Building our image') {
+                  steps {
+                        script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                   }
-                 }
-                }
-              
+
+                         }
+                       }
+                      }
+                     stage('Deploy our image') {
+
+                   steps {
+
+                      script {
+
+                          docker.withRegistry( '', registryCredential ) {
+
+                              dockerImage.push()
+
+                                }
+
+                                  }
+
+                                          }
+
+                     }
+
+               stage('Cleaning up') {
+                     steps {
+                               sh "docker rmi $registry:$BUILD_NUMBER"
+                     }
+               }
+
         }
         }
        
