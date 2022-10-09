@@ -33,6 +33,12 @@ pipeline {
                     sh 'mvn clean package'
                   }
           }
+           stage("nexus deploy"){
+                        steps {
+                            sh 'mvn deploy'
+                               }
+                   }
+
       stage('Building our image') {
                   steps {
                         script {
