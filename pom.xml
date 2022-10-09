@@ -114,6 +114,7 @@
 			</plugin>
 
 		</plugins>
+        <finalName>DevopsProject</finalName>
 	</build>
 
 </project>

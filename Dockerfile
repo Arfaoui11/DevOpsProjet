@@ -3,8 +3,8 @@
 
 FROM openjdk:8-jdk-alpine
 EXPOSE  8089
-ADD target/*.jar /
-ENTRYPOINT ["java","-jar","/tpAchatProject-1.0.jar"]
+ADD target/DevopsProject.jar DevopsProject
+ENTRYPOINT ["java","-jar","/DevopsProject.jar"]
 
 
 #FROM maven:3.8.2-jdk-8
