@@ -4,6 +4,9 @@
   remote_user: root
   become: true
   tasks:
+    - name: Run nexus container
+      command: docker start nexus
+      ignore_errors: yes
     - name: Run sonarQube contanier
       command: docker start 1ddc95ed56f4
       ignore_errors: yes
