@@ -83,6 +83,14 @@ pipeline {
                }
           }
 
+          stage('MVN SONARQUBE'){
+
+                steps{
+                          sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                }
+          }
+
+
 
 
 
