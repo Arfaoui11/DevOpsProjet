@@ -77,11 +77,11 @@ pipeline {
                }
          }*/
 
-          stage("nexus deploy"){
+         /* stage("nexus deploy"){
                steps{
                        sh 'mvn  deploy'
                }
-          }
+          }*/
 
           stage('MVN SONARQUBE'){
 
