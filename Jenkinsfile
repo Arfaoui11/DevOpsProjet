@@ -7,7 +7,7 @@ pipeline {
                 dockerImage = ''
                 NEXUS_VERSION="nexus3"
                 NEXUS_PROTOCOL="http"
-                NEXUS_URL="192.168.1.119:8081"
+                NEXUS_URL="192.168.1.120:8081"
                 NEXUS_REPOSITORY="nexu-repo-projet"
                 NEXUS_CREDENTIAL_ID="nexus-user-credentials"
 
