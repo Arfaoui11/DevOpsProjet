@@ -36,7 +36,7 @@ pipeline {
          stage("Test,Build"){
            steps {
                     sh 'mvn clean package'
-                     sh 'docker-compose up -d --build'
+
                   }
 
           }
