@@ -82,8 +82,14 @@
 			<layout>default</layout>
 
 		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshots</name>
+			<url>http://192.168.1.119:8081/repository/nexu-repo-projet/</url>
+		</snapshotRepository>
 	</distributionManagement>
 	<build>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
