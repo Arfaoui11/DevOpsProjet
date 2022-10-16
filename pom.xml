@@ -75,14 +75,18 @@
 		</dependency>
 	</dependencies>
 	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<url>http://192.168.1.13:8081/repository/maven-snapshots</url>
-		</snapshotRepository>
 		<repository>
-			<id>nexus-releases</id>
-			<url>http://192.168.1.13:8081/repository/maven-releases</url>
+			<id>deploymentRepo</id>
+			<name>maven-release</name>
+			<url>http://192.168.1.120:8081/repository/maven-releases/</url>
+
+
 		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>maven-snapshots</name>
+			<url>http://192.168.1.120:8081/repository/spring-snapshot/</url>
+		</snapshotRepository>
 	</distributionManagement>
 
 	<build>
