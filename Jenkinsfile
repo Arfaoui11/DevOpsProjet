@@ -5,7 +5,11 @@ pipeline {
            {    registry = "chaimayahyaoui/devops_project"
                  registryCredential = 'dockerhub_id'
                 dockerImage = ''
-
+                NEXUS_VERSION="nexus3"
+                NEXUS_PROTOCOL="http"
+                NEXUS_URL="192.168.1.120:8081"
+                NEXUS_REPOSITORY="maven-snapshots"
+                NEXUS_CREDENTIAL_ID="nexus-user-credentials"
 
             }
        agent any
