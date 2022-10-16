@@ -78,7 +78,7 @@
 	<distributionManagement>
 		<repository>
 			<uniqueVersion>false</uniqueVersion>
-			<id>TestWebApp_Repository</id>
+			<id>deploymentRepo</id>
 			<name>TestWebApp Applications Repository Internal</name>
 			<url>http://192.168.1.120:8081/repository/maven-releases</url>
 			<layout>default</layout>
