@@ -33,6 +33,7 @@ pipeline {
                              } 
                              }
 
+
          stage("Test,Build"){
            steps {
                     sh 'mvn clean package'
