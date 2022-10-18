@@ -8,7 +8,7 @@
       command: docker start nexus
       ignore_errors: yes
     - name: Run sonarQube contanier
-      command: docker start 1ddc95ed56f4
+      command: docker start a7244c7253bd
       ignore_errors: yes
     - name: Run prometheus container
       command: docker start prometheus
