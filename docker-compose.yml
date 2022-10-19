@@ -9,7 +9,7 @@ services:
     ports:
       - 3306:3306
 
-docker-springboot-example:
+  docker-springboot-example:
     image: docker-springboot-example:latest
     ports:
       - 8089:8089

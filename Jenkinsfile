@@ -30,7 +30,8 @@ pipeline {
                      sdf = new SimpleDateFormat("MM/dd/yyyy")
                      println(sdf.format(date))
                              }   
-                             } 
+                             }
+
                              }
 
 
