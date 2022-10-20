@@ -1,14 +1,22 @@
-version: '3.7'
-
+version: '3'
 services:
-  app:
-    build: .
-    command: sh -c "npm start"
+  nodejs-server:
+    build:
+      context: ./api
+      dockerfile: Dockerfile-dev
     ports:
-      - 4200:4200
-    working_dir: /home/node/app
+      - "3080:3080"
+    container_name: node-api
     volumes:
-      - ./:/home/node/app
-      - node_modules:/home/node/app/node_modules
-volumes:
-  node_modules:
+      - ./api:/usr/src/app/api
+      - /usr/src/app/api/node_modules
+  angular-ui:
+    build:
+      context: ./app-ui
+      dockerfile: Dockerfile-dev
+    ports:
+      - "4201:4201"
+    container_name: angular-ui
+    volumes:
+      - ./app-ui:/usr/src/app/app-ui
+      - /usr/src/app/app-ui/node_modules

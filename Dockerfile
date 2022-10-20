@@ -1,8 +1,11 @@
-FROM node:alpine
-RUN mkdir /home/node/app && chown node:node /home/node/app
-RUN mkdir /home/node/app/node_modules && chown node:node /home/node/app/node_modules
-WORKDIR  /home/node/app
-USER node
-COPY --chown=node:node package.json package-lock.json ./
-RUN npm ci --quiet
-COPY --chown=node:node . .
+FROM node:10
+
+WORKDIR /usr/src/app/app-ui
+
+COPY package*.json ./
+
+RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
+
+EXPOSE 4201
+
+CMD ["npm", "start"]
