@@ -5,6 +5,9 @@ pipeline {
         dockerImage = ''
     }
     agent any
+    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+    docker.withRegistry('',registryCredential) {
+    dockerImage.push() }
     stages {
 
 
