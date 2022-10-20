@@ -100,19 +100,16 @@ pipeline {
 
 
                                                      }
-                                                 }
 
-               stage("Mailing"){
+                           }                      }
 
-                          post{
-                                                         always{
-                                                             emailext to: "yahyaoui.chaima@esprit.tn",
-                                                             subject: "Test Email",
-                                                             body: "Test"
-                                                         }
-                                                     }
-}
-        }
+ post {
+    always {
+       mail to: 'benmohamedsaoussen@gmail.com',
+          subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+          body: "${env.BUILD_URL} has result ${currentBuild.result}"
+    }
+  }
 
 
         }
