@@ -1,22 +1,14 @@
 version: '3'
 services:
-  nodejs-server:
-    build:
-      context: ./api
-      dockerfile: Dockerfile-dev
+  server:
+    build: ./server
     ports:
-      - "3080:3080"
-    container_name: node-api
-    volumes:
-      - ./api:/usr/src/app/api
-      - /usr/src/app/api/node_modules
-  angular-ui:
-    build:
-      context: ./app-ui
-      dockerfile: Dockerfile-dev
+      - '3000:3000'
+  # db:
+  #   build: mongo:4.1
+  #   ports:
+  #   - '27017:27017'
+  client:
+    build: ./client
     ports:
-      - "4201:4201"
-    container_name: angular-ui
-    volumes:
-      - ./app-ui:/usr/src/app/app-ui
-      - /usr/src/app/app-ui/node_modules
+      - '4200:4200'

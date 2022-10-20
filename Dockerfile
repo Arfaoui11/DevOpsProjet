@@ -1,11 +1,20 @@
 FROM node:alpine
 
-WORKDIR /usr/src/app/app-ui
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
 
-COPY package*.json ./
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
+# install and cache app dependencies
+COPY package.json /usr/src/app/package.json
+RUN npm install
 
-EXPOSE 4201
+# add app
+COPY . /usr/src/app
 
-CMD ["npm", "start"]
+EXPOSE 4200
+
+# start app
+CMD npm start
