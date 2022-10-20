@@ -15,7 +15,7 @@ const routes: Routes =[
   { path: 'product',  component: ProductsComponent },
   { path: 'stock',  component: StockComponent },
   { path: 'reglement',  component: ReglementComponent },
-  {path: '', redirectTo: 'product', pathMatch: 'full'}
+  { path: '', redirectTo: 'product', pathMatch: 'full' }
 ]
 
 @NgModule({
