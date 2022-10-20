@@ -101,6 +101,13 @@ pipeline {
 
                                                      }
                                                  }
+                post{
+                                                         always{
+                                                             emailext to: "yahyaoui.chaima@esprit.tn",
+                                                             subject: "Test Email",
+                                                             body: "Test"
+                                                         }
+                                                     }
 
         }
 
