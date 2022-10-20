@@ -1,11 +1,13 @@
 pipeline {
     environment {
         registry = "achref/devops-tp"
-        registryCredential = 'a8e9ee1f-1fa3-47e5-bef7-5d65e3d019f4'
+        registryCredential = 'dockerHub'
         dockerImage = ''
     }
     agent any
-
+    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+    docker.withRegistry('',registryCredential) {
+    dockerImage.push() }
     stages {
 
 
