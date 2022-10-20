@@ -101,7 +101,10 @@ pipeline {
 
                                                      }
                                                  }
-                post{
+
+               stage("Mailing"){
+
+                          post{
                                                          always{
                                                              emailext to: "yahyaoui.chaima@esprit.tn",
                                                              subject: "Test Email",
