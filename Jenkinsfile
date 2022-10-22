@@ -5,11 +5,7 @@ pipeline {
         dockerImage = ''
     }
     agent any
-
-    }
-
-
-    stages {
+     stages {
 
 
         stage('Checkout GIT'){
@@ -98,5 +94,6 @@ pipeline {
                 mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'mahdi.arfaoui1@esprit.tn'
              }
         }
+    }
 
 
