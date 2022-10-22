@@ -41,15 +41,15 @@ pipeline {
                      }
          }
 
-          /*
+
         stage('Building our image') {
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
-        }*/
-/*
+        }
+
         stage('Deploy our image') {
             steps {
                 script {
@@ -58,7 +58,16 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
+        stage('Cleaning up') {
+
+                    steps {
+
+                        sh "docker rmi $registry:$BUILD_NUMBER"
+
+                    }
+
+                }
         stage("Sonar Quality Check"){
 		steps{
 		    script{
