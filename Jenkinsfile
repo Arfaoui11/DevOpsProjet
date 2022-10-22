@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        /*stage('Deploy our image') {
+        stage('Deploy our image') {
             steps {
                 script {
                     docker.withRegistry( '', registryCredential ) {
@@ -56,16 +56,8 @@ pipeline {
                     }
                 }
             }
-        }*/
-        stage('Cleaning up') {
+        }
 
-                    steps {
-
-                        sh "docker rmi $registry:$BUILD_NUMBER"
-
-                    }
-
-                }
         stage("Sonar Quality Check"){
 		steps{
 		    script{
