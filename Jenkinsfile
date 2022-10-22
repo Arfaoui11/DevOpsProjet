@@ -84,7 +84,7 @@ pipeline {
         }
         }
 
-/*
+
 
         stage('Cleaning up') {
 
@@ -94,7 +94,7 @@ pipeline {
 
             }
 
-        }*/
+        }
 
     }
 
