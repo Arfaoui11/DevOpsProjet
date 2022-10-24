@@ -39,7 +39,10 @@ pipeline {
          		    script{
          		     withSonarQubeEnv(installationName: 'sonar-9', credentialsId: 'jenkins-sonar-token') {
          		     sh 'mvn sonar:sonar'
-         	    	}
+         	    	       }
+         	         }
+                }
+          }
 
 
         stage('Building our image') {
@@ -69,9 +72,7 @@ pipeline {
 
 		    }
 		    }*/
-            }
-        }
-        }
+
 
 
 
