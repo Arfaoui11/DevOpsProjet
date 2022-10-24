@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "achref/devops-tp"
+        registry = "achreef/devops-tp"
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
@@ -29,7 +29,7 @@ pipeline {
 
                             }
                         }
-         stage("nexus deploy"){
+        /* stage("nexus deploy"){
               steps {
                   sh 'mvn deploy'
                      }
@@ -44,7 +44,7 @@ pipeline {
                 }
           }
 
-
+*/
         stage('Building our image') {
             steps {
                 script {
