@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "achreef/devops-tp"
+        registry = "achreef/devops-tpp"
         registryCredential = 'dockerHub'
         dockerImage = ''
     }
