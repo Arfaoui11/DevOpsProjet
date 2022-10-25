@@ -20,7 +20,8 @@ import com.esprit.examen.entities.Stock;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 
-public class ProduitServiceImplTest {
+public class
+ProduitServiceImplTest {
     @Autowired
     IProduitService produitService;
     @Autowired
