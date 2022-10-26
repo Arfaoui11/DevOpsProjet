@@ -1,7 +1,7 @@
 ---
 - name: ansible_playbook
   hosts: web
-  remote_user: root
+  remote_user: vagrant
   become: true
   tasks:
     - name: Start  Prometheus Container
