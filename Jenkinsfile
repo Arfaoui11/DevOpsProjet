@@ -47,16 +47,10 @@ pipeline {
         }
 
          stage('Ansible'){
-               /*steps{
+               steps{
                           sh  'ansible-playbook -i hosts.yml ansible-playbook.yml'
-               }*/
-               ansiblePlaybook(
-                   colorized: true,
-                   become:true,
-                   playbook:'ansible-playbook.yml',
-                   inventory:'hosts.yml'
+               }
 
-               )
          }
 
         /*stage('Building our image') {
