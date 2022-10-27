@@ -3,6 +3,7 @@ package com.esprit.examen.services;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
+import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,7 @@ public class StockServiceImplTest {
 	IStockService stockService;
 	
 	@Test
+	@Order(1)
 	public void testAddStock() {
 		List<Stock> stocks = stockService.retrieveAllStocks();
 		int expected=stocks.size();
@@ -29,6 +31,7 @@ public class StockServiceImplTest {
 	} 
 	
 	@Test
+	@Order(3)
 	public void testAddStockOptimized() {
 
 		Stock s = new Stock("stock test",10,100);
@@ -41,6 +44,7 @@ public class StockServiceImplTest {
 	} 
 	
 	@Test
+	@Order(2)
 	public void testDeleteStock() {
 		Stock s = new Stock("stock test",30,60);
 		Stock savedStock= stockService.addStock(s);

@@ -11,6 +11,7 @@ import java.util.List;
 import com.esprit.examen.entities.Produit;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +28,7 @@ public class ProduitServiceImplTest {
     IStockService stockService;
 
     @Test
+    @Order(1)
     public void testAddProduct() {
         List<Produit> produits = produitService.retrieveAllProduits();
 
@@ -56,6 +58,7 @@ public class ProduitServiceImplTest {
 
 
     @Test
+    @Order(2)
     public void testAddProductOptimized() {
 
         Stock s = new Stock("stock test",10,100);
@@ -85,6 +88,7 @@ public class ProduitServiceImplTest {
     }
 
     @Test
+    @Order(4)
     public void testUpdateProduct() {
 
         Stock s = new Stock(" new stock ",10,100);
@@ -123,6 +127,7 @@ public class ProduitServiceImplTest {
 
 
     @Test
+    @Order(3)
     public void testDeleteProduit() {
         Stock s = new Stock("stock test",10,100);
         Stock savedStock= stockService.addStock(s);
