@@ -24,6 +24,7 @@ import static org.junit.Assert.assertNotNull;
 @ExtendWith(MockitoExtension.class)
 @Slf4j
 public class FactureServiceImplMock1Test {
+
     @Mock
     FactureRepository factureRepository;
     @InjectMocks
