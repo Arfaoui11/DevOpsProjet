@@ -25,7 +25,7 @@ import static org.junit.Assert.assertNotNull;
 @Slf4j
 public class FactureServiceImplMock1Test {
 
-
+/*
     @Mock
     FactureRepository factureRepository;
     @InjectMocks
@@ -82,5 +82,5 @@ public class FactureServiceImplMock1Test {
 
     }
 
-
+*/
 }
