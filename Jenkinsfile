@@ -85,11 +85,7 @@ pipeline {
                      }
          }
 
-          stage("Tests Unitaires"){
-                       steps {
-                           sh 'mvn test'
-                              }
-          }
+
 
           stage("Tests JUnit / Mockito"){
                steps {
