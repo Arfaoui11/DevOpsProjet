@@ -46,12 +46,12 @@ pipeline {
               }
         }
 
-         stage('Ansible'){
+        /* stage('Ansible'){
                steps{
                           sh  'ansible-playbook -i hosts.yml ansible-playbook.yml'
                }
 
-         }
+         }*/
 
         /*stage('Building our image') {
                steps{
