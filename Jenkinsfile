@@ -67,7 +67,7 @@ pipeline {
         }
         stage("Run the container with ansible"){
                               steps {
-                                  sh 'ansible-playbook ansible-playbook.yml'
+                                  sh 'ansible-playbook -i hosts.yml ansible-playbook.yml'
                                      }
                          }
          stage("Build the package"){
