@@ -24,7 +24,9 @@ public class ProduitServiceImpl implements IProduitService {
 	@Autowired
 	CategorieProduitRepository categorieProduitRepository;
 
-	@Override
+
+
+    @Override
 	public List<Produit> retrieveAllProduits() {
 		List<Produit> produits = produitRepository.findAll();
 		for (Produit produit : produits) {
