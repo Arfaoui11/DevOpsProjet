@@ -51,7 +51,11 @@ pipeline {
 
                                }
                    }
-
+  stage("Tests JUnit / Mockito"){
+               steps {
+                  sh 'mvn test'
+                  }
+          }
 
           stage("nexus deploy"){
                        steps {
