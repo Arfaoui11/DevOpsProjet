@@ -6,19 +6,24 @@ import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.ProduitRepository;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.*;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNull;
 
+@SpringBootTest
 @ExtendWith(MockitoExtension.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ProduitServiceImplMockTest {
 
     @Mock
@@ -41,10 +46,9 @@ public class ProduitServiceImplMockTest {
 
     @Test
     @Order(5)
-    public void testRetrieveUser() {
+    public void testRetrieveProduit() {
 
-        Mockito.when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit))
-        ;
+        Mockito.when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit));
         Produit produitq = produitService.retrieveProduit(2L);
         Assertions.assertNotNull(produitq);
     }

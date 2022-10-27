@@ -31,7 +31,7 @@ public class ProduitServiceImplTest {
     @Order(4)
     public void testRetrieveAllProducts() {
         List<Produit> listProduits = produitService.retrieveAllProduits();
-        Assertions.assertEquals(0, listProduits.size());
+        Assertions.assertEquals(1, listProduits.size());
     }
 
 
