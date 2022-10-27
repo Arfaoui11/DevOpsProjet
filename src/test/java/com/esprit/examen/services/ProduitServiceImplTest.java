@@ -11,6 +11,7 @@ import java.util.List;
 import com.esprit.examen.entities.Produit;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,14 @@ public class ProduitServiceImplTest {
     IProduitService produitService;
     @Autowired
     IStockService stockService;
+
+    @Test
+    @Order(4)
+    public void testRetrieveAllProducts() {
+        List<Produit> listProduits = produitService.retrieveAllProduits();
+        Assertions.assertEquals(0, listProduits.size());
+    }
+
 
     @Test
     @Order(1)

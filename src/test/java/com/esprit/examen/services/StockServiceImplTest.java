@@ -3,6 +3,7 @@ package com.esprit.examen.services;
 import static org.junit.Assert.*;
 import java.util.List;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,14 @@ import com.esprit.examen.entities.Stock;
 public class StockServiceImplTest {
 	@Autowired
 	IStockService stockService;
-	
+
+	@Test
+	@Order(4)
+	public void testRetrieveAllStocks() {
+		List<Stock> listStocks = stockService.retrieveAllStocks();
+		Assertions.assertEquals(0, listStocks.size());
+	}
+
 	@Test
 	@Order(1)
 	public void testAddStock() {
