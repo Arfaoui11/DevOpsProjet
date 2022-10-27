@@ -11,6 +11,7 @@ pipeline {
                 NEXUS_REPOSITORY="maven-snapshots"
                 NEXUS_CREDENTIAL_ID="nexus-user-credentials"
 
+
             }
        agent any
        
