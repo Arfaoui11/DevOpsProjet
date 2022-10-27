@@ -5,23 +5,19 @@ import com.esprit.examen.entities.DetailFournisseur;
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.repositories.DetailFournisseurRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.MockBeans;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -30,12 +26,20 @@ import static org.mockito.Mockito.when;
 
     public class FournisseurServiceMockImplTest {
     @InjectMocks
-    IFournisseurService fournisseurService;
+    FournisseurServiceImpl fournisseurService;
     @Mock
     FournisseurRepository fournisseurRepository ;
     @Mock
     DetailFournisseurRepository detailfournisseurRepository;
 
+    //logger
+    Fournisseur fournisseur = new Fournisseur("f1", "l1");
+    List<Fournisseur> fournisseurs = new ArrayList<Fournisseur>() {
+        {
+            add(new Fournisseur("f2", "l2"));
+            add(new Fournisseur("f3", "l3"));
+        }
+    };
 
     @Test
     public void  retrieveAllFournisseursTest () {
@@ -44,6 +48,7 @@ import static org.mockito.Mockito.when;
         assertEquals(0,fournisseurList.size());
 
     }
+    @Test
     public void  addFournisseurTest() {
         DetailFournisseur df = new DetailFournisseur();
         df.setIdDetailFournisseur(1L);

@@ -27,7 +27,6 @@ public class FournisseurRestController {
 
 	@Autowired
 	IFournisseurService fournisseurService;
-	@Autowired private FournisseurRepository fournisseurRepository;
 
 
 

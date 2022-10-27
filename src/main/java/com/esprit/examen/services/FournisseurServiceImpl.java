@@ -6,6 +6,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import lombok.RequiredArgsConstructor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.DetailFournisseur;
@@ -29,6 +31,7 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	ProduitRepository produitRepository;
 	@Autowired
 	SecteurActiviteRepository secteurActiviteRepository;
+	private static final Logger l = LogManager.getLogger(Fournisseur.class);
 
 	@Override
 	public List<Fournisseur> retrieveAllFournisseurs() {
@@ -41,11 +44,16 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 
 	public Fournisseur addFournisseur(Fournisseur f /*Master*/) {
+		try {
+			l.info("In Method addFournisseur :");
 		DetailFournisseur df= new DetailFournisseur();//Slave
 		df.setDateDebutCollaboration(new Date()); //util
 		//On affecte le "Slave" au "Master"
 		f.setDetailFournisseur(df);	
 		fournisseurRepository.save(f);
+		}catch (Exception e) {
+			l.error("out of Method addFournisseur with Errors + e");
+		}
 		return f;
 	}
 	
