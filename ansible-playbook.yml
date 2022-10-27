@@ -1,6 +1,6 @@
 ---
 - name: ansible_playbook
-  hosts: web
+  hosts: all
   remote_user: vagrant
   become: true
   tasks:
