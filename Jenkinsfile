@@ -77,11 +77,7 @@ pipeline {
                               }
                   }
 
-                    stage("Tests JUnit / Mockito"){
-                                 steps {
-                                    sh 'mvn test'
-                                    }
-                            }
+
 
                    stage("mvn package"){
                        steps {
@@ -98,7 +94,11 @@ pipeline {
                   sh 'mvn deploy'
                      }
          }
-
+         stage("Tests JUnit / Mockito"){
+                                         steps {
+                                            sh 'mvn test'
+                                            }
+                                    }
 
 
           /*
