@@ -1,19 +1,25 @@
 version: "3.3"
 services:
   mysqldb:
+    restart : always
+    container_name: docker_mysql
     image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_DATABASE=devopsDB
-      - MYSQL_USER=root
+      - MYSQL_ROOT_USER=root
     ports:
       - 3306:3306
 
-  docker-springboot-example:
+  DevopsProject:
+    restart: on-failure
     image: docker-springboot-example:latest
+    expose:
+      - "8089"
     ports:
       - 8089:8089
-    restart: unless-stopped
+    environment:
+      WAIT_HOSTS: mysql:3306
     build:
       context: ./
       dockerfile: Dockerfile
