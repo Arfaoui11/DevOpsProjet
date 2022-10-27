@@ -71,34 +71,7 @@ pipeline {
                                   sh 'ansible-playbook -i hosts.yml ansible-playbook.yml'
                                      }
                          }
-          stage("mvn clean"){
-                       steps {
-                           sh 'mvn clean'
-                              }
-                  }
 
-                    stage("Tests JUnit / Mockito"){
-                                 steps {
-                                    sh 'mvn test'
-                                    }
-                            }
-
-                   stage("mvn package"){
-                       steps {
-                           sh 'mvn  package'
-                              }
-                  }
-         stage("Build the package"){
-                            steps {
-
-                                sh 'docker-compose up -d --build'
-                            }
-                        }
-        stage("nexus deploy"){
-              steps {
-                  sh 'mvn deploy'
-                     }
-         }
 
 
 
