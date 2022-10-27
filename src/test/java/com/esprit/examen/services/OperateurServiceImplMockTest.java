@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class OperateurServiceImplMockTest {
 
 
-    @Mock
+   /* @Mock
     OperateurRepository op;
 
     @InjectMocks
@@ -78,7 +78,7 @@ public class OperateurServiceImplMockTest {
         Operateur pr =operateurService.retrieveOperateur(2L);
         pr.setPassword("pass");
         assertThat(pr.getPassword()).isEqualTo("pass");
-    }
+    }*/
 
 
 
