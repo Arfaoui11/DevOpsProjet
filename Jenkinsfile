@@ -85,6 +85,18 @@ pipeline {
                      }
          }
 
+          stage("Tests Unitaires"){
+                       steps {
+                           sh 'mvn test'
+                              }
+          }
+
+          stage("Tests JUnit / Mockito"){
+               steps {
+                  sh 'mvn test'
+                  }
+          }
+
           /*
         stage('Building our image') {
             steps {
