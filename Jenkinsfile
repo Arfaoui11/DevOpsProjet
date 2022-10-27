@@ -65,12 +65,12 @@ pipeline {
                           url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
-       /* stage("Run the container with ansible"){
+        stage("Run the container with ansible"){
                               steps {
                                   sh 'ansible-playbook -i hosts.yml ansible-playbook.yml'
                                      }
-                         }*/
-        /* stage("Build the package"){
+                         }
+         stage("Build the package"){
                             steps {
                                 sh 'mvn clean package'
 
@@ -78,7 +78,7 @@ pipeline {
 
 
                             }
-                        }*/
+                        }
         stage("nexus deploy"){
               steps {
                   sh 'mvn deploy'
