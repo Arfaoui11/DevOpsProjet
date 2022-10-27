@@ -85,8 +85,6 @@ pipeline {
                             steps {
 
                                 sh 'docker-compose up -d --build'
-
-
                             }
                         }
         stage("nexus deploy"){
@@ -94,10 +92,6 @@ pipeline {
                   sh 'mvn deploy'
                      }
          }
-
-
-
-
 
           stage("Tests JUnit / Mockito"){
                steps {
