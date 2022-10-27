@@ -27,6 +27,7 @@ public class FactureServiceImplTest {
 	@Autowired
 	IFactureService factureService; 
 	@Autowired
+
 	IOperateurService operateurService; 
 	@Autowired
 	IFournisseurService fournisseurService; 
