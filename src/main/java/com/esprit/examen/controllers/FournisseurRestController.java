@@ -1,6 +1,8 @@
 package com.esprit.examen.controllers;
 
 import java.util.List;
+
+import com.esprit.examen.repositories.FournisseurRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +22,14 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des fournisseurss")
 @RequestMapping("/fournisseur")
+
 public class FournisseurRestController {
 
 	@Autowired
 	IFournisseurService fournisseurService;
+	@Autowired private FournisseurRepository fournisseurRepository;
+
+
 
 	// http://localhost:8089/SpringMVC/fournisseur/retrieve-all-fournisseurs
 	@GetMapping("/retrieve-all-fournisseurs")
