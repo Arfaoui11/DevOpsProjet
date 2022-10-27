@@ -65,14 +65,24 @@ pipeline {
                           url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
+
         stage("Run the container with ansible"){
                               steps {
                                   sh 'ansible-playbook -i hosts.yml ansible-playbook.yml'
                                      }
                          }
+          stage("mvn clean"){
+                       steps {
+                           sh 'mvn clean'
+                              }
+                  }
+                   stage("mvn package"){
+                       steps {
+                           sh 'mvn  package'
+                              }
+                  }
          stage("Build the package"){
                             steps {
-                                sh 'mvn clean package'
 
                                 sh 'docker-compose up -d --build'
 
@@ -84,6 +94,8 @@ pipeline {
                   sh 'mvn deploy'
                      }
          }
+
+
 
 
 
