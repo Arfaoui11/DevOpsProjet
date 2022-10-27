@@ -17,6 +17,8 @@ services:
     expose:
       - "8089"
     ports:
+
+
       - 8089:8089
     environment:
       WAIT_HOSTS: mysql:3306
