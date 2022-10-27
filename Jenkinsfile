@@ -76,6 +76,13 @@ pipeline {
                            sh 'mvn clean'
                               }
                   }
+
+                    stage("Tests JUnit / Mockito"){
+                                 steps {
+                                    sh 'mvn test'
+                                    }
+                            }
+
                    stage("mvn package"){
                        steps {
                            sh 'mvn  package'
