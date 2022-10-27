@@ -3,27 +3,18 @@ package com.esprit.examen.services;
 
 
 import com.esprit.examen.entities.Produit;
-import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.ProduitRepository;
-import org.junit.Before;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
 
-import static org.junit.Assert.assertNull;
 
 import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
@@ -53,7 +44,7 @@ public class ProduitServiceImplMockTest {
     @Test
     public void testRetrieveProduitByid() {
 
-        Mockito.when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit));
+        when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit));
         Produit produitq = produitService.retrieveProduit(1L);
 
         System.out.println(produitq);
@@ -62,11 +53,13 @@ public class ProduitServiceImplMockTest {
     @Test
     public void testRetrieveAllProduit() {
 
-        Mockito.when(produitRepository.findAll()).thenReturn(listUsers);
-        List<Produit> produits = produitService.retrieveAllProduits();
+        List<Produit> produits = new ArrayList();
+        produits.add(new Produit());
+        when(produitRepository.findAll()).thenReturn(produits);
+        List<Produit> expected = produitService.retrieveAllProduits();
+        Assertions.assertEquals(expected, produits);
+        Mockito.verify(produitRepository).findAll();
 
-        System.out.println(produits);
-        Assertions.assertEquals(2, produits.size());
     }
 
 
@@ -76,7 +69,7 @@ public class ProduitServiceImplMockTest {
         Produit obj = new Produit("new", "new",3.9F, new Date(), new Date());
 
 
-        Mockito.when(produitRepository.save(isA(Produit.class))).thenAnswer(invocation -> (Produit) invocation.getArguments()[0]);
+        when(produitRepository.save(isA(Produit.class))).thenAnswer(invocation -> (Produit) invocation.getArguments()[0]);
         Produit returnedObj = produitService.addProduit(obj);
         ArgumentCaptor<Produit> savedObjectArgument = ArgumentCaptor.forClass(Produit.class);
         Mockito.verify(produitRepository, times(1)).save(savedObjectArgument.capture());
@@ -86,6 +79,20 @@ public class ProduitServiceImplMockTest {
         System.out.println(savedRestObject);
         Assertions.assertNotNull(savedRestObject);
 
+    }
+
+
+
+    @Test
+    public void testDeleteObject() {
+        Produit produite = new Produit();
+        produite.setCodeProduit("new test");
+        produite.setIdProduit(1L);
+        when(produitRepository.findById(produite.getIdProduit())).thenReturn(Optional.of(produite));
+        Produit produitq = produitService.retrieveProduit(1L);
+
+        produitService.deleteProduit(produitq.getIdProduit());
+        verify(produitRepository).deleteById(produitq.getIdProduit());
     }
 
 
