@@ -82,6 +82,7 @@ public class FactureRestController {
      * http://localhost:8089/SpringMVC/facture/pourcentageRecouvrement/{startDate}/{endDate}
 
       */
+
     @GetMapping(value = "/pourcentageRecouvrement/{startDate}/{endDate}")
     public float pourcentageRecouvrement(
             @PathVariable(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
