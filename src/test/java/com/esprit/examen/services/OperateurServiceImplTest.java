@@ -68,7 +68,7 @@ public class OperateurServiceImplTest {
 
 
     @Test
-    @Order(4)
+    @Order(5)
     public void testDeleteOperateur() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date dateNaissance = dateFormat.parse("06/01/1998");
@@ -76,6 +76,23 @@ public class OperateurServiceImplTest {
         Operateur  operateur = operateurService.addOperateur(o);
         operateurService.deleteOperateur( operateur.getIdOperateur());
         assertNull(operateurService.retrieveOperateur(operateur.getIdOperateur()));
+    }
+
+
+
+    @Test
+    @Order(4)
+    public void testGetClientsByDateNaissance() throws ParseException{
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        Date startDate = dateFormat.parse("06/01/1998");
+        Date endDate = dateFormat.parse("06/01/2005");
+        List<Operateur> operateurs = operateurService.getOperateurByDateNaissance(startDate, endDate);
+        log.info(" count" + operateurs.size());
+        for (Operateur user : operateurs) {
+            log.info(" Operateur : " + user.getNom()+ " né le "+user.getDateNaissance());
+
+        }
+
     }
 
 
