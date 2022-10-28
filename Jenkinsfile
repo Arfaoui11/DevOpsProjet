@@ -68,7 +68,7 @@ pipeline {
 
         stage("Run the container with ansible"){
                               steps {
-                                  sh 'ansible-playbook -i hosts.yml ansible-playbook.yml'
+                                  sh 'ansible-playbook -i ansible-playbook.yml'
                                      }
                          }
           stage("mvn clean"){
