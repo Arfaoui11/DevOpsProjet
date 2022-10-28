@@ -66,11 +66,11 @@ pipeline {
                       }
         }
 
-        stage("Run the container with ansible"){
+       /* stage("Run the container with ansible"){
                               steps {
                                   sh 'ansible-playbook ansible-playbook.yml'
                                      }
-                         }
+                         }*/
           stage("mvn clean package"){
                        steps {
                            sh 'mvn clean package'
