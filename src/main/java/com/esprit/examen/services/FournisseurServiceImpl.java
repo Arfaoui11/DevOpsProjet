@@ -64,9 +64,14 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	}
 
 	public Fournisseur updateFournisseur(Fournisseur f) {
+		try {
+			l.info("In Method UpdateFournisseur :");
 		DetailFournisseur df = saveDetailFournisseur(f);
 		f.setDetailFournisseur(df);	
 		fournisseurRepository.save(f);
+		}catch (Exception e) {
+			l.error("out of Method updateFournisseur with Errors + e");
+		}
 		return f;
 	}
 
