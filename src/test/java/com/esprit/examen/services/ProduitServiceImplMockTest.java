@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceImplMockTest {
-
+/*
     @Mock
     ProduitRepository produitRepository;
 
@@ -29,8 +29,8 @@ public class ProduitServiceImplMockTest {
 
 
 
-
-
+*/
+/*
 
     Produit produit = new Produit("f1", "l1",1F, new Date(), new Date());
     List<Produit> listUsers = new ArrayList<Produit>() {
@@ -94,7 +94,7 @@ public class ProduitServiceImplMockTest {
         produitService.deleteProduit(produitq.getIdProduit());
         verify(produitRepository).deleteById(produitq.getIdProduit());
     }
-
+*/
 
 
 }
