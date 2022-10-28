@@ -71,19 +71,12 @@ pipeline {
                                   sh 'ansible-playbook ansible-playbook.yml'
                                      }
                          }
-          stage("mvn clean"){
+          stage("mvn clean package"){
                        steps {
-                           sh 'mvn clean'
+                           sh 'mvn clean package'
                               }
                   }
 
-
-
-                   stage("mvn package"){
-                       steps {
-                           sh 'mvn package'
-                              }
-                  }
          stage("Build the package"){
                             steps {
                                 sh 'docker-compose up -d --build'
