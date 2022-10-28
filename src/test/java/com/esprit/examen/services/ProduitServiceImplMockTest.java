@@ -20,7 +20,7 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceImplMockTest {
-/*
+
     @Mock
     ProduitRepository produitRepository;
 
@@ -29,8 +29,8 @@ public class ProduitServiceImplMockTest {
 
 
 
-*/
-/*
+
+
 
     Produit produit = new Produit("f1", "l1",1F, new Date(), new Date());
     List<Produit> listUsers = new ArrayList<Produit>() {
@@ -58,7 +58,7 @@ public class ProduitServiceImplMockTest {
         when(produitRepository.findAll()).thenReturn(produits);
         List<Produit> expected = produitService.retrieveAllProduits();
         Assertions.assertEquals(expected, produits);
-        Mockito.verify(produitRepository).findAll();
+        verify(produitRepository).findAll();
 
     }
 
@@ -72,11 +72,10 @@ public class ProduitServiceImplMockTest {
         when(produitRepository.save(isA(Produit.class))).thenAnswer(invocation -> (Produit) invocation.getArguments()[0]);
         Produit returnedObj = produitService.addProduit(obj);
         ArgumentCaptor<Produit> savedObjectArgument = ArgumentCaptor.forClass(Produit.class);
-        Mockito.verify(produitRepository, times(1)).save(savedObjectArgument.capture());
-        Mockito.verifyNoMoreInteractions(produitRepository);
+        verify(produitRepository, times(1)).save(savedObjectArgument.capture());
+        verifyNoMoreInteractions(produitRepository);
 
         Produit savedRestObject = savedObjectArgument.getValue();
-        System.out.println(savedRestObject);
         Assertions.assertNotNull(savedRestObject);
 
     }
@@ -94,7 +93,7 @@ public class ProduitServiceImplMockTest {
         produitService.deleteProduit(produitq.getIdProduit());
         verify(produitRepository).deleteById(produitq.getIdProduit());
     }
-*/
+
 
 
 }
