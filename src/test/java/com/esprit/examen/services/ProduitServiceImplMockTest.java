@@ -80,8 +80,6 @@ public class ProduitServiceImplMockTest {
 
     }
 
-
-
     @Test
     public void testDeleteObject() {
         Produit produite = new Produit();
@@ -89,7 +87,6 @@ public class ProduitServiceImplMockTest {
         produite.setIdProduit(1L);
         when(produitRepository.findById(produite.getIdProduit())).thenReturn(Optional.of(produite));
         Produit produitq = produitService.retrieveProduit(1L);
-
         produitService.deleteProduit(produitq.getIdProduit());
         verify(produitRepository).deleteById(produitq.getIdProduit());
     }
