@@ -81,7 +81,7 @@ pipeline {
 
                    stage("mvn package"){
                        steps {
-                           sh 'mvn  package'
+                           sh 'mvn package'
                               }
                   }
          stage("Build the package"){
