@@ -4,15 +4,17 @@ import com.esprit.examen.entities.Facture;
 import com.esprit.examen.repositories.FactureRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +26,23 @@ import static org.junit.Assert.assertNotNull;
 @ExtendWith(MockitoExtension.class)
 @Slf4j
 public class FactureServiceImplMock1Test {
+    @Autowired
+    IFactureService factureService;
+    @Autowired
+
+    @Test
+    public void testAddFacture () throws ParseException {
+        Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
+        Facture savedFactrure= factureService.addFacture(f);
+        System.out.print("client "+savedFactrure);
+        assertNotNull(savedFactrure);
+        Assertions.assertEquals(200f, savedFactrure.getMontantFacture());
+        Assertions.assertEquals(20f,savedFactrure.getMontantRemise());
+        assertEquals(new Date(10 / 10 / 2022),savedFactrure.getDateCreationFacture());
+        factureService.cancelFacture(savedFactrure.getIdFacture());
+        log.info("facture ajoutée ===>" + savedFactrure.toString());
+
+    }
 
 /*
     @Mock

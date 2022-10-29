@@ -103,7 +103,7 @@ public class FactureServiceImplTest {
 		Operateur operateurSaved =  operateurService.addOperateur(o);
 		factureService.assignOperateurToFacture(1L,1L);
 		Facture  facture= (Facture) o.getFactures();
-
+		assertNotNull(operateurSaved.getFactures());
 
 
 

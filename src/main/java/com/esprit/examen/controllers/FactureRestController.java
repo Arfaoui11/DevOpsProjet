@@ -26,11 +26,7 @@ public class FactureRestController {
 
     @Autowired
     private ModelMapper modelMapper;
-    private FactureDTO convertEntityToDto(Facture facture){
-        FactureDTO dto = new FactureDTO();
-         dto = modelMapper.map(facture, FactureDTO.class);
-         return dto ;
-    }
+
     @GetMapping("/retrieve-all-factures")
     @ResponseBody
     public List<Facture> getFactures() {
@@ -46,13 +42,12 @@ public class FactureRestController {
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture f) {
-
-        return  factureService.addFacture(f);
+    public Facture addFacture(@RequestBody FactureDTO facture) {
+        Facture persistantFacture = new Facture();
+        persistantFacture= modelMapper.map(facture,Facture.class);
+        return  factureService.addFacture(persistantFacture);
     }
 
-
-    // http://localhost:8089/SpringMVC/facture/cancel-facture/{facture-id}
     @PutMapping("/cancel-facture/{facture-id}")
     @ResponseBody
     public void cancelFacture(@PathVariable("facture-id") Long factureId) {
