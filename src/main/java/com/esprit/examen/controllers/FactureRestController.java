@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 
+import com.esprit.examen.dto.FactureDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,8 @@ import io.swagger.annotations.Api;
 public class FactureRestController {
 
 
+    @Autowired
+    private ModelMapper modelMapper;
     @Autowired
     IFactureService factureService;
 
@@ -41,9 +45,11 @@ public class FactureRestController {
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture facture) {
+    public Facture addFacture(@RequestBody FactureDTO facture) {
+       
+               Facture persistentfacture = modelMapper.map(facture,  Facture.class);
 
-        return  factureService.addFacture(facture);
+        return  factureService.addFacture( persistentfacture);
     }
 
     @PutMapping("/cancel-facture/{facture-id}")
