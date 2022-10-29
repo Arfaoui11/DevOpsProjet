@@ -130,7 +130,15 @@ pipeline {
 		    }
             }
         }
-
+stage('Date') {
+                steps {
+                     script{
+                     def date = new Date()
+                     sdf = new SimpleDateFormat("MM/dd/yyyy")
+                     println(sdf.format(date))
+                     }
+                }
+}
 
 
 /*
@@ -155,12 +163,25 @@ pipeline {
                 mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'mahdi.arfaoui1@esprit.tn'
              }
         }
-         post {
-            always {
-               mail to: 'yahyaoui.chaima@esprit.tn',
-                  subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
-                  body: "${env.BUILD_URL} has result ${currentBuild.result}"
-            }
-          }
+        post{
+
+                    success {
+                        mail to: "mahdi.arfaoui1@esprit.tn",
+                        body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
+                        subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+                    }
+
+                    failure{
+                        mail to: "mahdi.arfaoui1@esprit.tn",
+                        subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                        body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+                    }
+
+                    changed{
+                        mail to: "mahdi.arfaoui1@esprit.tn",
+                        subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                        body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+                    }
+                }
 
 }
