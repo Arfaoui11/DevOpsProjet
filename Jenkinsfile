@@ -155,5 +155,12 @@ pipeline {
                 mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'mahdi.arfaoui1@esprit.tn'
              }
         }
+         post {
+            always {
+               mail to: 'yahyaoui.chaima@esprit.tn',
+                  subject: "Status of pipeline: ${currentBuild.fullDisplayName}",
+                  body: "${env.BUILD_URL} has result ${currentBuild.result}"
+            }
+          }
 
 }
