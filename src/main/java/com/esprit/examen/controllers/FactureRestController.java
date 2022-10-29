@@ -3,8 +3,7 @@ package com.esprit.examen.controllers;
 import java.util.Date;
 import java.util.List;
 
-import com.esprit.examen.dto.FactureDTO;
-import org.modelmapper.ModelMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +23,7 @@ public class FactureRestController {
     @Autowired
     IFactureService factureService;
 
-    @Autowired
-    private ModelMapper modelMapper;
+
 
     @GetMapping("/retrieve-all-factures")
     @ResponseBody
@@ -43,10 +41,9 @@ public class FactureRestController {
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody FactureDTO facture) {
-        Facture persistantFacture = new Facture();
-        persistantFacture= modelMapper.map(facture,Facture.class);
-        return  factureService.addFacture(persistantFacture);
+    public Facture addFacture(@RequestBody Facture facture) {
+
+        return  factureService.addFacture(facture);
     }
 
     @PutMapping("/cancel-facture/{facture-id}")
