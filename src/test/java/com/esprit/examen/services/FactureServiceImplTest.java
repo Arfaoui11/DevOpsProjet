@@ -87,9 +87,7 @@ public class FactureServiceImplTest {
 		f1.add(savedFactrure); 
      	Fournisseur fournisseur = new Fournisseur(1L,"112","aaa",f1);
 		Fournisseur savedFournisseur= fournisseurService.addFournisseur(fournisseur);		
-		List<Facture> factures = factureService.getFacturesByFournisseur(1L);
-		assertNotNull(fournisseur.getIdFournisseur());
-		log.info(" count" +  factures.size());
+		List<Facture> factures = factureService.getFacturesByFournisseur(1L);log.info(" count" +  factures.size());
 		for (Facture facture : factures) {
 		log.info(" facture: " + facture.getMontantFacture()+ " né le "+facture.getMontantRemise());
 

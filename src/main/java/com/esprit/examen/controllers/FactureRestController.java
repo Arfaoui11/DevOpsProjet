@@ -33,6 +33,7 @@ public class FactureRestController {
         return factureService.retrieveAllFactures();
     }
 
+
        @GetMapping("/retrieve-facture/{facture-id}")
        @ResponseBody
        public Facture retrieveFacture(@PathVariable("facture-id") Long factureId) {
