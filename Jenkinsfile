@@ -45,6 +45,11 @@ pipeline {
                   }
 
           }
+           stage("Tests JUnit / Mockito"){
+                         steps {
+                            sh 'mvn test'
+                            }
+                    }
 
            stage("SONAR"){
                         steps {
@@ -52,11 +57,7 @@ pipeline {
 
                                }
                    }
-  stage("Tests JUnit / Mockito"){
-               steps {
-                  sh 'mvn test'
-                  }
-          }
+
 
           stage("nexus deploy"){
                        steps {
