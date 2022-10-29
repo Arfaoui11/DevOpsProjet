@@ -48,6 +48,8 @@ pipeline {
         }
 
 */
+
+import java.text.SimpleDateFormat
 pipeline {
     environment {
         registry = "mahdijr/devops-tp"
