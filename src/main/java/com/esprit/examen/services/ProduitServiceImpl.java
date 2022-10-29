@@ -26,7 +26,7 @@ public class ProduitServiceImpl implements IProduitService {
 
 	@Override
 	public List<Produit> retrieveAllProduits() {
-		List<Produit> produits = (List<Produit>) produitRepository.findAll();
+		List<Produit> produits = produitRepository.findAll();
 		for (Produit produit : produits) {
 			log.info(" Produit : " + produit);
 		}
@@ -62,6 +62,7 @@ public class ProduitServiceImpl implements IProduitService {
 	public void assignProduitToStock(Long idProduit, Long idStock) {
 		Produit produit = produitRepository.findById(idProduit).orElse(null);
 		Stock stock = stockRepository.findById(idStock).orElse(null);
+		assert produit != null;
 		produit.setStock(stock);
 		produitRepository.save(produit);
 
