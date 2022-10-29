@@ -1,17 +1,17 @@
 #### Stage 1: Build the application
-FROM openjdk:11-jdk-slim AS build
+#FROM openjdk:11-jdk-slim AS build
 
 # Set the current working directory inside the image
-WORKDIR /app
+#WORKDIR /app
 
 # Copy maven executable to the image
-COPY mvnw .
-COPY .mvn .mvn
+#COPY mvnw .
+#COPY .mvn .mvn
 
 # Copy the pom.xml file
-COPY pom.xml .
+#COPY pom.xml .
 
-RUN chmod +x mvnw
+#RUN chmod +x mvnw
 
 # Build all the dependencies in preparation to go offline.
 # This is a separate step so the dependencies will be cached unless
@@ -19,22 +19,28 @@ RUN chmod +x mvnw
 #RUN ./mvnw dependency:go-offline -B
 
 # Copy the project source
-COPY src src
+#COPY src src
 
 # Package the application
-RUN ./mvnw package -DskipTests
-RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
+#RUN ./mvnw package -DskipTests
+#RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 #### Stage 2: A minimal docker image with command to run the app
-FROM openjdk:11-jre-slim
-ARG DEPENDENCY=/app/target/dependency
+#FROM openjdk:11-jre-slim
+#ARG DEPENDENCY=/app/target/dependency
 
 # Copy project dependencies from the build stage
-COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+#COPY --from=build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+#COPY --from=build ${DEPENDENCY}/META-INF /app/META-INF
+#COPY --from=build ${DEPENDENCY}/BOOT-INF/classes /app
+#EXPOSE 8089
+#ENTRYPOINT ["java","-cp","app:app/lib/*","com.esprit.examen.TpAchatProjectApplication"]
+
+FROM openjdk:8-jdk-alpine
 EXPOSE 8089
-ENTRYPOINT ["java","-cp","app:app/lib/*","com.esprit.examen.TpAchatProjectApplication"]
+ADD target/docker-spring-boot.jar docker-spring-boot.jar
+ENTRYPOINT ["java","-jar","/docker-spring-boot.jar"]
+
 
 
 
