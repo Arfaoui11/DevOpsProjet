@@ -43,10 +43,9 @@ public class FactureRestController {
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody FactureDTO facture) {
-        Facture persistantFacture = new Facture();
-        persistantFacture= modelMapper.map(facture,Facture.class);
-        return  factureService.addFacture(persistantFacture);
+    public Facture addFacture(@RequestBody Facture facture) {
+
+        return  factureService.addFacture(facture);
     }
 
     @PutMapping("/cancel-facture/{facture-id}")
