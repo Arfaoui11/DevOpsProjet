@@ -88,13 +88,15 @@ public class FactureServiceImplTest {
 		f1.add(savedFactrure); 
      	Fournisseur fournisseur = new Fournisseur(1L,"112","aaa",f1);
 		Fournisseur savedFournisseur= fournisseurService.addFournisseur(fournisseur);		
-		List<Facture> factures = factureService.getFacturesByFournisseur(1L);log.info(" count" +  factures.size());
+		List<Facture> factures = factureService.getFacturesByFournisseur(1L);
+		log.info(" count" +  factures.size());
 		assertNotNull(factures);
 		for (Facture facture : factures) {
 		log.info(" facture: " + facture.getMontantFacture()+ " né le "+facture.getMontantRemise());
 
 		}
 	}
+	/*
 	@Test
 	public void testassignOperateurToFacture() throws ParseException{
 		Facture f = new Facture(1L,20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
@@ -102,7 +104,10 @@ public class FactureServiceImplTest {
 		Facture savedFactrure= factureService.addFacture(f);
 		Operateur operateurSaved =  operateurService.addOperateur(o);
 		factureService.assignOperateurToFacture(1L,1L);
-		Facture  facture= (Facture) o.getFactures();
+		List <Facture> factures = (List<Facture>) operateurSaved.getFactures();
+		assertNotNull(factures);
+
+
 
 
 
