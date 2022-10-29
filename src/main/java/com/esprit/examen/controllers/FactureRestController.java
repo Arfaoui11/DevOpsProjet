@@ -3,6 +3,8 @@ package com.esprit.examen.controllers;
 import java.util.Date;
 import java.util.List;
 
+import com.esprit.examen.dto.FactureDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -22,8 +24,13 @@ public class FactureRestController {
     @Autowired
     IFactureService factureService;
 
-
-
+    @Autowired
+    private ModelMapper modelMapper;
+    private FactureDTO convertEntityToDto(Facture facture){
+        FactureDTO dto = new FactureDTO();
+         dto = modelMapper.map(facture, FactureDTO.class);
+         return dto ;
+    }
     @GetMapping("/retrieve-all-factures")
     @ResponseBody
     public List<Facture> getFactures() {
