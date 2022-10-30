@@ -1,18 +1,6 @@
 package com.esprit.examen.services;
 
-import com.esprit.examen.entities.Stock;
-import com.esprit.examen.repositories.StockRepository;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.*;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.*;
-
-
-import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.*;
 
 public class StockServiceImplMockTest {
 /*
