@@ -1,11 +1,9 @@
 package com.esprit.examen.controllers;
 
 
-import java.lang.reflect.Type;
 import java.util.List;
 
 import com.esprit.examen.dto.ProduitDTO;
-import com.esprit.examen.entities.Facture;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
