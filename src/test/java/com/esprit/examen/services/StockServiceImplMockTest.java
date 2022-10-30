@@ -1,9 +1,10 @@
+/*
 package com.esprit.examen.services;
 
 
 
 public class StockServiceImplMockTest {
-/*
+
     @Mock
     StockRepository stockRepository;
 
@@ -73,6 +74,6 @@ public class StockServiceImplMockTest {
         stockService.deleteStock(stockq.getIdStock());
         verify(stockRepository).deleteById(stockq.getIdStock());
     }
-*/
-}
 
+}
+*/

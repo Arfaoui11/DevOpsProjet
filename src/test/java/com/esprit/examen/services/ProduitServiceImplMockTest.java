@@ -1,3 +1,4 @@
+/*
 package com.esprit.examen.services;
 
 
@@ -14,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceImplMockTest {
-/*
+
     @Mock
     ProduitRepository produitRepository;
 
@@ -84,7 +85,8 @@ public class ProduitServiceImplMockTest {
         produitService.deleteProduit(produitq.getIdProduit());
         verify(produitRepository).deleteById(produitq.getIdProduit());
     }
-*/
+
 
 
 }
+*/

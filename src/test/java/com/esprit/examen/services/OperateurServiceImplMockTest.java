@@ -1,3 +1,4 @@
+/*
 package com.esprit.examen.services;
 
 
@@ -17,58 +18,59 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class OperateurServiceImplMockTest {
 
 
-   /* @Mock
-    OperateurRepository op;
+@Mock
+ OperateurRepository op;
 
-    @InjectMocks
-    IOperateurService operateurService;
+ @InjectMocks
+ IOperateurService operateurService;
 
-    Operateur user = new Operateur(1L,"Drissi","Omar","123",new Date());
+ Operateur user = new Operateur(1L,"Drissi","Omar","123",new Date());
 
-    List<Operateur> list = new ArrayList<Operateur>() {
-        {
-            add(new Operateur(2L,"drissi", "ahmed", "456",new Date()));
-            add(new Operateur(3L,"dri", "MOhamed", "789",new Date()));
-        }
-    };
+ List<Operateur> list = new ArrayList<Operateur>() {
+     {
+         add(new Operateur(2L,"drissi", "ahmed", "456",new Date()));
+         add(new Operateur(3L,"dri", "MOhamed", "789",new Date()));
+     }
+ };
 
-    @Test
-    @Order(1)
-    public void testRetrieveOperateur(){
-        Mockito.when(op.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
-        Operateur op1=operateurService.retrieveOperateur(1L);
-        assertNotNull(op1);
-    }
+ @Test
+ @Order(1)
+ public void testRetrieveOperateur(){
+     Mockito.when(op.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
+     Operateur op1=operateurService.retrieveOperateur(1L);
+     assertNotNull(op1);
+ }
 
 
-    @Test
-    @Order(2)
-    public void testAddOperateur(){
-        Mockito.when(op.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
-        Operateur p =operateurService.retrieveOperateur(2L);
-        Operateur u= operateurService.addOperateur(p);
-        assertNotNull(u.getDateNaissance());
-    }
+ @Test
+ @Order(2)
+ public void testAddOperateur(){
+     Mockito.when(op.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
+     Operateur p =operateurService.retrieveOperateur(2L);
+     Operateur u= operateurService.addOperateur(p);
+     assertNotNull(u.getDateNaissance());
+ }
 
-    @Test
-    @Order(4)
-    void testDeleteOperateur()  {
-        Mockito.when(op.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
-        Operateur pr =operateurService.retrieveOperateur(2L);
-        operateurService.deleteOperateur(pr.getIdOperateur());
-        assertNull(operateurService.retrieveOperateur(pr.getIdOperateur()));
-    }
+ @Test
+ @Order(4)
+ void testDeleteOperateur()  {
+     Mockito.when(op.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
+     Operateur pr =operateurService.retrieveOperateur(2L);
+     operateurService.deleteOperateur(pr.getIdOperateur());
+     assertNull(operateurService.retrieveOperateur(pr.getIdOperateur()));
+ }
 
-    @Test
-    @Order(3)
-    void testupdateOperateur( ) {
-        Mockito.when(op.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
-        Operateur pr =operateurService.retrieveOperateur(2L);
-        pr.setPassword("pass");
-        assertThat(pr.getPassword()).isEqualTo("pass");
-    }*/
+ @Test
+ @Order(3)
+ void testupdateOperateur( ) {
+     Mockito.when(op.findById(Mockito.anyLong())).thenReturn(Optional.of(user));
+     Operateur pr =operateurService.retrieveOperateur(2L);
+     pr.setPassword("pass");
+     assertThat(pr.getPassword()).isEqualTo("pass");
+ }
 
 
 
 
 }
+*/
