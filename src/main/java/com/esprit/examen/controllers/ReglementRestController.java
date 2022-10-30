@@ -16,7 +16,7 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des reglements")
 @RequestMapping("/reglement")
-@CrossOrigin("http://10.0.0.10")
+@CrossOrigin("*")
 public class ReglementRestController {
 
     @Autowired

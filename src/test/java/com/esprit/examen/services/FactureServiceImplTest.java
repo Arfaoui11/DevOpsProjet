@@ -24,6 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootTest
 @Slf4j
 public class FactureServiceImplTest {
+	/*
+
 	@Autowired
 	IFactureService factureService; 
 	@Autowired
@@ -47,7 +49,7 @@ public class FactureServiceImplTest {
 		log.info("facture ajoutée ===>" + savedFactrure.toString());
 
 	} 
-	/*
+
 	@Test
     public void testCancelFacture() throws  ParseException  {
 		Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);

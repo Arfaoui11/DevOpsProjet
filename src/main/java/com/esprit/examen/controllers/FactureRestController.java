@@ -18,12 +18,12 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des factures")
 @RequestMapping("/facture")
-@CrossOrigin("http://10.0.0.10")
+@CrossOrigin("*")
 public class FactureRestController {
 
 
-   // @Autowired
-   // private ModelMapper modelMapper;
+    @Autowired
+    private ModelMapper modelMapper;
     @Autowired
     IFactureService factureService;
 
@@ -45,11 +45,11 @@ public class FactureRestController {
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture facture) {
+    public Facture addFacture(@RequestBody FactureDTO facture) {
 
-              // Facture persistentfacture = modelMapper.map(facture,  Facture.class);
+               Facture persistentfacture = modelMapper.map(facture,  Facture.class);
 
-        return  factureService.addFacture( facture);
+        return  factureService.addFacture( persistentfacture);
     }
 
     @PutMapping("/cancel-facture/{facture-id}")

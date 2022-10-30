@@ -5,6 +5,8 @@ package com.esprit.examen.controllers;
 import java.util.List;
 
 import com.esprit.examen.dto.StockDTO;
+import com.esprit.examen.entities.Produit;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,13 +18,13 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des stocks")
 @RequestMapping("/stock")
-@CrossOrigin("http://10.0.0.10")
+@CrossOrigin("*")
 public class StockRestController {
 
 	@Autowired
 	IStockService stockService;
-	//@Autowired
-	//private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@GetMapping("/retrieve-all-stocks")
 	@ResponseBody
@@ -38,10 +40,10 @@ public class StockRestController {
 
 	@PostMapping("/add-stock")
 	@ResponseBody
-	public Stock addStock(@RequestBody Stock s) {
-		//Stock persistentStock = modelMapper.map(s,  Stock.class);
+	public Stock addStock(@RequestBody StockDTO s) {
+		Stock persistentStock = modelMapper.map(s,  Stock.class);
 
-		return  stockService.addStock( s);
+		return  stockService.addStock( persistentStock);
 	}
 
 	@DeleteMapping("/remove-stock/{stock-id}")
@@ -52,10 +54,10 @@ public class StockRestController {
 
 	@PutMapping("/modify-stock")
 	@ResponseBody
-	public Stock modifyStock(@RequestBody Stock stock) {
-		//Stock persistentStock = modelMapper.map(stock,  Stock.class);
+	public Stock modifyStock(@RequestBody StockDTO stock) {
+		Stock persistentStock = modelMapper.map(stock,  Stock.class);
 
-		return  stockService.updateStock( stock);
+		return  stockService.updateStock( persistentStock);
 	}
 
 	/*

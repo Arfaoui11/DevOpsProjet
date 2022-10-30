@@ -1,27 +1,14 @@
 package com.esprit.examen.services;
 
-import com.esprit.examen.entities.Facture;
-import com.esprit.examen.repositories.FactureRepository;
+
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 @Slf4j
