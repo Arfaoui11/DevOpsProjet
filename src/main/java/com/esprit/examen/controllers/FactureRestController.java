@@ -47,7 +47,7 @@ public class FactureRestController {
     @ResponseBody
     public Facture addFacture(@RequestBody FactureDTO facture) {
 
-               Facture persistentfacture = modelMapper.map(facture,  Facture.class);
+        Facture persistentfacture = modelMapper.map(facture,  Facture.class);
 
         return  factureService.addFacture( persistentfacture);
     }
