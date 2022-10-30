@@ -23,11 +23,6 @@ public class TpAchatProjectApplication {
 	}
 
 
-	@Bean
-	public ModelMapper modelMapper(){
-
-		return new ModelMapper();
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(TpAchatProjectApplication.class, args);
