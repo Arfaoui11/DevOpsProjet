@@ -8,8 +8,7 @@ import java.util.Date;
 
 @Data
 public class ProduitDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long idProduit;
     private String codeProduit;
     private String libelleProduit;
