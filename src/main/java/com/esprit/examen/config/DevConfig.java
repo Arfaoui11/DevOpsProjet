@@ -14,6 +14,6 @@ public class DevConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
 
         registry.addMapping("/**")
-                .allowedOrigins("http://10.0.0.10:4200");
+                .allowedOrigins("https://10.0.0.10:4200");
     }
 }
