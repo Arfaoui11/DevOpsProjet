@@ -30,6 +30,6 @@ public class TpAchatProjectApplication {
 
 	@GetMapping("/")
 	public String home(){
-		return "Welcome Home new mahdi change venredi";
+		return "Welcome Home new mahdi change vendredi";
 	}
 }
