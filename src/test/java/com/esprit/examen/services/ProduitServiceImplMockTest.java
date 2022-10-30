@@ -19,8 +19,8 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class ProduitServiceImplMockTest {
-/*
+class ProduitServiceImplMockTest {
+
     @Mock
     ProduitRepository produitRepository;
 
@@ -33,7 +33,7 @@ public class ProduitServiceImplMockTest {
 
 
     Produit produit = new Produit("f1", "l1",1F, new Date(), new Date());
-    List<Produit> listUsers = new ArrayList<Produit>() {
+    List<Produit> listProduits = new ArrayList<Produit>() {
         {
             add(new Produit("f1aa", "l1ss",1F, new Date(), new Date()));
             add(new Produit("f1f", "l1d",2F, new Date(), new Date()));
@@ -51,7 +51,7 @@ public class ProduitServiceImplMockTest {
         Assertions.assertNotNull(produitq);
     }
     @Test
-    public void testRetrieveAllProduit() {
+    void testRetrieveAllProduit() {
 
         List<Produit> produits = new ArrayList();
         produits.add(new Produit());
@@ -65,7 +65,7 @@ public class ProduitServiceImplMockTest {
 
 
     @Test
-    public void testCreateNewObject() {
+    void testCreateNewObject() {
         Produit obj = new Produit("new", "new",3.9F, new Date(), new Date());
 
 
@@ -81,7 +81,7 @@ public class ProduitServiceImplMockTest {
     }
 
     @Test
-    public void testDeleteObject() {
+    void testDeleteObject() {
         Produit produite = new Produit();
         produite.setCodeProduit("new test");
         produite.setIdProduit(1L);
@@ -91,6 +91,6 @@ public class ProduitServiceImplMockTest {
         verify(produitRepository).deleteById(produitq.getIdProduit());
     }
 
-*/
+
 
 }
