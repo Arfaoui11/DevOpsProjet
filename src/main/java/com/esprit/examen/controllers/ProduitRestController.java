@@ -1,6 +1,5 @@
 package com.esprit.examen.controllers;
 
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,13 +18,11 @@ public class ProduitRestController {
 	@Autowired
 	IProduitService produitService;
 
-
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
 		return produitService.retrieveAllProduits();
 	}
-
 
 	@GetMapping("/retrieve-produit/{produit-id}")
 	@ResponseBody
@@ -33,13 +30,11 @@ public class ProduitRestController {
 		return produitService.retrieveProduit(produitId);
 	}
 
-
 	@PostMapping("/add-produit")
 	@ResponseBody
 	public Produit addProduit(@RequestBody Produit p) {
 		return produitService.addProduit(p);
 	}
-
 
 	@DeleteMapping("/remove-produit/{produit-id}")
 	@ResponseBody
@@ -47,14 +42,16 @@ public class ProduitRestController {
 		produitService.deleteProduit(produitId);
 	}
 
-
 	@PutMapping("/modify-produit")
 	@ResponseBody
 	public Produit modifyProduit(@RequestBody Produit p) {
 		return produitService.updateProduit(p);
 	}
 
-
+	/*
+	 * Si le responsable magasin souhaite modifier le stock du produit il peut
+	 * le faire en l'affectant au stock en question
+	 */
 	@PutMapping(value = "/assignProduitToStock/{idProduit}/{idStock}")
 	public void assignProduitToStock(@PathVariable("idProduit") Long idProduit, @PathVariable("idStock") Long idStock) {
 		produitService.assignProduitToStock(idProduit, idStock);
