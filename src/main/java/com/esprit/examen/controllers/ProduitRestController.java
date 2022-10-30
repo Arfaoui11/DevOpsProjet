@@ -25,7 +25,7 @@ public class ProduitRestController {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@GetMapping("/get-all-produitssss")
+	@GetMapping("/get-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
 		return produitService.retrieveAllProduits();
