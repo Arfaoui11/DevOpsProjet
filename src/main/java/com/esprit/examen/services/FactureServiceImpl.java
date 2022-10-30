@@ -1,6 +1,5 @@
 package com.esprit.examen.services;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -36,17 +35,17 @@ public class FactureServiceImpl implements IFactureService {
 	ProduitRepository produitRepository;
     @Autowired
     ReglementServiceImpl reglementService;
-	
+
 	@Override
 	public List<Facture> retrieveAllFactures() {
-		List<Facture> factures =  factureRepository.findAll();
+		List<Facture> factures = (List<Facture>) factureRepository.findAll();
 		for (Facture facture : factures) {
 			log.info(" facture : " + facture);
 		}
 		return factures;
 	}
 
-	
+
 	public Facture addFacture(Facture f) {
 		return factureRepository.save(f);
 	}
@@ -59,7 +58,7 @@ public class FactureServiceImpl implements IFactureService {
 		float montantFacture = 0;
 		float montantRemise = 0;
 		for (DetailFacture detail : detailsFacture) {
-			//Récuperer le produit 
+			//Récuperer le produit
 			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();
 			//Calculer le montant total pour chaque détail Facture
 			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();
@@ -82,7 +81,7 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public void cancelFacture(Long factureId) {
 		// Méthode 01
-
+		//Facture facture = factureRepository.findById(factureId).get();
 		Facture facture = factureRepository.findById(factureId).orElse(new Facture());
 		facture.setArchivee(true);
 		factureRepository.save(facture);
@@ -101,10 +100,7 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
 		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
-		List<Facture> listfacture  = new ArrayList<Facture>();
-	    listfacture.addAll(fournisseur.getFactures());
-	    return listfacture ; 
-		 
+		return (List<Facture>) fournisseur.getFactures();
 	}
 
 	@Override
