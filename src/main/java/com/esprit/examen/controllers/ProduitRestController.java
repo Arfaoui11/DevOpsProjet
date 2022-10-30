@@ -25,7 +25,7 @@ public class ProduitRestController {
 	@Autowired
 	IProduitService produitService;
 	@Autowired
-	ModelMapper modelMapper;
+	private ModelMapper modelMapper;
 
 	@GetMapping("/get-all-produitssss")
 	@ResponseBody
