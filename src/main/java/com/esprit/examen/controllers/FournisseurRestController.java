@@ -12,7 +12,6 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des fournisseurss")
 @RequestMapping("/fournisseur")
-@CrossOrigin()
 public class FournisseurRestController {
 
 	@Autowired
