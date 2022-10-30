@@ -3,6 +3,9 @@ package com.esprit.examen.controllers;
 import java.util.Date;
 import java.util.List;
 
+
+import com.esprit.examen.dto.FactureDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -18,40 +21,43 @@ import io.swagger.annotations.Api;
 @CrossOrigin("*")
 public class FactureRestController {
 
+
+    @Autowired
+    private ModelMapper modelMapper;
     @Autowired
     IFactureService factureService;
+
+
 
     @GetMapping("/retrieve-all-factures")
     @ResponseBody
     public List<Facture> getFactures() {
-        List<Facture> list = factureService.retrieveAllFactures();
-        return list;
+        return factureService.retrieveAllFactures();
     }
 
 
-    @GetMapping("/retrieve-facture/{facture-id}")
-    @ResponseBody
-    public Facture retrieveFacture(@PathVariable("facture-id") Long factureId) {
-        return factureService.retrieveFacture(factureId);
-    }
+       @GetMapping("/retrieve-facture/{facture-id}")
+       @ResponseBody
+       public Facture retrieveFacture(@PathVariable("facture-id") Long factureId) {
+           return factureService.retrieveFacture(factureId);
+       }
 
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody Facture f) {
-        return factureService.addFacture(f);
-    }
+    public Facture addFacture(@RequestBody FactureDTO facture) {
+       
+               Facture persistentfacture = modelMapper.map(facture,  Facture.class);
 
-    /*
-     * une facture peut etre annulé si elle a été saisie par erreur Pour ce
-     * faire, il suffit de mettre le champs active à false
-     */
+        return  factureService.addFacture( persistentfacture);
+    }
 
     @PutMapping("/cancel-facture/{facture-id}")
     @ResponseBody
     public void cancelFacture(@PathVariable("facture-id") Long factureId) {
         factureService.cancelFacture(factureId);
     }
+
 
     @GetMapping("/getFactureByFournisseur/{fournisseur-id}")
     @ResponseBody
@@ -64,6 +70,7 @@ public class FactureRestController {
         factureService.assignOperateurToFacture(idOperateur, idFacture);
     }
 
+
     @GetMapping(value = "/pourcentageRecouvrement/{startDate}/{endDate}")
     public float pourcentageRecouvrement(
             @PathVariable(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
@@ -74,5 +81,6 @@ public class FactureRestController {
             return 0;
         }
     }
+    
 
 }

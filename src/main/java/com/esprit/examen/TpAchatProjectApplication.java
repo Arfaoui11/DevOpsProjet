@@ -16,6 +16,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @RestController
 public class TpAchatProjectApplication {
+	@Bean
+	public ModelMapper modelMapper(){
+
+		return new ModelMapper();
+	}
+
 
 	@Bean
 	public ModelMapper modelMapper(){

@@ -3,13 +3,10 @@ package com.esprit.examen.services;
 import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +27,7 @@ public class FactureServiceImplTest {
 	@Autowired
 	IFactureService factureService; 
 	@Autowired
+
 	IOperateurService operateurService; 
 	@Autowired
 	IFournisseurService fournisseurService; 
@@ -38,92 +36,81 @@ public class FactureServiceImplTest {
 	
 	@Test
 	public void testAddFacture () throws  ParseException  {
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date1 = dateFormat.parse("30/09/2000");
-		Date date2 = dateFormat.parse("30/09/2000");
-		
-
-		Facture f = new Facture(20f,200f,date1,date2,true);
+		Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
 		Facture savedFactrure= factureService.addFacture(f);
 		System.out.print("client "+savedFactrure);
 		assertNotNull(savedFactrure);
-		factureService.cancelFacture(savedFactrure.getIdFacture());;
-		
-		
+		Assertions.assertEquals(200f, savedFactrure.getMontantFacture());
+		Assertions.assertEquals(20f,savedFactrure.getMontantRemise());
+		assertEquals(new Date(10 / 10 / 2022),savedFactrure.getDateCreationFacture());
+		factureService.cancelFacture(savedFactrure.getIdFacture());
+		log.info("facture ajoutée ===>" + savedFactrure.toString());
+
 	} 
-	
+	/*
 	@Test
     public void testCancelFacture() throws  ParseException  {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date1 = dateFormat.parse("30/09/2000");
-		Date date2 = dateFormat.parse("30/09/2000");
-		Facture f = new Facture(20f,200f,date1,date2,true);
-		Facture savedFactrure= factureService.addFacture(f);
-		factureService.cancelFacture(savedFactrure.getIdFacture());
-	    assertEquals(true, savedFactrure.getArchivee());
+		Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
+		Facture savedFacture= factureService.addFacture(f);
+		factureService.cancelFacture(savedFacture.getIdFacture());
+	    assertEquals(true,savedFacture.getArchivee());
 
      }
 	@Test
 	public void testRetrieveAllFactures() throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date1 = dateFormat.parse("30/09/2000");
-		Date date2 = dateFormat.parse("30/09/2000");
 		List<Facture> factures =  factureService.retrieveAllFactures();
 		int expected =factures.size();
-		Facture f = new Facture(20f,200f,date1,date2,true);
+		Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
 		Facture savedFactrure= factureService.addFacture(f);
-		
 		assertEquals(expected + 1,factureService.retrieveAllFactures().size());
 		factureService.cancelFacture(savedFactrure.getIdFacture());
 	}
 		@Test
 		public void testRetrieveFacturesById() throws ParseException {
-			Long a = 1L;
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			Date date1 = dateFormat.parse("30/09/2000");
-			Date date2 = dateFormat.parse("30/09/2000");
-			Facture f = new Facture(a,20f,200f,date1,date2,true);
+
+			Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
 			Facture savedFactrure= factureService.addFacture(f);
-			factureService.retrieveFacture(a);
-			factureService.cancelFacture(savedFactrure.getIdFacture());
-			assertNotNull(f.getIdFacture());
+			Assertions.assertEquals(200f, savedFactrure.getMontantFacture());
+			Assertions.assertEquals(20f,savedFactrure.getMontantRemise());
+			assertEquals(new Date(10 / 10 / 2022),savedFactrure.getDateCreationFacture());
+			log.info("get ===>" + factureService.toString());
+
 			
 
 
 	}
 	@Test
 	public void testgetFacturesByFournisseur() throws ParseException  {
-		Long a = 1L;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date1 = dateFormat.parse("30/09/2000");
-		Date date2 = dateFormat.parse("30/09/2000");
-		Facture f = new Facture(20f,200f,date1,date2,true);
+		Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
 		Facture savedFactrure= factureService.addFacture(f);
 		Set<Facture> f1  = new HashSet<Facture>();
+
 		f1.add(savedFactrure); 
-     	Fournisseur fournisseur = new Fournisseur(a,"112","aaa",f1);
+     	Fournisseur fournisseur = new Fournisseur(1L,"112","aaa",f1);
 		Fournisseur savedFournisseur= fournisseurService.addFournisseur(fournisseur);		
-		List<Facture> factures = factureService.getFacturesByFournisseur(a);
-		assertNotNull(fournisseur.getIdFournisseur());
+		List<Facture> factures = factureService.getFacturesByFournisseur(1L);
 		log.info(" count" +  factures.size());
+		assertNotNull(factures);
 		for (Facture facture : factures) {
 		log.info(" facture: " + facture.getMontantFacture()+ " né le "+facture.getMontantRemise());
 
 		}
 	}
+	/*
 	@Test
 	public void testassignOperateurToFacture() throws ParseException{
-		Long a = 1L;
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date date1 = dateFormat.parse("30/09/2000");
-		Date date2 = dateFormat.parse("30/09/2000");
-		Facture f = new Facture(20f,200f,date1,date2,true);
-		Operateur o = new Operateur(a,"chaima","yahyaoui","123");
+		Facture f = new Facture(1L,20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
+		Operateur o = new Operateur(1L,"chaima","yahyaoui","123");
 		Facture savedFactrure= factureService.addFacture(f);
 		Operateur operateurSaved =  operateurService.addOperateur(o);
-		factureService.assignOperateurToFacture(a,a);
-		assertNotNull(savedFactrure.getIdFacture());
+		factureService.assignOperateurToFacture(1L,1L);
+		List <Facture> factures = (List<Facture>) operateurSaved.getFactures();
+		assertNotNull(factures);
+
+
+
+
+
 	}
 	/*
 	 @Test
