@@ -1,21 +1,26 @@
-/*
 package com.esprit.examen.services;
 
 
 
-
+import com.esprit.examen.entities.Produit;
+import com.esprit.examen.repositories.ProduitRepository;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
-
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.*;
 
+
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.*;
 
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceImplMockTest {
-
+/*
     @Mock
     ProduitRepository produitRepository;
 
@@ -85,8 +90,7 @@ public class ProduitServiceImplMockTest {
         produitService.deleteProduit(produitq.getIdProduit());
         verify(produitRepository).deleteById(produitq.getIdProduit());
     }
-
+*/
 
 
 }
-*/
