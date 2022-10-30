@@ -15,7 +15,7 @@ import io.swagger.annotations.Api;
 
 
 @RestController
-@CrossOrigin()
+@CrossOrigin("http://10.0.0.10:4200")
 @Api(tags = "Gestion des produits")
 @RequestMapping("/produit")
 public class ProduitRestController {
