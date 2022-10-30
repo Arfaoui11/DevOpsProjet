@@ -5,7 +5,6 @@ package com.esprit.examen.controllers;
 import java.util.List;
 
 import com.esprit.examen.dto.StockDTO;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,8 +21,8 @@ public class StockRestController {
 
 	@Autowired
 	IStockService stockService;
-	@Autowired
-	private ModelMapper modelMapper;
+	//@Autowired
+	//private ModelMapper modelMapper;
 
 	@GetMapping("/retrieve-all-stocks")
 	@ResponseBody
@@ -39,10 +38,10 @@ public class StockRestController {
 
 	@PostMapping("/add-stock")
 	@ResponseBody
-	public Stock addStock(@RequestBody StockDTO s) {
-		Stock persistentStock = modelMapper.map(s,  Stock.class);
+	public Stock addStock(@RequestBody Stock s) {
+		//Stock persistentStock = modelMapper.map(s,  Stock.class);
 
-		return  stockService.addStock( persistentStock);
+		return  stockService.addStock( s);
 	}
 
 	@DeleteMapping("/remove-stock/{stock-id}")
@@ -53,10 +52,10 @@ public class StockRestController {
 
 	@PutMapping("/modify-stock")
 	@ResponseBody
-	public Stock modifyStock(@RequestBody StockDTO stock) {
-		Stock persistentStock = modelMapper.map(stock,  Stock.class);
+	public Stock modifyStock(@RequestBody Stock stock) {
+		//Stock persistentStock = modelMapper.map(stock,  Stock.class);
 
-		return  stockService.updateStock( persistentStock);
+		return  stockService.updateStock( stock);
 	}
 
 	/*

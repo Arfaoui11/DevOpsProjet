@@ -22,8 +22,8 @@ import io.swagger.annotations.Api;
 public class FactureRestController {
 
 
-    @Autowired
-    private ModelMapper modelMapper;
+   // @Autowired
+   // private ModelMapper modelMapper;
     @Autowired
     IFactureService factureService;
 
@@ -45,11 +45,11 @@ public class FactureRestController {
 
     @PostMapping("/add-facture")
     @ResponseBody
-    public Facture addFacture(@RequestBody FactureDTO facture) {
+    public Facture addFacture(@RequestBody Facture facture) {
 
-               Facture persistentfacture = modelMapper.map(facture,  Facture.class);
+              // Facture persistentfacture = modelMapper.map(facture,  Facture.class);
 
-        return  factureService.addFacture( persistentfacture);
+        return  factureService.addFacture( facture);
     }
 
     @PutMapping("/cancel-facture/{facture-id}")
