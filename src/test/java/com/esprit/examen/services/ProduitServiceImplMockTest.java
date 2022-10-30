@@ -42,7 +42,7 @@ class ProduitServiceImplMockTest {
 
 
     @Test
-    public void testRetrieveProduitByid() {
+    void testRetrieveProduitByid() {
 
         when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit));
         Produit produitq = produitService.retrieveProduit(1L);
