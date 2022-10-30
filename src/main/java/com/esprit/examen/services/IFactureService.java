@@ -2,7 +2,9 @@ package com.esprit.examen.services;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
+import com.esprit.examen.entities.DetailFacture;
 import com.esprit.examen.entities.Facture;
 
 public interface IFactureService {
@@ -11,7 +13,6 @@ public interface IFactureService {
 	List<Facture> getFacturesByFournisseur(Long idFournisseur);
 
 	Facture addFacture(Facture f);
-
 
 	void cancelFacture(Long id);
 

@@ -49,4 +49,11 @@ public class Operateur implements Serializable{
 		this.password=password;
 		this.dateNaissance=dateNaissance;
 	}
+
+	public Operateur(Long idOperateur, String nom, String prenom, String password) {
+		this.idOperateur = idOperateur;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+	}
 }
