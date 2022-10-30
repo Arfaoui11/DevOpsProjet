@@ -18,6 +18,7 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des factures")
 @RequestMapping("/facture")
+@CrossOrigin(origins = "http://10.0.0.10:4200")
 public class FactureRestController {
 
 
