@@ -39,7 +39,7 @@ public class FactureServiceImpl implements IFactureService {
 	
 	@Override
 	public List<Facture> retrieveAllFactures() {
-		List<Facture> factures = (List<Facture>) factureRepository.findAll();
+		List<Facture> factures = factureRepository.findAll();
 		for (Facture facture : factures) {
 			log.info(" facture : " + facture);
 		}
@@ -101,7 +101,7 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
 		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
-		List<Facture> listfacture  = new ArrayList<Facture>();
+		List<Facture> listfacture  = new ArrayList<>();
 	    listfacture.addAll(fournisseur.getFactures());
 	    return listfacture ; 
 		 
