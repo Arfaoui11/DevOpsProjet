@@ -1,7 +1,12 @@
 package com.esprit.examen.controllers;
 
 
+import java.lang.reflect.Type;
 import java.util.List;
+
+import com.esprit.examen.dto.ProduitDTO;
+import com.esprit.examen.entities.Facture;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +24,8 @@ public class ProduitRestController {
 
 	@Autowired
 	IProduitService produitService;
+	@Autowired
+	ModelMapper modelMapper;
 
 	@GetMapping("/get-all-produitssss")
 	@ResponseBody
@@ -35,8 +42,10 @@ public class ProduitRestController {
 	/* Ajouter en produit tout en lui affectant la catégorie produit et le stock associés */
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public Produit addProduit(@RequestBody Produit p) {
-		return produitService.addProduit(p);
+	public Produit addProduit(@RequestBody ProduitDTO p) {
+		Produit persistentProduit = modelMapper.map(p,  Produit.class);
+
+		return  produitService.addProduit( persistentProduit);
 	}
 
 	@DeleteMapping("/remove-produit/{produit-id}")
