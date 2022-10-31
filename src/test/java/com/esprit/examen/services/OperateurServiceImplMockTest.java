@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+/*package com.esprit.examen.services;
 
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.repositories.OperateurRepository;
@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class OperateurServiceImplMockTest {
 
 
-   /* @Mock
+    @Mock
     OperateurRepository op;
 
     @InjectMocks
@@ -78,9 +78,10 @@ public class OperateurServiceImplMockTest {
         Operateur pr =operateurService.retrieveOperateur(2L);
         pr.setPassword("pass");
         assertThat(pr.getPassword()).isEqualTo("pass");
-    }*/
+    }
 
 
 
 
 }
+*/
