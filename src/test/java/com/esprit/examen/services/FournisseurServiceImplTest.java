@@ -10,8 +10,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import com.esprit.examen.entities.*;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
