@@ -21,12 +21,12 @@ pipeline {
 
                      }
                  }
-                   stage('mvn install'){
+                  /* stage('mvn install'){
                      steps{
                          sh 'mvn install '
 
                      }
-                 }
+                 } */
        /* stage("Run the container with ansible"){
                               steps {
                                   sh 'ansible-playbook ansible-playbook.yml'
