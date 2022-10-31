@@ -32,7 +32,7 @@ pipeline {
                                   sh 'ansible-playbook ansible-playbook.yml'
                                      }
                          } */
-         /*stage("Build the package"){
+         stage("Build the package"){
                             steps {
                                 sh 'mvn clean package'
                                // sh 'docker-compose down -v'
@@ -40,7 +40,7 @@ pipeline {
 
 
                             }
-                        }*/
+                        }
 
         /* stage("test"){
          steps {
