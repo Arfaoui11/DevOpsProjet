@@ -2,6 +2,8 @@ package com.esprit.examen.controllers;
 
 import java.util.List;
 
+import com.esprit.examen.dto.OperateurDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.esprit.examen.entities.Operateur;
@@ -17,6 +19,9 @@ public class OperateurController {
 
 	@Autowired
 	IOperateurService operateurService;
+
+	@Autowired
+	private ModelMapper modelMapper;
 	
 
 	@GetMapping("/retrieve-all-operateurs")
@@ -35,8 +40,10 @@ public class OperateurController {
 
 	@PostMapping("/add-operateur")
 	@ResponseBody
-	public Operateur addOperateur(@RequestBody Operateur op) {
-		return operateurService.addOperateur(op);
+	public Operateur addOperateur(@RequestBody OperateurDTO op) {
+		Operateur persistentOperateur = modelMapper.map(op,  Operateur.class);
+
+		return  operateurService.addOperateur( persistentOperateur);
 	}
 
 
@@ -49,8 +56,9 @@ public class OperateurController {
 
 	@PutMapping("/modify-operateur")
 	@ResponseBody
-	public Operateur modifyOperateur(@RequestBody Operateur operateur) {
-		return operateurService.updateOperateur(operateur);
+	public Operateur modifyOperateur(@RequestBody OperateurDTO operateur) {
+		Operateur persistentOperateur = modelMapper.map(operateur,  Operateur.class);
+		return operateurService.updateOperateur(persistentOperateur);
 	}
 
 	
