@@ -70,6 +70,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
+		<dependency>
+    <groupId>org.quartz-scheduler</groupId>
+    <artifactId>quartz</artifactId>
+    <version>${quartz.version}</version>
+    <exclusions>
+        <exclusion>
+            <artifactId>c3p0</artifactId>
+            <groupId>com.mchange</groupId>
+        </exclusion>
+        <exclusion>
+            <artifactId>*</artifactId>
+            <groupId>com.zaxxer</groupId>
+        </exclusion>
+    </exclusions>
+</dependency>
 	</dependencies>
 
 	<build>
