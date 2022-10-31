@@ -86,6 +86,7 @@ public class OperateurServiceImplTest {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date startDate = dateFormat.parse("06/01/1998");
         Date endDate = dateFormat.parse("06/01/2005");
+        assertTrue(startDate.before(endDate));
         List<Operateur> operateurs = operateurService.getOperateurByDateNaissance(startDate, endDate);
         log.info(" count" + operateurs.size());
         for (Operateur user : operateurs) {
