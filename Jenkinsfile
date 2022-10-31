@@ -51,12 +51,7 @@ pipeline {
                             }
                     }
 
-           stage("SONAR"){
-                        steps {
-                            sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=chaimayahyaoui123 '
 
-                               }
-                   }
 
 
           stage("nexus deploy"){
@@ -107,7 +102,15 @@ pipeline {
 
                                                      }
 
-                           }                      }
+                           }
+                           stage("SONAR"){
+                                                   steps {
+                                                       sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=chaimayahyaoui123 '
+
+                                                          }
+                                              }
+
+                                           }
 
  post {
     always {
