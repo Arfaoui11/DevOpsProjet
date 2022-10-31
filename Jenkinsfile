@@ -15,6 +15,18 @@ pipeline {
                           url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
+        stage('cleaning java Project'){
+                     steps{
+                         sh 'mvn clean'
+
+                     }
+                 }
+                   stage('mvn install'){
+                     steps{
+                         sh 'mvn install '
+
+                     }
+                 }
        /* stage("Run the container with ansible"){
                               steps {
                                   sh 'ansible-playbook ansible-playbook.yml'
@@ -29,6 +41,7 @@ pipeline {
 
                             }
                         }
+
         /* stage("test"){
          steps {
               sh 'mvn test'
