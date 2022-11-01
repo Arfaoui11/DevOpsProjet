@@ -12,37 +12,6 @@ pipeline {
                     url : 'https://github.com/Arfaoui11/DevOpsProjet.git'
                 }
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
 
