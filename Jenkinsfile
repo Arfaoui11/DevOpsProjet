@@ -48,7 +48,7 @@ pipeline {
         }
 
 
-
+/*
 import java.text.SimpleDateFormat
 pipeline {
     environment {
@@ -113,7 +113,7 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
       stage("Sonar Quality Check"){
 		steps{
 		    script{
@@ -128,7 +128,7 @@ pipeline {
 
 		    }
 
-             */
+             
 		    }
             }
         }
@@ -164,7 +164,7 @@ stage('Date') {
             failure {
                 mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'mahdi.arfaoui1@esprit.tn'
              }
-        }*/
+        }
         post {
 
                     success {
@@ -190,3 +190,4 @@ stage('Date') {
                 }
 
 }
+/**
