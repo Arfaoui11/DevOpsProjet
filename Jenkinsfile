@@ -32,15 +32,24 @@ pipeline {
                                   sh 'ansible-playbook ansible-playbook.yml'
                                      }
                          } */
-         stage("Build the package"){
+         stage("Clean"){
                             steps {
-                                sh 'mvn clean package'
+                                sh 'mvn clean '
                                // sh 'docker-compose down -v'
-                                sh 'docker-compose up -d --build'
+                                //sh 'docker-compose up -d --build'
 
 
                             }
                         }
+         stage("Compile"){
+                                     steps {
+                                         sh 'mvn compile'
+                                        // sh 'docker-compose down -v'
+                                         //sh 'docker-compose up -d --build'
+
+
+                                     }
+                                 }
 
          stage("Junit/Mockito"){
          steps {
