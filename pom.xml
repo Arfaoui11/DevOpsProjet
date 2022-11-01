@@ -71,41 +71,27 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>com.springsource.javax.servlet</artifactId>
-            <version>2.5.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>com.springsource.javax.servlet.jsp.jstl</artifactId>
-            <version>1.2.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--
-        <dependency>
-         <groupId>javax.persistence</groupId>
-         <artifactId>com.springsource.javax.persistence</artifactId>
-         <version>1.0.0</version>
-         <scope>compile</scope>
-        </dependency>
-        -->
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>com.springsource.javax.transaction</artifactId>
-            <version>1.1.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.5.6</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>com.springsource.slf4j.log4j</artifactId>
-            <version>1.5.6</version>
-        </dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2.0</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>2.5</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>javax.transaction</groupId>
+    <artifactId>jta</artifactId>
+    <version>1.1.0</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-log4j12</artifactId>
+    <version>1.5.6</version>
+</dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -128,15 +114,10 @@
             <url>https://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
 	    <repository>
-    <id>com.springsource.repository.bundles.release</id>
-    <name>SpringSource Enterprise Bundle Repository - SpringSource Bundle Releases</name>
-    <url>http://repository.springsource.com/maven/bundles/release</url>
+    <id>maven2</id>
+    <url>http://repo1.maven.org/maven2</url>
 </repository>
-<repository>
-    <id>com.springsource.repository.bundles.external</id>
-    <name>SpringSource Enterprise Bundle Repository - External Bundle Releases</name>
-    <url>http://repository.springsource.com/maven/bundles/external</url>
-</repository>
+	    
     </repositories>
     <build>
         <finalName>jackpot</finalName>
