@@ -14,8 +14,11 @@ import java.util.*;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
+
+@SpringBootTest(classes = StockServiceImplMockTest.class)
+@ExtendWith(MockitoExtension.class)
 public class StockServiceImplMockTest {
-/*
+
     @Mock
     StockRepository stockRepository;
 
@@ -85,6 +88,6 @@ public class StockServiceImplMockTest {
         stockService.deleteStock(stockq.getIdStock());
         verify(stockRepository).deleteById(stockq.getIdStock());
     }
-*/
+
 }
 

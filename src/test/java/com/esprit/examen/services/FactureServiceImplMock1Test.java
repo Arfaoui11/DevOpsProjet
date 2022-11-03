@@ -9,7 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
-@SpringBootTest
+@SpringBootTest(classes = FactureServiceImplMock1Test.class)
 @ExtendWith(MockitoExtension.class)
 @Slf4j
 public class FactureServiceImplMock1Test {

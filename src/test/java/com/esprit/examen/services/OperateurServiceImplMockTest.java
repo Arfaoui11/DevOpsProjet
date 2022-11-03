@@ -23,13 +23,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 
-@SpringBootTest
+@SpringBootTest(classes = OperateurServiceImplMockTest.class)
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class OperateurServiceImplMockTest {
 
 
-   /* @Mock
+    @Mock
     OperateurRepository op;
 
     @InjectMocks
@@ -78,7 +78,7 @@ public class OperateurServiceImplMockTest {
         Operateur pr =operateurService.retrieveOperateur(2L);
         pr.setPassword("pass");
         assertThat(pr.getPassword()).isEqualTo("pass");
-    }*/
+    }
 
 
 
