@@ -17,10 +17,10 @@ import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
 
-@SpringBootTest
+@SpringBootTest(classes = ProduitServiceImplMockTest.class)
 @ExtendWith(MockitoExtension.class)
 public class ProduitServiceImplMockTest {
-/*
+
     @Mock
     ProduitRepository produitRepository;
 
@@ -90,7 +90,7 @@ public class ProduitServiceImplMockTest {
         produitService.deleteProduit(produitq.getIdProduit());
         verify(produitRepository).deleteById(produitq.getIdProduit());
     }
-*/
+
 
 
 }

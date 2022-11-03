@@ -44,7 +44,7 @@ public class FactureServiceImplTest {
 		Assertions.assertEquals(20f,savedFactrure.getMontantRemise());
 		assertEquals(new Date(10 / 10 / 2022),savedFactrure.getDateCreationFacture());
 		factureService.cancelFacture(savedFactrure.getIdFacture());
-		log.info("facture ajoutée ===>" + savedFactrure.toString());
+		log.info("facture ajoutée ===>" + savedFactrure);
 
 	}
 	/*
