@@ -8,7 +8,7 @@ pipeline {
             stage('Checkout GIT'){
                 steps{
                     echo 'Pulling...';
-                    git branch: 'YassouraBack',
+                    git branch: 'YassouraBackend',
                     url : 'https://github.com/Arfaoui11/DevOpsProjet.git',
                    credentialsId:"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";
                              }
