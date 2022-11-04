@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+/*package com.esprit.examen.services;
 
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.repositories.FactureRepository;
@@ -44,7 +44,7 @@ public class FactureServiceImplMock1Test {
 
     }
 
-/*
+
     @Mock
     FactureRepository factureRepository;
     @InjectMocks
@@ -101,5 +101,6 @@ public class FactureServiceImplMock1Test {
 
     }
 
-*/
+
 }
+*/

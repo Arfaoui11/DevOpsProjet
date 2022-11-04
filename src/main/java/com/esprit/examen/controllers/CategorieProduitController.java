@@ -2,6 +2,9 @@ package com.esprit.examen.controllers;
 
 import java.util.List;
 
+import com.esprit.examen.dto.CategorieProduitDTO;
+
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +26,10 @@ public class CategorieProduitController {
 
 	@Autowired
 	ICategorieProduitService categorieProduitService;
+
+
+	@Autowired
+	private ModelMapper modelMapper;
 	
 
 	@GetMapping("/retrieve-all-categorieProduit")
@@ -41,8 +48,9 @@ public class CategorieProduitController {
 
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
-	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		return categorieProduitService.addCategorieProduit(cp);
+	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduitDTO cp) {
+		CategorieProduit persistentC = modelMapper.map(cp,  CategorieProduit.class);
+		return categorieProduitService.addCategorieProduit(persistentC );
 	}
 
 
@@ -55,8 +63,9 @@ public class CategorieProduitController {
 
 	@PutMapping("/modify-categorieProduit")
 	@ResponseBody
-	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
-		return categorieProduitService.updateCategorieProduit(categorieProduit);
+	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduitDTO categorieProduit) {
+		CategorieProduit persistentC = modelMapper.map(categorieProduit,  CategorieProduit.class);
+		return categorieProduitService.updateCategorieProduit(persistentC);
 	}
 
 	

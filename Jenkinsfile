@@ -46,9 +46,9 @@ pipeline {
               }
         }
 
-        /* stage('Ansible'){
+        /* stage('Start Containers with Ansible'){
                steps{
-                          sh  'ansible-playbook -i hosts.yml ansible-playbook.yml'
+                          sh  'ansible-playbook  ansible-playbook.yml'
                }
 
          }*/
@@ -84,11 +84,11 @@ pipeline {
                }
          }*/
 
-          stage('DOCKER COMPOSE') {
+          /*stage('DOCKER COMPOSE') {
                 steps {
                             sh 'docker-compose up -d --build'
                 }
-          }
+          }*/
 
           stage("nexus deploy"){
                steps{
