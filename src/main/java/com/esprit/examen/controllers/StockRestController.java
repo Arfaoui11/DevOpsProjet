@@ -66,5 +66,4 @@ public class StockRestController {
 	 * au stock La fct schédulé doit obligatoirement etre sans paramètres et
 	 * sans retour (void)
 	 */
-
 }

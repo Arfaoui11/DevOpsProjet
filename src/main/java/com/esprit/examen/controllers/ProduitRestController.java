@@ -20,6 +20,7 @@ import io.swagger.annotations.Api;
 @RequestMapping("/produit")
 public class ProduitRestController {
 
+
 	@Autowired
 	IProduitService produitService;
 	@Autowired
@@ -55,7 +56,7 @@ public class ProduitRestController {
 	@PutMapping("/modify-produit")
 	@ResponseBody
 	public Produit modifyProduit(@RequestBody ProduitDTO p) {
-        Produit persistentProduit = modelMapper.map(p,  Produit.class);
+		Produit persistentProduit = modelMapper.map(p,  Produit.class);
 		return produitService.updateProduit(persistentProduit);
 	}
 
@@ -67,7 +68,4 @@ public class ProduitRestController {
 	public void assignProduitToStock(@PathVariable("idProduit") Long idProduit, @PathVariable("idStock") Long idStock) {
 		produitService.assignProduitToStock(idProduit, idStock);
 	}
-
-
-
 }

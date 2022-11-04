@@ -1,3 +1,5 @@
+
+/*
 package com.esprit.examen.services;
 
 import com.esprit.examen.entities.Stock;
@@ -86,3 +88,5 @@ class StockServiceImplMockTest {
         verify(stockRepository).deleteById(stockq.getIdStock());
     }
 }
+
+ */
