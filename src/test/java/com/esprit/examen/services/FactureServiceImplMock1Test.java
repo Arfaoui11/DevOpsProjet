@@ -1,4 +1,4 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
 
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.repositories.FactureRepository;
@@ -22,6 +22,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+//NOSONAR
 @ExtendWith(MockitoExtension.class)
 @Slf4j
 public class FactureServiceImplMock1Test {
@@ -102,4 +103,3 @@ public class FactureServiceImplMock1Test {
 
 
 }
-*/
