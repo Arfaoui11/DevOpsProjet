@@ -46,14 +46,14 @@ pipeline {
               }
         }
 
-        /* stage('Ansible'){
+         stage('Start Containers with Ansible'){
                steps{
-                          sh  'ansible-playbook -i hosts.yml ansible-playbook.yml'
+                          sh  'ansible-playbook  ansible-playbook.yml'
                }
 
-         }*/
+         }
 
-        stage('Building our image') {
+        /*stage('Building our image') {
                steps{
                         script {
                             dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -82,7 +82,7 @@ pipeline {
                steps {
                          sh "docker rmi $registry:$BUILD_NUMBER"
                }
-         }
+         }*/
 
           /*stage('DOCKER COMPOSE') {
                 steps {
