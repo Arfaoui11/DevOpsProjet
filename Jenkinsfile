@@ -35,16 +35,28 @@ pipeline {
 
                              }
 
-
-         stage("Build"){
-           steps {
-                    sh 'mvn clean package'
-                     sh 'mvn install package'
-
-
+          stage('MVN CLEAN'){
+                      steps{
+                          sh  'mvn clean'
+                      }
                   }
+                   stage('MVN COMPILE'){
+                              steps{
+                                  sh  'mvn compile'
+                              }
+                          }
+          stage('MVN PACKAGE'){
+              steps{
+                  sh  'mvn package'
+              }
+                }
+             stage("nexus deploy"){
+                       steps {
+                           sh 'mvn deploy'
 
-          }
+                              }
+                 }
+
            stage("Tests JUnit / Mockito"){
                          steps {
                             sh 'mvn test'
@@ -52,14 +64,16 @@ pipeline {
                     }
 
 
+             stage("SONAR"){
+              steps {
+             sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=chaimayahyaoui123 '
+
+                                           }
+                         }
+
+                                           }
 
 
-          stage("nexus deploy"){
-                       steps {
-                           sh 'mvn deploy'
-
-                              }
-                 }
 
 
       stage('Building our image') {
@@ -103,14 +117,6 @@ pipeline {
                                                      }
 
                            }
-                           stage("SONAR"){
-                                                   steps {
-                                                       sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=chaimayahyaoui123 '
-
-                                                          }
-                                              }
-
-                                           }
 
  post {
     always {

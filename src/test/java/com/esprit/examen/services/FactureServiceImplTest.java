@@ -79,12 +79,12 @@ public class FactureServiceImplTest {
 
 
 	}
-	/*
-	@Test
+
+	/* @Test
 	public void testgetFacturesByFournisseur() throws ParseException  {
 		Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
 		Facture savedFactrure= factureService.addFacture(f);
-		Set<Facture> f1  = new HashSet<Facture>();
+		Set<Facture> f1  = new HashSet<>();
 
 		f1.add(savedFactrure); 
      	Fournisseur fournisseur = new Fournisseur(1L,"112","aaa",f1);
