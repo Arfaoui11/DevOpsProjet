@@ -46,12 +46,12 @@ pipeline {
               }
         }
 
-         stage('Start Containers with Ansible'){
+        /* stage('Start Containers with Ansible'){
                steps{
                           sh  'ansible-playbook  ansible-playbook.yml'
                }
 
-         }
+         }*/
 
         /*stage('Building our image') {
                steps{
