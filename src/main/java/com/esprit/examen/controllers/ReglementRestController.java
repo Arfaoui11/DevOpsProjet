@@ -42,11 +42,6 @@ public class ReglementRestController {
     }
 
 
-    @GetMapping("/retrieveReglementByFacture/{facture-id}")
-    @ResponseBody
-    public List<Reglement> retrieveReglementByFacture(@PathVariable("facture-id") Long factureId) {
-        return reglementService.retrieveReglementByFacture(factureId);
-    }
 
 
     @GetMapping(value = "/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}")
