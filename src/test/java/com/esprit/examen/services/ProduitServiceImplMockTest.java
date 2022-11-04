@@ -1,4 +1,4 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
 
 
 
@@ -17,7 +17,7 @@ import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
 class ProduitServiceImplMockTest {
 
@@ -93,4 +93,4 @@ class ProduitServiceImplMockTest {
 
 
 
-}*/
+}
