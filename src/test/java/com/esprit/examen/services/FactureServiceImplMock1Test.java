@@ -3,7 +3,6 @@ package com.esprit.examen.services;
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.repositories.FactureRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.extension.ExtendWith;
