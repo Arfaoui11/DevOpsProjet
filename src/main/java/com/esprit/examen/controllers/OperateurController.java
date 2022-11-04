@@ -14,8 +14,8 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des opérateurs")
 @RequestMapping("/operateur")
-@SuppressWarnings("restriction")
-@CrossOrigin("*")
+
+@CrossOrigin("*")//NOSONAR
 public class OperateurController {
 
 	@Autowired
