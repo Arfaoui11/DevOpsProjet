@@ -9,4 +9,3 @@ services:
       - 4000:3000
     volumes:
       - .:/usr/src/app
-
