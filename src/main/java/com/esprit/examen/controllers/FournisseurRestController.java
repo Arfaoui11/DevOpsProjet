@@ -1,6 +1,9 @@
 package com.esprit.examen.controllers;
 
 import java.util.List;
+
+import com.esprit.examen.dto.FournisseurDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.esprit.examen.entities.Fournisseur;
@@ -16,6 +19,9 @@ public class FournisseurRestController {
 
 	@Autowired
 	IFournisseurService fournisseurService;
+
+	@Autowired
+	private ModelMapper modelMapper;
 
 
 	@GetMapping("/retrieve-all-fournisseurs")
@@ -33,8 +39,9 @@ public class FournisseurRestController {
 
 	@PostMapping("/add-fournisseur")
 	@ResponseBody
-	public Fournisseur addFournisseur(@RequestBody Fournisseur f) {
-		return fournisseurService.addFournisseur(f);
+	public Fournisseur addFournisseur(@RequestBody FournisseurDTO f) {
+		Fournisseur persistentF = modelMapper.map(f,  Fournisseur.class);
+		return fournisseurService.addFournisseur(persistentF);
 	}
 
 	@DeleteMapping("/remove-fournisseur/{fournisseur-id}")
@@ -46,8 +53,9 @@ public class FournisseurRestController {
 
 	@PutMapping("/modify-fournisseur")
 	@ResponseBody
-	public Fournisseur modifyFournisseur(@RequestBody Fournisseur fournisseur) {
-		return fournisseurService.updateFournisseur(fournisseur);
+	public Fournisseur modifyFournisseur(@RequestBody FournisseurDTO f) {
+		Fournisseur persistentF = modelMapper.map(f,  Fournisseur.class);
+		return fournisseurService.updateFournisseur(persistentF);
 	}
 
 

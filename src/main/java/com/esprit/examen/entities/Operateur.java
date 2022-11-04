@@ -29,7 +29,7 @@ public class Operateur implements Serializable{
 
 	@Temporal(TemporalType.DATE)
 	private Date dateNaissance;
-	
+
 	private String password;
 	@OneToMany
 	@JsonIgnore
@@ -56,4 +56,6 @@ public class Operateur implements Serializable{
 		this.prenom = prenom;
 		this.password = password;
 	}
+
+
 }

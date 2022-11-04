@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 
+import com.esprit.examen.dto.ReglementDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +24,14 @@ public class ReglementRestController {
     IReglementService reglementService;
 
 
+    @Autowired
+    private ModelMapper modelMapper;
 
     @PostMapping("/add-reglement")
     @ResponseBody
-    public Reglement addReglement(@RequestBody Reglement r) {
-        return reglementService.addReglement(r);
+    public Reglement addReglement(@RequestBody ReglementDTO r) {
+        Reglement persistentR = modelMapper.map(r,  Reglement.class);
+        return reglementService.addReglement(persistentR);
     }
     @GetMapping("/retrieve-all-reglements")
     @ResponseBody
