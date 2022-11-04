@@ -9,19 +9,11 @@ pipeline {
                 steps{
                     echo 'Pulling...';
                     git branch: 'YassouraBack',
-                    url : 'https://github.com/Arfaoui11/DevOpsProjet.git';
+                    url : 'https://github.com/Arfaoui11/DevOpsProjet.git',
                    credentialsId:"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";
                              }
                              } 
-            stage('Date') {
-                steps {
-                     script{
-                     def date = new Date()
-                     sdf = new SimpleDateFormat("MM/dd/yyyy")
-                     println(sdf.format(date))
-                             }   
-                             } 
-                             }
+           
                stage('MVN Package'){
             steps {
                 sh """mvn -version  """
