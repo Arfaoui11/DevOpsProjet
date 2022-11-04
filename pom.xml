@@ -124,24 +124,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.19.1</version>
         </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<tagNameFormat>v@{project.version}</tagNameFormat
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<releaseProfiles>releases</releaseProfiles>
-					<useReleaseProfile>false</useReleaseProfile>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
+			
   </plugins>
 	</build>
 
