@@ -22,7 +22,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-//NOSONAR
+
 @ExtendWith(MockitoExtension.class)
 @Slf4j
 public class FactureServiceImplMock1Test {
