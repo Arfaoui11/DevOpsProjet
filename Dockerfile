@@ -1,9 +1,6 @@
-
-FROM maven:3.8.2-jdk-8
-
-WORKDIR /tpAchatProject
-COPY . .
-RUN mvn clean install
+FROM openjdk:8-jdk-alpine
 EXPOSE 8089
-CMD mvn spring-boot:run
-#aacddddddddddddddddddddddddddd asdsad asdas d
+ADD target/docker-spring-boot.jar docker-spring-boot.jar
+ENTRYPOINT ["java","-jar","/docker-spring-boot.jar"]
+
+

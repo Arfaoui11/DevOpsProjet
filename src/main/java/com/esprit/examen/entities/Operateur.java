@@ -1,13 +1,10 @@
 package com.esprit.examen.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,15 +26,36 @@ public class Operateur implements Serializable{
 	private Long idOperateur;
 	private String nom;
 	private String prenom;
-	
+
+	@Temporal(TemporalType.DATE)
+	private Date dateNaissance;
+
 	private String password;
 	@OneToMany
 	@JsonIgnore
 	private Set<Facture> factures;
 
-	public Operateur(String nom, String prenom, String password) {
+	public Operateur(String nom, String prenom, String password,Date dateNaissance) {
 		this.nom=nom;
 		this.prenom=prenom;
 		this.password=password;
+		this.dateNaissance=dateNaissance;
 	}
+
+	public Operateur(Long idOperateur,String nom, String prenom, String password,Date dateNaissance) {
+		this.idOperateur=idOperateur;
+		this.nom=nom;
+		this.prenom=prenom;
+		this.password=password;
+		this.dateNaissance=dateNaissance;
+	}
+
+	public Operateur(Long idOperateur, String nom, String prenom, String password) {
+		this.idOperateur = idOperateur;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+	}
+
+
 }

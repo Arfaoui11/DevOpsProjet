@@ -1,13 +1,16 @@
 package com.esprit.examen.services;
 
+import java.util.Date;
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.repositories.OperateurRepository;
 
 @Service
+@Slf4j
 public class OperateurServiceImpl implements IOperateurService {
 
 	@Autowired
@@ -18,9 +21,9 @@ public class OperateurServiceImpl implements IOperateurService {
 	}
 
 	@Override
-	public Operateur addOperateur(Operateur o) {
-		operateurRepository.save(o);
-		return o;
+	public Operateur addOperateur(Operateur op) {
+		operateurRepository.save(op);
+		return op;
 	}
 
 	@Override
@@ -37,8 +40,13 @@ public class OperateurServiceImpl implements IOperateurService {
 
 	@Override
 	public Operateur retrieveOperateur(Long id) {
-		Operateur operateur = operateurRepository.findById(id).orElse(null);
-		return operateur;
+		return operateurRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public List<Operateur> getOperateurByDateNaissance(Date d1, Date d2) {
+		log.info("In method getOperateurByDateNaissance");
+		return operateurRepository.retrieveOperateursByDateNaissance(d1,d2);
 	}
 
 }

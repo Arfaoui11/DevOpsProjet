@@ -11,23 +11,35 @@ import java.util.List;
 import com.esprit.examen.entities.Produit;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import com.esprit.examen.entities.Stock;
+import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-
-public class
-ProduitServiceImplTest {
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class ProduitServiceImplTest {
     @Autowired
     IProduitService produitService;
     @Autowired
     IStockService stockService;
 
     @Test
+    @Order(4)
+    public void testRetrieveAllProducts() {
+        List<Produit> listProduits = produitService.retrieveAllProduits();
+        Assertions.assertEquals(1, listProduits.size());
+    }
+
+
+    @Test
+    @Order(1)
     public void testAddProduct() {
         List<Produit> produits = produitService.retrieveAllProduits();
 
@@ -57,6 +69,7 @@ ProduitServiceImplTest {
 
 
     @Test
+    @Order(2)
     public void testAddProductOptimized() {
 
         Stock s = new Stock("stock test",10,100);
@@ -86,6 +99,7 @@ ProduitServiceImplTest {
     }
 
     @Test
+    @Order(4)
     public void testUpdateProduct() {
 
         Stock s = new Stock(" new stock ",10,100);
@@ -124,6 +138,7 @@ ProduitServiceImplTest {
 
 
     @Test
+    @Order(3)
     public void testDeleteProduit() {
         Stock s = new Stock("stock test",10,100);
         Stock savedStock= stockService.addStock(s);

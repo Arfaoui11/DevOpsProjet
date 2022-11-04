@@ -1,0 +1,18 @@
+---
+- name: sample_book
+  hosts: dev-servers
+  remote_user: root
+  become: true
+  tasks:
+    - name: Run nexus container
+      command: docker start d47a7e7666c7
+      ignore_errors: yes
+    - name: Run sonarQube contanier
+      command: docker start ce7ec17c2da0
+      ignore_errors: yes
+    - name: Run prometheus container
+      command: docker start 781fcd2a414c
+      ignore_errors: yes
+    - name: Run grafana container
+      command: docker start fbf38caf562b
+      ignore_errors: yes

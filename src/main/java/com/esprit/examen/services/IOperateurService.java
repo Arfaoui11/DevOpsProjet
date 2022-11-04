@@ -1,5 +1,6 @@
 package com.esprit.examen.services;
 
+import java.util.Date;
 import java.util.List;
 import com.esprit.examen.entities.Operateur;
 
@@ -15,5 +16,7 @@ public interface IOperateurService {
 	Operateur updateOperateur(Operateur o);
 
 	Operateur retrieveOperateur(Long id);
+
+	List<Operateur> getOperateurByDateNaissance(Date d1, Date d2);
 
 }
