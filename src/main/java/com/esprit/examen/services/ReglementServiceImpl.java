@@ -43,4 +43,6 @@ public class ReglementServiceImpl implements IReglementService {
 		return reglementRepository.getChiffreAffaireEntreDeuxDate( startDate, endDate);
 	}
 
+	public void deleteReglement(Object o) {
+	}
 }
