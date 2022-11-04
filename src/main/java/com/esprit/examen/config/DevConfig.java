@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 //NOSONAR
 @Configuration
 @EnableWebMvc
-//@SuppressWarnings({"squid:S00X1", "squid:S00X2"})
+
 public class DevConfig implements WebMvcConfigurer {
     @Value("${remote.server.url}")
     private String url;
