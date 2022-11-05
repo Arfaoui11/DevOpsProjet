@@ -36,7 +36,7 @@ import static org.mockito.Mockito.*;
         SecteurService.retrieveSecteurActivite(1L);
         Assertions.assertNotNull(s1);
 
-        System.out.println(s1);
+
 
     }
     @Test
@@ -48,7 +48,6 @@ import static org.mockito.Mockito.*;
 
         SecteurService.addSecteurActivite(s2);
         verify(SecteurRepository, times(1)).save(s2);
-        System.out.println(s2);
 
     }
     @Test
@@ -79,7 +78,7 @@ import static org.mockito.Mockito.*;
         SecteurService.deleteSecteurActivite(7L);
         verify(SecteurRepository).deleteById(se1.getIdSecteurActivite());
 
-        System.out.println(se1);
+
 
     }
 
