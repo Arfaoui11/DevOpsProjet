@@ -2,11 +2,11 @@ import java.text.SimpleDateFormat
 pipeline {
     agent any
 
-     environment {
+     /**environment {
             registry = "omardrissi/devops-project"
             registryCredential = 'dckr_pat_NX_qTIaloGguDSY22Ki8Jk04CJo'
             dockerImage = ''
-     }
+     }**/
 
     stages {
 
@@ -46,6 +46,23 @@ pipeline {
               }
         }
 
+         stage("nexus deploy"){
+              steps{
+                   sh 'mvn  deploy'
+              }
+         }
+
+         stage('MVN SONARQUBE'){
+               steps{
+                  sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+               }
+         }
+         stage("Test JUnit /Mockito"){
+                  steps {
+                       sh 'mvn test'
+                  }
+         }
+
         /* stage('Start Containers with Ansible'){
                steps{
                           sh  'ansible-playbook  ansible-playbook.yml'
@@ -53,60 +70,48 @@ pipeline {
 
          }*/
 
-        /*stage('Building our image') {
+        stage('Build docker image') {
                steps{
-                        script {
+                        /**script {
                             dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                        }
+                        }**/
+                        sh 'docker build -t omardrissi/DevOpsProject1  .'
                }
         }
 
-        stage('Docker images'){
-               steps{
-                        sh 'docker images'
-               }
-        }
-
-
-         stage('Deploy our image') {
+         stage('Docker login') {
                steps {
-                        script {
-                            docker.withRegistry( '', registryCredential ) {
-                                dockerImage.push()
-                            }
-                        }
+                         sh 'echo "login Docker ...."'
+                         sh 'docker login -u omardrissi -p omardrissi123'
                }
          }
 
-         stage('Cleaning up') {
+
+         stage('Docker push') {
+               steps {
+                        /**script {
+                            docker.withRegistry( '', registryCredential ) {
+                                dockerImage.push()
+                            }
+                        }**/
+                        sh 'echo "Docker is pushing ...."'
+                        sh 'docker push omardrissi/DevOpsProject1'
+               }
+         }
+
+         /*stage('Cleaning up') {
                steps {
                          sh "docker rmi $registry:$BUILD_NUMBER"
                }
          }*/
 
-          /*stage('DOCKER COMPOSE') {
+          stage('DOCKER COMPOSE') {
                 steps {
-                            sh 'docker-compose up -d --build'
-                }
-          }*/
-
-          stage("nexus deploy"){
-               steps{
-                       sh 'mvn  deploy'
-               }
-          }
-
-          stage('MVN SONARQUBE'){
-
-                steps{
-                          sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                            sh 'docker-compose up -d '
                 }
           }
-          stage("Test JUnit /Mockito"){
-                steps {
-                            sh 'mvn test'
-                }
-          }
+
+
 
     }
 
