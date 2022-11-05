@@ -18,3 +18,4 @@ public class ProduitDTO {
     @Temporal(TemporalType.DATE)
     private Date dateDerniereModification;
 }
+

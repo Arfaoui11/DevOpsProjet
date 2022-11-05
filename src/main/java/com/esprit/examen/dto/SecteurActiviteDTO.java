@@ -8,3 +8,4 @@ public class SecteurActiviteDTO {
     private String codeSecteurActivite;
     private String libelleSecteurActivite;
 }
+

@@ -1,7 +1,7 @@
 package com.esprit.examen;
 
-
 import org.modelmapper.ModelMapper;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,12 +17,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @RestController
 public class TpAchatProjectApplication {
 	@Bean
-	public ModelMapper modelMapper(){
-
-		return new ModelMapper();
+	public ModelMapper modelMapper() {
+		return  new ModelMapper();
 	}
-
-
 
 	public static void main(String[] args) {
 		SpringApplication.run(TpAchatProjectApplication.class, args);
@@ -30,6 +27,6 @@ public class TpAchatProjectApplication {
 
 	@GetMapping("/")
 	public String home(){
-		return "Welcome Home new mahdi change vendredi";
+		return "Welcome Home";
 	}
 }
