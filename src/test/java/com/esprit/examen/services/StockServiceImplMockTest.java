@@ -1,4 +1,4 @@
-/*package com.esprit.examen.services;
+package com.esprit.examen.services;
 
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.StockRepository;
@@ -14,7 +14,10 @@ import java.util.*;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
-class StockServiceImplMockTest {
+
+
+@ExtendWith(MockitoExtension.class)
+public class StockServiceImplMockTest {
 
     @Mock
     StockRepository stockRepository;
@@ -85,4 +88,5 @@ class StockServiceImplMockTest {
         stockService.deleteStock(stockq.getIdStock());
         verify(stockRepository).deleteById(stockq.getIdStock());
     }
-}*/
+
+}
