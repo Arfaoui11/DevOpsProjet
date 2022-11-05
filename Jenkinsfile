@@ -53,7 +53,7 @@ import java.text.SimpleDateFormat
 pipeline {
     environment {
         registry = "mahdijr/devops-tp"
-        registryCredential = 'a8e9ee1f-1fa3-47e5-bef7-5d65e3d019f4'
+        registryCredential = 'jenkins-dockerhub-token'
         dockerImage = ''
     }
     agent any
@@ -96,15 +96,15 @@ pipeline {
          }
 
 
-          /*
+
         stage('Building our image') {
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
             }
-        }*/
-/*
+        }
+
         stage('Deploy our image') {
             steps {
                 script {
@@ -113,7 +113,8 @@ pipeline {
                     }
                 }
             }
-        }*/
+        }
+
       stage("Sonar Quality Check"){
 		steps{
 		    script{
