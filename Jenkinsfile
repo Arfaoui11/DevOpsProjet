@@ -75,7 +75,7 @@ pipeline {
                         /**script {
                             dockerImage = docker.build registry + ":$BUILD_NUMBER"
                         }**/
-                        sh 'docker build -t omardrissi/DevOpsProject1  .'
+                        sh 'docker build -t omardrissi/projectdevops1  .'
                }
         }
 
@@ -95,7 +95,7 @@ pipeline {
                             }
                         }**/
                         sh 'echo "Docker is pushing ...."'
-                        sh 'docker push omardrissi/DevOpsProject1'
+                        sh 'docker push omardrissi/projectdevops1 '
                }
          }
 
