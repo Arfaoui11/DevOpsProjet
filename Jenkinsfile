@@ -52,7 +52,7 @@ pipeline {
 import java.text.SimpleDateFormat
 pipeline {
     environment {
-        registry = "mahdijr/devops-CICD"
+        registry = "mahdijr/devops-cicd"
         registryCredential = 'jenkins-dockerhub-token'
         dockerImage = ''
     }
