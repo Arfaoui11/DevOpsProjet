@@ -1,5 +1,0 @@
-Dockerfile
-.dockerignore
-docker-compose.yml
-
-!.mvn/wrapper/maven-wrapper.jar
