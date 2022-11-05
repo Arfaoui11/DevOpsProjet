@@ -15,9 +15,9 @@ pipeline {
                           url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
-        stage('cleaning java Project'){
+        stage('clean package'){
                      steps{
-                         sh 'mvn clean'
+                         sh 'mvn clean package'
 
                      }
                  }
@@ -32,7 +32,7 @@ pipeline {
                                   sh 'ansible-playbook ansible-playbook.yml'
                                      }
                          } */
-         stage("Clean"){
+         /*stage("Clean"){
                             steps {
                                 sh 'mvn clean '
                                // sh 'docker-compose down -v'
@@ -40,8 +40,8 @@ pipeline {
 
 
                             }
-                        }
-         stage("Compile"){
+                        }*/
+         /*stage("Compile"){
                                      steps {
                                          sh 'mvn compile'
                                         // sh 'docker-compose down -v'
@@ -49,7 +49,7 @@ pipeline {
 
 
                                      }
-                                 }
+                                 }*/
           stage('Docker compose') {
                          steps {
                                      sh 'docker-compose up -d --build'
