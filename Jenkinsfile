@@ -63,21 +63,20 @@ pipeline {
                   }
          }
 
-        /* stage('Start Containers with Ansible'){
+         /*stage('Start Containers with Ansible'){
                steps{
                           sh  'ansible-playbook  ansible-playbook.yml'
                }
 
-         }*/
+         }
 
-        stage('Build docker image') {
+         /*stage('Build docker image') {
                steps{
-                        /**script {
-                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                        }**/
+
                         sh 'docker build -t omardrissi/projectdevops1  .'
                }
-        }
+         }
+
 
          stage('Docker login') {
                steps {
@@ -89,27 +88,23 @@ pipeline {
 
          stage('Docker push') {
                steps {
-                        /**script {
-                            docker.withRegistry( '', registryCredential ) {
-                                dockerImage.push()
-                            }
-                        }**/
+
                         sh 'echo "Docker is pushing ...."'
                         sh 'docker push omardrissi/projectdevops1 '
                }
          }
 
-         /*stage('Cleaning up') {
+         stage('Cleaning up') {
                steps {
                          sh "docker rmi $registry:$BUILD_NUMBER"
                }
-         }*/
+         }
 
           stage('DOCKER COMPOSE') {
                 steps {
                             sh 'docker-compose up -d '
                 }
-          }
+          }*/
 
 
 
