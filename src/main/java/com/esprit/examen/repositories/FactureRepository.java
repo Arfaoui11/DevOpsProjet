@@ -16,7 +16,7 @@ public interface FactureRepository extends JpaRepository<Facture, Long> {
 
 	
 	@Query("SELECT f FROM Facture f where f.fournisseur=:fournisseur and f.archivee=false")
-	public List<Facture> getFactureByFournisseur(@Param("fournisseur") Fournisseur fournisseur);
+    List<Facture> getFactureByFournisseur(@Param("fournisseur") Fournisseur fournisseur);
 
 	
 	@Query("SELECT sum(f.montantFacture) FROM Facture f where  f.dateCreationFacture between :startDate"

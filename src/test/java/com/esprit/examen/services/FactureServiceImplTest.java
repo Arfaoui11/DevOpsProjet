@@ -25,15 +25,15 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FactureServiceImplTest {
 	@Autowired
-	IFactureService factureService; 
+	IFactureService factureService;
 	@Autowired
 
-	IOperateurService operateurService; 
+	IOperateurService operateurService;
 	@Autowired
-	IFournisseurService fournisseurService; 
-	
-	
-	
+	IFournisseurService fournisseurService;
+
+
+
 	@Test
 	public void testAddFacture () throws  ParseException  {
 		Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
@@ -44,9 +44,9 @@ public class FactureServiceImplTest {
 		Assertions.assertEquals(20f,savedFactrure.getMontantRemise());
 		assertEquals(new Date(10 / 10 / 2022),savedFactrure.getDateCreationFacture());
 		factureService.cancelFacture(savedFactrure.getIdFacture());
-		log.info("facture ajoutée ===>" + savedFactrure.toString());
+		log.info("facture ajoutée ===>" + savedFactrure);
 
-	} 
+	}
 	/*
 	@Test
     public void testCancelFacture() throws  ParseException  {
@@ -75,7 +75,7 @@ public class FactureServiceImplTest {
 			assertEquals(new Date(10 / 10 / 2022),savedFactrure.getDateCreationFacture());
 			log.info("get ===>" + factureService.toString());
 
-			
+
 
 
 	}
@@ -85,9 +85,9 @@ public class FactureServiceImplTest {
 		Facture savedFactrure= factureService.addFacture(f);
 		Set<Facture> f1  = new HashSet<Facture>();
 
-		f1.add(savedFactrure); 
+		f1.add(savedFactrure);
      	Fournisseur fournisseur = new Fournisseur(1L,"112","aaa",f1);
-		Fournisseur savedFournisseur= fournisseurService.addFournisseur(fournisseur);		
+		Fournisseur savedFournisseur= fournisseurService.addFournisseur(fournisseur);
 		List<Facture> factures = factureService.getFacturesByFournisseur(1L);
 		log.info(" count" +  factures.size());
 		assertNotNull(factures);

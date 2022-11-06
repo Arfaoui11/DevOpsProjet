@@ -18,7 +18,7 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des factures")
 @RequestMapping("/facture")
-@CrossOrigin("*")//NOSONAR
+
 public class FactureRestController {
 
 
@@ -47,7 +47,7 @@ public class FactureRestController {
     @ResponseBody
     public Facture addFacture(@RequestBody FactureDTO facture) {
 
-               Facture persistentfacture = modelMapper.map(facture,  Facture.class);
+        Facture persistentfacture = modelMapper.map(facture,  Facture.class);
 
         return  factureService.addFacture( persistentfacture);
     }

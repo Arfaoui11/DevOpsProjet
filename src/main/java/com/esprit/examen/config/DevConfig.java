@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 
-//NOSONAR
+
 @Configuration
 @EnableWebMvc
 public class DevConfig implements WebMvcConfigurer {

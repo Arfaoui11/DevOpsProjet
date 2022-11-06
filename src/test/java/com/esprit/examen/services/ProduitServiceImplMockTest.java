@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
- class ProduitServiceImplMockTest {
+public class ProduitServiceImplMockTest {
 
     @Mock
     ProduitRepository produitRepository;

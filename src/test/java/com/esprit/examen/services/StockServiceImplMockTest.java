@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 
 
 @ExtendWith(MockitoExtension.class)
- class StockServiceImplMockTest {
+public class StockServiceImplMockTest {
 
     @Mock
     StockRepository stockRepository;
@@ -90,3 +90,4 @@ import static org.mockito.Mockito.*;
     }
 
 }
+

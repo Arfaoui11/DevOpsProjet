@@ -15,7 +15,7 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des fournisseurss")
 @RequestMapping("/fournisseur")
-//@CrossOrigin("*")
+
 public class FournisseurRestController {
 
 	@Autowired
@@ -60,9 +60,9 @@ public class FournisseurRestController {
 	}
 
 
-	@PutMapping(value = "/assignSecteurActiviteToFournisseur/{idSecteurActivite}/{idFournisseur}")
-	public void assignProduitToStock(@PathVariable("idSecteurActivite") Long idSecteurActivite, @PathVariable("idFournisseur") Long idFournisseur) {
-		fournisseurService.assignSecteurActiviteToFournisseur(idSecteurActivite, idFournisseur);
-	}
+		@PutMapping(value = "/assignSecteurActiviteToFournisseur/{idSecteurActivite}/{idFournisseur}")
+		public void assignProduitToStock(@PathVariable("idSecteurActivite") Long idSecteurActivite, @PathVariable("idFournisseur") Long idFournisseur) {
+			fournisseurService.assignSecteurActiviteToFournisseur(idSecteurActivite, idFournisseur);
+		}
 
 }

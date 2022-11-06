@@ -9,7 +9,6 @@ import java.util.Date;
 @Data
 public class ProduitDTO {
 
-    private Long idProduit;
     private String codeProduit;
     private String libelleProduit;
     private float prix;

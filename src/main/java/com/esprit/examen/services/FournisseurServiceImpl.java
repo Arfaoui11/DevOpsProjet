@@ -3,7 +3,6 @@ package com.esprit.examen.services;
 import java.util.Date;
 import java.util.List;
 
-import javax.transaction.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;

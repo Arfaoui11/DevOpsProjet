@@ -1,7 +1,9 @@
 package com.esprit.examen.dto;
 
-  public class StockDTO {
-    private Long idStock;
+import lombok.Data;
+
+@Data
+public class StockDTO {
     private String libelleStock;
     private Integer qte;
     private Integer qteMin;
