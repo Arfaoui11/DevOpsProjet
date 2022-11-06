@@ -61,7 +61,7 @@ public class FactureRestController {
     @GetMapping("/getFactureByFournisseur/{fournisseur-id}")
     @ResponseBody
     public List<Facture> getFactureByFournisseur(@PathVariable("fournisseur-id") Long fournisseurId) {
-        return (List<Facture>) factureService.getFacturesByFournisseur(fournisseurId);
+        return  factureService.getFacturesByFournisseur(fournisseurId);
     }
 
     @PutMapping(value = "/assignOperateurToFacture/{idOperateur}/{idFacture}")
