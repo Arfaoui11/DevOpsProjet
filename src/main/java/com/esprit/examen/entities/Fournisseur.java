@@ -29,8 +29,7 @@ public class Fournisseur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Fournisseur(Long idFournisseur, String code, String libelle,
-			List<Facture> factures) {
+	public Fournisseur(Long idFournisseur, String code, String libelle){
 		super();
 		this.idFournisseur = idFournisseur;
 		this.code = code;
@@ -46,7 +45,7 @@ public class Fournisseur implements Serializable {
 	@OneToMany(mappedBy="fournisseur")
 	@JsonIgnore
 	List<Facture> factures;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JsonIgnore
     private Set<SecteurActivite> secteurActivites;
     @OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
