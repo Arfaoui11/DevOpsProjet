@@ -38,7 +38,6 @@ public class FournisseurServiceMockImplTest {
     };
 
     @Test
-
     void testRetrieveFournisseur(){
         when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
         Fournisseur op1= fournisseurService.retrieveFournisseur(1L);
@@ -67,17 +66,24 @@ public class FournisseurServiceMockImplTest {
     @Test
     void testupdateFournisseur( ) {
         when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
-        Fournisseur pr =fournisseurService.retrieveFournisseur(2L);
+        Fournisseur pr =fournisseurService.retrieveFournisseur(1L);
         pr.setLibelle("pass");
         assertThat(pr.getLibelle()).isEqualTo("pass");
     }
 
     @Test
     void  testretrieveAllFournisseurs(){
-        when(fournisseurRepository.findAll()).thenReturn(fournisseurs);
-        List<Fournisseur> op =fournisseurService.retrieveAllFournisseurs();
-        assertNotNull(op);
+        List<Fournisseur> f = new ArrayList<>();
+        f.add(new Fournisseur());
+        when(fournisseurRepository.findAll()).thenReturn(f);
+        List<Fournisseur> expected = fournisseurService.retrieveAllFournisseurs();
+        assertEquals(expected, f);
+        verify(fournisseurRepository).findAll();
     }
+
+
+
+
 
 
 
