@@ -6,6 +6,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.*;
 
@@ -13,8 +14,10 @@ import java.util.*;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
+
+
 @ExtendWith(MockitoExtension.class)
-class StockServiceImplMockTest {
+ class StockServiceImplMockTest {
 
     @Mock
     StockRepository stockRepository;
@@ -85,4 +88,5 @@ class StockServiceImplMockTest {
         stockService.deleteStock(stockq.getIdStock());
         verify(stockRepository).deleteById(stockq.getIdStock());
     }
+
 }
