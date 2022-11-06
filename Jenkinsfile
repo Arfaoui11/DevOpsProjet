@@ -45,21 +45,27 @@ pipeline {
                   }
 
           }
+           stage("SONAR"){
+                                                             steps {
+                                                                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=chaimayahyaoui123 '
+
+                                                                    }
+                                                        }
            stage("Tests JUnit / Mockito"){
                          steps {
                             sh 'mvn test'
                             }
                     }
 
-
-
-
-          stage("nexus deploy"){
-                       steps {
+            stage("nexus deploy"){
+                        steps {
                            sh 'mvn deploy'
 
                               }
                  }
+
+
+
 
 
       stage('Building our image') {
@@ -103,12 +109,7 @@ pipeline {
                                                      }
 
                            }
-                           stage("SONAR"){
-                                                   steps {
-                                                       sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=chaimayahyaoui123 '
 
-                                                          }
-                                              }
 
                                            }
 
