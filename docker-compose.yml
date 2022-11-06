@@ -1,11 +1,35 @@
-version: '3.3'
-
+version: '3'
 services:
-  # Node Api services
-  api:
-    container_name: rest_api
-    build: .
+  database:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: devopsDB
     ports:
-      - 4000:3000
-    volumes:
-      - .:/usr/src/app
+      - 3306:3306
+    networks:
+      - AppNet
+
+  spring-boot:
+    image: chaimayahyaoui/projectdevops1
+    container_name: spring
+    ports:
+      - 8089:8089
+    depends_on:
+      - database
+    networks:
+      - AppNet
+    restart: on-failure
+  angular:
+    image: chaimayahyaoui/angularproject
+    container_name: angular
+    ports:
+      - 80:80
+    depends_on:
+      - spring-boot
+    networks:
+      - AppNet
+
+networks:
+  AppNet:

@@ -1,7 +1,3 @@
-FROM node:alpine
-WORKDIR /usr/src/app
-COPY package*.json .
-RUN npm ci
-COPY . .
-#CMD ["npm","start"]
-CMD ["npm","run","dev"]
+FROM nginx:alpine
+COPY dist/crud/ /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
