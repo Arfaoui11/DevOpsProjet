@@ -1,9 +1,7 @@
 package com.esprit.examen.services;
 
 
-import com.esprit.examen.entities.DetailFournisseur;
 import com.esprit.examen.entities.Fournisseur;
-import com.esprit.examen.repositories.DetailFournisseurRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -26,8 +24,7 @@ public class FournisseurServiceMockImplTest {
     FournisseurServiceImpl fournisseurService;
     @Mock
     FournisseurRepository fournisseurRepository ;
-    @Mock
-    DetailFournisseurRepository detailfournisseurRepository;
+
 
     //logger
     Fournisseur fournisseur = new Fournisseur("f1", "l1");
@@ -47,30 +44,30 @@ public class FournisseurServiceMockImplTest {
     }
     @Test
     public void  addFournisseurTest() {
-        DetailFournisseur df = new DetailFournisseur();
-        df.setIdDetailFournisseur(1L);
+        Fournisseur df = new Fournisseur();
+        df.setIdFournisseur(1L);
         when(fournisseurRepository.save(any())).thenReturn(df);
         fournisseurService.addFournisseur(new Fournisseur());
-        assertEquals(1L,df.getIdDetailFournisseur());
+        assertEquals(1L,df.getIdFournisseur());
 
 
     }
     @Test
     public void  updateFournisseurTest() {
-        DetailFournisseur df = new DetailFournisseur();
-        df.setIdDetailFournisseur(1L);
+        Fournisseur df = new Fournisseur();
+        df.setIdFournisseur(1L);
         when(fournisseurRepository.save(any())).thenReturn(df);
         fournisseurService.updateFournisseur(new Fournisseur());
-        assertEquals(1L, df.getIdDetailFournisseur());
+        assertEquals(1L, df.getIdFournisseur());
     }
     @Test
     public void  retrieveFournisseurTest() {
 
-        DetailFournisseur df = new DetailFournisseur();
-        df.setIdDetailFournisseur(1L);
+        Fournisseur df = new Fournisseur();
+        df.setIdFournisseur(1L);
         when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
         Fournisseur f = fournisseurService.retrieveFournisseur(Long.valueOf("55"));
-        assertEquals(1L, df.getIdDetailFournisseur());
+        assertEquals(1L, df.getIdFournisseur());
     }
 
 
