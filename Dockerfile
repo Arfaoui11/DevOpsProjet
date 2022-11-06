@@ -3,7 +3,7 @@
 
 FROM openjdk:8-jdk-alpine
 EXPOSE  8089
-ADD target/DevopsProject.jar DevopsProject.jar
+ADD http://192.168.43.12:8081/repository/maven-snapshots/ DevopsProject.jar
 ENTRYPOINT ["java","-jar","/DevopsProject.jar"]
 
 
