@@ -8,8 +8,6 @@ services:
       MYSQL_DATABASE: devopsDB
     ports:
       - 3306:3306
-    volumes:
-      - db:/var/lib/mysql
     networks:
       - AppNet
 
