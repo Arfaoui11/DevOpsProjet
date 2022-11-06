@@ -26,7 +26,7 @@ public class FournisseurServiceMockImplTest {
     FournisseurRepository fournisseurRepository ;
 
 
-    //logger
+
     Fournisseur fournisseur = new Fournisseur("f1", "l1");
     List<Fournisseur> fournisseurs = new ArrayList<Fournisseur>() {
         {
