@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.8"
 
 services:
   mysqldb:
@@ -15,7 +15,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    build: .
+    build: ./devopsProject
     restart: on-failure
     env_file: ./.env
     ports:
