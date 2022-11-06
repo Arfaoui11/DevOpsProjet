@@ -1,24 +1,19 @@
 package com.esprit.examen.services;
 
+import com.esprit.examen.entities.Fournisseur;
 import static org.junit.Assert.*;
 
-import java.text.ParseException;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
-
-import com.esprit.examen.entities.*;
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertNull;
+import java.text.ParseException;
+
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,7 +24,7 @@ public class FournisseurServiceImplTest {
     IFournisseurService fournisseurService;
 
     @Test
-    public void testAddFournisseur() throws ParseException {
+     public void testAddFournisseur() throws ParseException {
         Fournisseur f = new Fournisseur("benyoussef", "achref");
         Fournisseur fournisseur = fournisseurService.addFournisseur(f);
         System.out.print("fournisseur " + fournisseur);
