@@ -2,6 +2,7 @@ package com.esprit.examen.controllers;
 
 import java.util.List;
 
+import com.esprit.examen.dto.CategorieProduitDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
