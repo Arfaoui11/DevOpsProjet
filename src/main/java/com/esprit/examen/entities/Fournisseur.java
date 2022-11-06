@@ -28,13 +28,9 @@ public class Fournisseur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public Fournisseur(Long idFournisseur, String code, String libelle,
-			Set<Facture> factures) {
-		super();
-		this.idFournisseur = idFournisseur;
+	public Fournisseur( String code, String libelle) {
 		this.code = code;
 		this.libelle = libelle;
-		this.factures = factures;
 	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
