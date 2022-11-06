@@ -2,6 +2,7 @@ package com.esprit.examen.controllers;
 
 import java.util.List;
 
+import com.esprit.examen.dto.CategorieProduitDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.esprit.examen.entities.CategorieProduit;
 import com.esprit.examen.services.ICategorieProduitService;
 import io.swagger.annotations.Api;
+import org.modelmapper.ModelMapper;
+
 
 @RestController
 @Api(tags = "Gestion des categories Produit")
 @RequestMapping("/categorieProduit")
 public class CategorieProduitController {
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Autowired
 	ICategorieProduitService categorieProduitService;
@@ -42,9 +47,9 @@ public class CategorieProduitController {
 	// http://localhost:8089/SpringMVC/categorieProduit/add-categorieProduit
 	@PostMapping("/add-categorieProduit")
 	@ResponseBody
-	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduit cp) {
-		CategorieProduit categorieProduit = categorieProduitService.addCategorieProduit(cp);
-		return categorieProduit;
+	public CategorieProduit addCategorieProduit(@RequestBody CategorieProduitDTO cp) {
+		CategorieProduit persistentC = modelMapper.map(cp,  CategorieProduit.class);
+		return categorieProduitService.addCategorieProduit(persistentC);
 	}
 
 	// http://localhost:8089/SpringMVC/categorieProduit/remove-categorieProduit/{categorieProduit-id}
@@ -57,8 +62,9 @@ public class CategorieProduitController {
 	// http://localhost:8089/SpringMVC/categorieProduit/modify-categorieProduit
 	@PutMapping("/modify-categorieProduit")
 	@ResponseBody
-	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduit categorieProduit) {
-		return categorieProduitService.updateCategorieProduit(categorieProduit);
+	public CategorieProduit modifyCategorieProduit(@RequestBody CategorieProduitDTO categorieProduit) {
+		CategorieProduit persistentC = modelMapper.map(categorieProduit,  CategorieProduit.class);
+		return categorieProduitService.updateCategorieProduit(persistentC);
 	}
 
 	
