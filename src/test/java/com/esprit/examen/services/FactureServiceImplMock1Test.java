@@ -11,10 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.ParseException;
@@ -50,7 +47,7 @@ public class FactureServiceImplMock1Test {
     };
     @Test
 
-    public  void testRetrieveFacturesMock() throws Exception {
+    public  void  testRetrieveFacturesByIdMock() throws Exception {
         Facture   returned = new Facture(1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
 
         Mockito.when(factureRepository.findById(1L)).thenReturn(Optional.of(returned));
@@ -86,6 +83,28 @@ public class FactureServiceImplMock1Test {
         assertEquals( true,input.getArchivee());
 
     }
+    @Test
+    public void testRetrieveAllFactures() throws ParseException {
+        Mockito.when(factureRepository.findAll()).thenReturn(list);
+        List<Facture> facture =factureRepository.findAll();
+
+        assertNotNull(facture);
+
+
+
+    }
+    @Test
+    @Order(3)
+    public void testupdateFacture( ) {
+        Facture  input = new Facture (1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
+
+        Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(input ));
+        Facture f =FactureService.retrieveFacture(1L);
+        f.setMontantFacture(300f);
+        Assertions.assertEquals( input.getMontantFacture(),f.getMontantFacture());
+
+    }
+
 
 
 

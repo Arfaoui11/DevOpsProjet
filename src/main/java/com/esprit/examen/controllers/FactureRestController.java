@@ -61,12 +61,18 @@ public class FactureRestController {
     @GetMapping("/getFactureByFournisseur/{fournisseur-id}")
     @ResponseBody
     public List<Facture> getFactureByFournisseur(@PathVariable("fournisseur-id") Long fournisseurId) {
-        return factureService.getFacturesByFournisseur(fournisseurId);
+        return (List<Facture>) factureService.getFacturesByFournisseur(fournisseurId);
     }
 
     @PutMapping(value = "/assignOperateurToFacture/{idOperateur}/{idFacture}")
     public void assignOperateurToFacture(@PathVariable("idOperateur") Long idOperateur, @PathVariable("idFacture") Long idFacture) {
         factureService.assignOperateurToFacture(idOperateur, idFacture);
+    }
+    @PutMapping("/modify-facture")
+    @ResponseBody
+    public Facture modifyFacture(@RequestBody FactureDTO facture) {
+        Facture persistentFacture = modelMapper.map(facture,  Facture.class);
+        return factureService.updatefacture(persistentFacture);
     }
 
 

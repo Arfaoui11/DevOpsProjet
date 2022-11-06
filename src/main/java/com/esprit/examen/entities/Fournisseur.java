@@ -1,6 +1,7 @@
 package com.esprit.examen.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,12 +30,11 @@ public class Fournisseur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	public Fournisseur(Long idFournisseur, String code, String libelle,
-			Set<Facture> factures) {
+			List<Facture> factures) {
 		super();
 		this.idFournisseur = idFournisseur;
 		this.code = code;
 		this.libelle = libelle;
-		this.factures = factures;
 	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,8 +45,8 @@ public class Fournisseur implements Serializable {
 	private CategorieFournisseur  categorieFournisseur;
 	@OneToMany(mappedBy="fournisseur")
 	@JsonIgnore
-	private Set<Facture> factures;
-    @ManyToMany
+	List<Facture> factures;
+    @ManyToMany(fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<SecteurActivite> secteurActivites;
     @OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
