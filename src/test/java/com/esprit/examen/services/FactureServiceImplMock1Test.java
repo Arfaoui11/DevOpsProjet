@@ -83,7 +83,7 @@ public class FactureServiceImplMock1Test {
         //stub the data
         Mockito.when(factureRepository.findById(1L)).thenReturn(Optional.of(input));
         FactureService.cancelFacture(input.getIdFacture());
-        assertEquals( input.getArchivee(),true);
+        assertEquals( true,input.getArchivee());
 
     }
 

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.esprit.examen.entities.Facture;
 import com.esprit.examen.entities.Reglement;
 import com.esprit.examen.repositories.FactureRepository;
 import com.esprit.examen.repositories.ReglementRepository;
@@ -37,9 +36,7 @@ public class ReglementServiceImpl implements IReglementService {
 	public List<Reglement> retrieveReglementByFacture(Long idFacture) {
 		return reglementRepository.retrieveReglementByFacture(idFacture);
 		
-//		ou bien(Sans JPQL)
-//		Facture f= factureRepository.findById(idFacture).get();
-//		return (List<Reglement>) f.getReglements();
+
 	}
 
 	@Override
