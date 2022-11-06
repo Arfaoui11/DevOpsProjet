@@ -68,9 +68,9 @@ pipeline {
                           sh  'ansible-playbook  ansible-playbook.yml'
                }
 
-         }
+         }*/
 
-         /*stage('Build docker image') {
+         stage('Build docker image') {
                steps{
 
                         sh 'docker build -t omardrissi/projectdevops1  .'
@@ -94,17 +94,17 @@ pipeline {
                }
          }
 
-         stage('Cleaning up') {
+         /*stage('Cleaning up') {
                steps {
                          sh "docker rmi $registry:$BUILD_NUMBER"
                }
          }*/
 
-          stage('DOCKER COMPOSE') {
+          /*stage('DOCKER COMPOSE') {
                 steps {
                             sh 'docker-compose up -d '
                 }
-          }
+          }*/
 
 
 
