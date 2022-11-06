@@ -100,7 +100,7 @@ pipeline {
 
                                           }
 
-                     }
+                                              }
 
                stage('Cleaning up') {
                      steps {
@@ -116,7 +116,7 @@ pipeline {
 
                                                      }
 
-                           }
+                                                   }
                            }
 
  post {
@@ -126,8 +126,8 @@ pipeline {
           body: "${env.BUILD_URL} has result ${currentBuild.result}"
     }
   }
+}
 
-
-        }
+    }
 
        
