@@ -1,19 +1,19 @@
 import java.text.SimpleDateFormat
 pipeline {
     agent any
-
+/*
      environment {
             registry = "omardrissi/devops-project"
             registryCredential = 'dckr_pat_NX_qTIaloGguDSY22Ki8Jk04CJo'
             dockerImage = ''
-     }
+     }*/
 
     stages {
 
         stage('Checkout GIT') {
             steps {
                 echo 'Pulling...';
-                git branch: 'omarBack',
+                git branch: 'siwarbrahmi',
                 url : 'https://github.com/Arfaoui11/DevOpsProjet.git'
             }
         }
@@ -38,13 +38,13 @@ pipeline {
             steps{
                 sh  'mvn compile'
             }
-        }
+        }/*
 
         stage('MVN PACKAGE'){
               steps{
                   sh  'mvn package'
               }
-        }
+        }*/
 
         /* stage('Ansible'){
                steps{
@@ -84,33 +84,33 @@ pipeline {
                }
          }*/
 
-          stage('DOCKER COMPOSE') {
+          /*stage('DOCKER COMPOSE') {
                 steps {
                             sh 'docker-compose up -d --build'
                 }
-          }
-
-          stage("nexus deploy"){
-               steps{
-                       sh 'mvn  deploy'
-               }
-          }
-
+          }*/
           stage('MVN SONARQUBE'){
 
                 steps{
                           sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                 }
           }
-          stage("Test JUnit /Mockito"){
+          stage("nexus deploy"){
+               steps{
+                       sh 'mvn  deploy'
+               }
+          }
+
+
+         /* stage("Test JUnit /Mockito"){
                 steps {
                             sh 'mvn test'
                 }
-          }
+          }*/
 
     }
 
-    post{
+  /*  post{
 
             success {
                 mail to: "projectdevops22@gmail.com",
@@ -132,7 +132,7 @@ pipeline {
                 from: "projectdevops22@gmail.com",
                 body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
             }
-        }
+        }*/
 }
 
 
