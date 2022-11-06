@@ -1,12 +1,6 @@
 import java.text.SimpleDateFormat
 pipeline {
     agent any
-/*
-     environment {
-            registry = "omardrissi/devops-project"
-            registryCredential = 'dckr_pat_NX_qTIaloGguDSY22Ki8Jk04CJo'
-            dockerImage = ''
-     }*/
 
     stages {
 
@@ -30,7 +24,7 @@ pipeline {
 
         stage('MVN CLEAN'){
             steps{
-                sh  'mvn clean'
+                sh  'mvn clean install'
             }
         }
 
@@ -38,70 +32,31 @@ pipeline {
             steps{
                 sh  'mvn compile'
             }
-        }/*
-
-        stage('MVN PACKAGE'){
-              steps{
-                  sh  'mvn package'
-              }
         }
-
-	 stage('MVN BUILD'){
-              steps{
-                  sh  'mvn package && java -jar target/gs-spring-boot-docker-0.1.0.jar'
-              }
-        }
-*/
-
-        /* stage('Ansible'){
-               steps{
-                          sh  'ansible-playbook -i hosts.yml ansible-playbook.yml'
-               }
-
-         }*/
-
-        stage('Building our image') {
-               steps{
-                        script {
-                            dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                        }
-               }
-        }
-
-        stage('Docker images'){
-               steps{
-                        sh 'docker images'
-               }
-        }
-
-
-         stage('Deploy our image') {
-               steps {
-                        script {
-                            docker.withRegistry( '', registryCredential ) {
-                                dockerImage.push()
-                            }
-                        }
-               }
-         }
-
-         stage('Cleaning up') {
-               steps {
-                         sh "docker rmi $registry:$BUILD_NUMBER"
-               }
-         }
-
-          /*stage('DOCKER COMPOSE') {
-                steps {
-                            sh 'docker-compose up -d --build'
-                }
-          }*/
-          stage('MVN SONARQUBE'){
+ stage('MVN SONARQUBE'){
 
                 steps{
                           sh  'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
                 }
           }
+	 stage('MVN BUILD'){
+              steps{
+                  sh  'mvn package && java -jar target/gs-spring-boot-docker-0.1.0.jar'
+              }
+        }
+
+
+        stage('Building docker image') {
+               steps{
+                        script {
+                     sh 'ls target/'
+		     sh 'docker build -t achatapp .'      
+                        }
+               }
+        }
+
+      
+         
           stage("nexus deploy"){
                steps{
                        sh 'mvn  deploy'
@@ -115,31 +70,29 @@ pipeline {
                 }
           }*/
 
+
+          stage('push') {
+        steps{
+            
+                sh 'echo docker hub'
+                    sh 'docker login -u sywarbr -p siwarsiwar'
+                
+                sh 'docker tag achatapp sywarbr/achatapp'
+                sh 'docker push sywarbr/achatapp'
+                
+        }
+        
+        
+        
+        }
+stage('docker compose'){
+    steps {
+        sh 'docker-compose up -d'
+    }
+}
+
     }
 
-  /*  post{
-
-            success {
-                mail to: "projectdevops22@gmail.com",
-                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
-                from: "projectdevops22@gmail.com",
-                subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
-            }
-
-            failure{
-                mail to: "projectdevops22@gmail.com",
-                subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                from: "projectdevops22@gmail.com",
-                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
-            }
-
-            changed{
-                mail to: "projectdevops22@gmail.com",
-                subject: "jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
-                from: "projectdevops22@gmail.com",
-                body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
-            }
-        }*/
 }
 
 
