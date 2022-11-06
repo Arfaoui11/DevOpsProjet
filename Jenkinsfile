@@ -44,7 +44,14 @@ pipeline {
               steps{
                   sh  'mvn package'
               }
-        }*/
+        }
+
+	 stage('MVN BUILD'){
+              steps{
+                  sh  'mvn package && java -jar target/gs-spring-boot-docker-0.1.0.jar'
+              }
+        }
+*/
 
         /* stage('Ansible'){
                steps{
