@@ -51,7 +51,7 @@ public class FournisseurServiceMockImplTest {
         Fournisseur u= fournisseurService.addFournisseur(p);
         assertNotNull(u.getCode());
         assertNotNull(u.getLibelle());
-        assertNotNull(u.getIdFournisseur());
+
 
     }
     @Test
