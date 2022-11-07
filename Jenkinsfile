@@ -82,7 +82,7 @@ pipeline {
           }
 
 
-        /*stage('Building our image') {
+        stage('Building our image') {
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -99,7 +99,7 @@ pipeline {
                 }
             }
         }
-*/
+
 
 	    	 /*timeout(time: 1, unit: 'HOURS') {
               def qg = waitForQualityGate()
@@ -113,7 +113,7 @@ pipeline {
 
 
 
-        /*stage('Cleaning up') {
+        stage('Cleaning up') {
 
             steps {
 
@@ -121,7 +121,7 @@ pipeline {
 
             }
 
-        }*/
+        }
 
 
     }
