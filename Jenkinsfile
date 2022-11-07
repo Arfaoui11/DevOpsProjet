@@ -16,37 +16,36 @@ pipeline {
 
                stage('MVN Package'){
             steps {
-                sh """mvn -version  """
-                sh """java -version """
-               sh """mvn clean package -e """
+
+               sh ' mvn clean package '
             }
         }
                stage("MVN Compile"){
             steps {
-                sh """mvn compile -e """
+                sh ' mvn compile'
 
             }
         }
       stage("SONARQUBE"){
             steps {
-                sh """mvn sonar:sonar """
+                sh ' mvn sonar:sonar'
 
             }
         }
                stage("Junit/Mockito"){
             steps {
-                sh """mvn test """
+                sh ' mvn test'
 
             }
         }
         stage('Nexus'){
             steps{
-                sh """mvn deploy """
+                sh ' mvn deploy'
             }
         }
                stage("MVN Install"){
             steps {
-                sh """mvn install """
+                sh 'mvn install'
 
             }
         }
