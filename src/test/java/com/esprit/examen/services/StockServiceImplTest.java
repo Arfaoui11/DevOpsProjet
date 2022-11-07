@@ -2,9 +2,13 @@ package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +17,8 @@ import com.esprit.examen.entities.Stock;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Slf4j
 public class StockServiceImplTest {
 	@Autowired
 	IStockService stockService;
