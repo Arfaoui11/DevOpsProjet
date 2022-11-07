@@ -35,7 +35,10 @@ public class ProduitServiceImplTest {
     @Order(4)
     public void testRetrieveAllProducts() {
         List<Produit> listProduits = produitService.retrieveAllProduits();
-        Assertions.assertEquals(1, listProduits.size());
+        Assertions.assertNotEquals(0, listProduits.size());
+        log.info("All Products ===>" + listProduits);
+        log.warn("List vide ===>" + listProduits);
+
     }
 
 
@@ -63,6 +66,10 @@ public class ProduitServiceImplTest {
 
         assertEquals(expected+1, produitService.retrieveAllProduits().size());
         assertNotNull(savedProduit.getLibelleProduit());
+
+        log.info(" Products  ajoutée ===>" + savedProduit);
+        log.warn("List vide ===>" + savedProduit);
+
        produitService.deleteProduit(savedProduit.getIdProduit());
        stockService.deleteStock(savedStock.getIdStock());
 
@@ -93,6 +100,8 @@ public class ProduitServiceImplTest {
         assertSame("test", savedProduit.getLibelleProduit());
         assertTrue(savedProduit.getPrix()>31F);
 
+        log.info(" Produit  ajoutée ===>" + savedProduit);
+        log.warn("Produit non ajoutee ===>" + savedProduit);
         produitService.deleteProduit(savedProduit.getIdProduit());
         stockService.deleteStock(savedStock.getIdStock());
 
@@ -130,6 +139,9 @@ public class ProduitServiceImplTest {
         assertSame("test 10:35", updatedProduit.getLibelleProduit());
         assertTrue(updatedProduit.getPrix()>221F);
 
+        log.info(" Produit  update ===>" + savedProduit);
+        log.warn("Produit non update ===>" + savedProduit);
+
         produitService.deleteProduit(savedProduit.getIdProduit());
         stockService.deleteStock(savedStock.getIdStock());
 
@@ -159,6 +171,9 @@ public class ProduitServiceImplTest {
         produitService.deleteProduit(savedProduit.getIdProduit());
 
         assertNull(produitService.retrieveProduit(savedProduit.getIdProduit()));
+
+        log.info(" Products  delete ===>" + savedProduit);
+        log.warn("Produit non delete ===>" + savedProduit);
         stockService.deleteStock(savedStock.getIdStock());
     }
 
