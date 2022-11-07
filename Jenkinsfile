@@ -128,10 +128,10 @@ pipeline {
 
     post {
             success {
-                mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'achrefbenyoussef1@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'achref.benyoussef1@esprit.tn'
+                mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'achref.benyoussef1@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'achref.benyoussef1@esprit.tn'
             }
             failure {
-                mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'achrefbenyoussef1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'achrefbenyoussef1@esprit.tn'
+                mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'achref.benyoussef1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'achref.benyoussef1@esprit.tn'
              }
         }
     }
