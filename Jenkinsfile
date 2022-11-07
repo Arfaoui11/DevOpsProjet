@@ -38,11 +38,11 @@ pipeline {
 
             }
         }
-      /*  stage('Nexus'){
+        stage('Nexus'){
             steps{
                 sh 'mvn deploy'
             }
-        }*/
+        }
                stage("MVN Install"){
             steps {
                 sh 'mvn install'
