@@ -1,42 +1,42 @@
 import java.text.SimpleDateFormat
 
-pipeline { 
+pipeline {
        agent any
-       
-       
+
+
         stages{
             stage('Checkout GIT'){
                 steps{
                     echo 'Pulling...';
-                    git branch: 'YassouraBack',
+                    git branch: 'YassouraBackend',
                     url : 'https://github.com/Arfaoui11/DevOpsProjet.git',
                    credentialsId:"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";
                              }
-                             } 
-           
+                             }
+
                stage('MVN Package'){
             steps {
                 sh """mvn -version  """
                 sh """java -version """
-               sh """mvn package -e """
+               sh """mvn clean package -e """
             }
         }
                stage("MVN Compile"){
             steps {
                 sh """mvn compile -e """
-                
+
             }
         }
       stage("SONARQUBE"){
             steps {
                 sh """mvn sonar:sonar """
-                
+
             }
         }
                stage("Junit/Mockito"){
             steps {
                 sh """mvn test """
-                
+
             }
         }
         stage('Nexus'){
@@ -47,15 +47,21 @@ pipeline {
                stage("MVN Install"){
             steps {
                 sh """mvn install """
-                
+
             }
         }
+       /*  stage("Build the package"){
+                             steps {
+                               sh 'docker-compose up -d --build'
+                             }
+                        }
         stage("MVN Clean"){
             steps {
                 sh """mvn clean -e """
-                
+
             }
+        }*/
+
+
         }
         }
-        }
-       
