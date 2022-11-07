@@ -50,12 +50,12 @@ pipeline {
 
             }
         }
-       /*  stage("Build the package"){
+         stage("Build the package"){
                              steps {
                                sh 'docker-compose up -d --build'
                              }
                         }
-        stage("MVN Clean"){
+       /* stage("MVN Clean"){
             steps {
                 sh """mvn clean -e """
 
