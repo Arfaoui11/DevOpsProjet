@@ -15,9 +15,9 @@ import io.swagger.annotations.Api;
 
 
 @RestController
+@CrossOrigin("*")//NOSONAR
 @Api(tags = "Gestion des produits")
 @RequestMapping("/produit")
-
 public class ProduitRestController {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class ProduitRestController {
 	@Autowired
 	private ModelMapper modelMapper;
 
-	@GetMapping("/retrieve-all-produits")
+	@GetMapping("/get-all-produits")
 	@ResponseBody
 	public List<Produit> getProduits() {
 		return produitService.retrieveAllProduits();
