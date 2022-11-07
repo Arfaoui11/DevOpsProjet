@@ -2,11 +2,7 @@ import java.text.SimpleDateFormat
 pipeline {
     agent any
 
-     /**environment {
-            registry = "omardrissi/devops-project"
-            registryCredential = 'dckr_pat_NX_qTIaloGguDSY22Ki8Jk04CJo'
-            dockerImage = ''
-     }**/
+
 
     stages {
 
@@ -73,7 +69,7 @@ pipeline {
          stage('Build docker image') {
                steps{
 
-                        sh 'docker build -t omardrissi/projectdevops1  .'
+                        sh 'docker build -t omardrissi/projectdevops2  .'
                }
          }
 
@@ -90,7 +86,7 @@ pipeline {
                steps {
 
                         sh 'echo "Docker is pushing ...."'
-                        sh 'docker push omardrissi/projectdevops1 '
+                        sh 'docker push omardrissi/projectdevops2 '
                }
          }
 
