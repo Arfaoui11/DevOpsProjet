@@ -1,9 +1,8 @@
-package com.esprit.examen.services;
+/*package com.esprit.examen.services;
 
 
 import com.esprit.examen.entities.DetailFournisseur;
 import com.esprit.examen.entities.Fournisseur;
-import com.esprit.examen.repositories.DetailFournisseurRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -75,3 +74,5 @@ public class FournisseurServiceMockImplTest {
 
 
 }
+
+ */
