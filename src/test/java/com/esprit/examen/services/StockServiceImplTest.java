@@ -2,12 +2,10 @@ package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
+
 import java.util.List;
 
-import com.esprit.examen.entities.Produit;
+
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
