@@ -1,6 +1,6 @@
 ---
 - name: sample_book
-  hosts: dev-servers
+  hosts: 192.168.43.12
   remote_user: root
   become: true
   tasks:
