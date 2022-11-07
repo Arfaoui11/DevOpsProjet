@@ -15,6 +15,11 @@ pipeline {
                           url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
+        stage('ansible'){
+                                      steps {
+                                          sh 'ansible-playbook ansible-playbook.yml'
+                                             }
+                                 }
         stage('clean package'){
                      steps{
                          sh 'mvn clean package'
@@ -77,7 +82,7 @@ pipeline {
           }
 
 
-        /*stage('Building our image') {
+        stage('Building our image') {
             steps {
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -94,7 +99,7 @@ pipeline {
                 }
             }
         }
-*/
+
 
 	    	 /*timeout(time: 1, unit: 'HOURS') {
               def qg = waitForQualityGate()
@@ -108,7 +113,7 @@ pipeline {
 
 
 
-        /*stage('Cleaning up') {
+        stage('Cleaning up') {
 
             steps {
 
@@ -116,18 +121,33 @@ pipeline {
 
             }
 
-        }*/
+        }
 
 
     }
 
     post {
-            success {
-                mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'mahdi.arfaoui1@esprit.tn'
-            }
-            failure {
-                mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'mahdi.arfaoui1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'mahdi.arfaoui1@esprit.tn'
-             }
+
+                        success {
+                            mail to: "achref.benyoussef1@esprit.tn",
+                            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
+                            from: 'achref.benyoussef1@esprit.tn',
+                            subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+                        }
+
+                        failure{
+                            mail to: "achref.benyoussef1@esprit.tn",
+                            subject: "Jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                            from: 'achref.benyoussef1@esprit.tn',
+                            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+                        }
+
+                        changed{
+                            mail to: "achref.benyoussef1@esprit.tn",
+                            subject: "Jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                            from: 'achref.benyoussef1@esprit.tn',
+                            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+                        }
         }
     }
 
