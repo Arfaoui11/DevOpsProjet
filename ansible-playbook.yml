@@ -5,14 +5,14 @@
   become: true
   tasks:
     - name: Run nexus container
-      command: docker start nexus
+      command: docker start 679d0f2504c3
       ignore_errors: yes
     - name: Run sonarQube contanier
-      command: docker start 840a0f2815dc
+      command: docker start 252f02bd5326
       ignore_errors: yes
     - name: Run prometheus container
-      command: docker start prometheus
+      command: docker start 84f46adf3a26
       ignore_errors: yes
     - name: Run grafana container
-      command: docker start grafana
+      command: docker start e459ec42aaf5
       ignore_errors: yes
