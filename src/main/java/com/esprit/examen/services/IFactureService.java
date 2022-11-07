@@ -6,6 +6,8 @@ import com.esprit.examen.entities.Facture;
 
 public interface IFactureService {
 	List<Facture> retrieveAllFactures();
+	 Facture updatefacture(Facture f);
+
 
 	List<Facture> getFacturesByFournisseur(Long idFournisseur);
 

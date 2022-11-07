@@ -19,8 +19,8 @@ public class SecteurActiviteServiceImpl implements ISecteurActiviteService{
 
 	@Override
 	public SecteurActivite addSecteurActivite(SecteurActivite sa) {
-		secteurActiviteRepository.save(sa);
-		return sa;
+
+		return secteurActiviteRepository.save(sa);
 	}
 
 	@Override
