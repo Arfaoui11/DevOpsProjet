@@ -2,7 +2,6 @@ package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -10,6 +9,7 @@ import java.util.List;
 
 import com.esprit.examen.entities.Produit;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
@@ -24,6 +24,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Slf4j
 public class ProduitServiceImplTest {
     @Autowired
     IProduitService produitService;
@@ -35,6 +36,9 @@ public class ProduitServiceImplTest {
     public void testRetrieveAllProducts() {
         List<Produit> listProduits = produitService.retrieveAllProduits();
         Assertions.assertEquals(1, listProduits.size());
+        log.info("liste Produits " + listProduits);
+        log.warn("liste Produits Not added" + listProduits);
+
     }
 
 
@@ -62,8 +66,14 @@ public class ProduitServiceImplTest {
 
         assertEquals(expected+1, produitService.retrieveAllProduits().size());
         assertNotNull(savedProduit.getLibelleProduit());
+
+        log.info(" Produit Added " + savedProduit);
+        log.warn(" Produit Not Added" + savedProduit);
+
        produitService.deleteProduit(savedProduit.getIdProduit());
        stockService.deleteStock(savedStock.getIdStock());
+
+        log.warn("Produit not deleted " + savedProduit);
 
     }
 
@@ -91,6 +101,9 @@ public class ProduitServiceImplTest {
         assertNotNull(savedProduit.getIdProduit());
         assertSame("test", savedProduit.getLibelleProduit());
         assertTrue(savedProduit.getPrix()>31F);
+
+        log.info("Produit added " + savedProduit);
+        log.warn("Produit not added " + savedProduit);
 
         produitService.deleteProduit(savedProduit.getIdProduit());
         stockService.deleteStock(savedStock.getIdStock());
@@ -129,6 +142,9 @@ public class ProduitServiceImplTest {
         assertSame("test 10:35", updatedProduit.getLibelleProduit());
         assertTrue(updatedProduit.getPrix()>221F);
 
+        log.info("Produit added " + updatedProduit);
+        log.warn("Produit not added " + updatedProduit);
+
         produitService.deleteProduit(savedProduit.getIdProduit());
         stockService.deleteStock(savedStock.getIdStock());
 
@@ -155,7 +171,11 @@ public class ProduitServiceImplTest {
         Produit savedProduit = produitService.addProduit(produit);
 
 
+
         produitService.deleteProduit(savedProduit.getIdProduit());
+
+        log.info("Produit deleted " + savedProduit);
+        log.warn("Produit not deleted " + savedProduit);
 
         assertNull(produitService.retrieveProduit(savedProduit.getIdProduit()));
         stockService.deleteStock(savedStock.getIdStock());

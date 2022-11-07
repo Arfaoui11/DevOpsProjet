@@ -1,26 +1,24 @@
 package com.esprit.examen.services;
 
 
-import com.esprit.examen.entities.DetailFournisseur;
 import com.esprit.examen.entities.Fournisseur;
-import com.esprit.examen.repositories.DetailFournisseurRepository;
 import com.esprit.examen.repositories.FournisseurRepository;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
+
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 @ExtendWith(MockitoExtension.class)
 public class FournisseurServiceMockImplTest {
@@ -28,10 +26,9 @@ public class FournisseurServiceMockImplTest {
     FournisseurServiceImpl fournisseurService;
     @Mock
     FournisseurRepository fournisseurRepository ;
-    @Mock
-    DetailFournisseurRepository detailfournisseurRepository;
 
-    //logger
+
+
     Fournisseur fournisseur = new Fournisseur("f1", "l1");
     List<Fournisseur> fournisseurs = new ArrayList<Fournisseur>() {
         {
@@ -41,39 +38,53 @@ public class FournisseurServiceMockImplTest {
     };
 
     @Test
-    public void  retrieveAllFournisseursTest () {
-        when(fournisseurRepository.findAll()).thenReturn(new ArrayList());
-        List<Fournisseur> fournisseurList = fournisseurService.retrieveAllFournisseurs();
-        assertEquals(0,fournisseurList.size());
-
-    }
-    @Test
-    public void  addFournisseurTest() {
-        DetailFournisseur df = new DetailFournisseur();
-        df.setIdDetailFournisseur(1L);
-        when(fournisseurRepository.save(any())).thenReturn(df);
-        fournisseurService.addFournisseur(new Fournisseur());
-        assertEquals(1L,df.getIdDetailFournisseur());
-
-
-    }
-    @Test
-    public void  updateFournisseurTest() {
-        DetailFournisseur df = new DetailFournisseur();
-        df.setIdDetailFournisseur(1L);
-        when(fournisseurRepository.save(any())).thenReturn(df);
-        fournisseurService.updateFournisseur(new Fournisseur());
-        assertEquals(1L, df.getIdDetailFournisseur());
-    }
-    @Test
-    public void  retrieveFournisseurTest() {
-
-        DetailFournisseur df = new DetailFournisseur();
-        df.setIdDetailFournisseur(1L);
+    void testRetrieveFournisseur(){
         when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
-        Fournisseur f = fournisseurService.retrieveFournisseur(Long.valueOf("55"));
-        assertEquals(1L, df.getIdDetailFournisseur());
+        Fournisseur op1= fournisseurService.retrieveFournisseur(1L);
+        assertNotNull(op1);
     }
+    @Test
+    void testAddFournisseur(){
+        when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
+        Fournisseur p =fournisseurService.retrieveFournisseur(2L);
+        Fournisseur u= fournisseurService.addFournisseur(p);
+        assertNotNull(u.getCode());
+        assertNotNull(u.getLibelle());
+
+
+    }
+    @Test
+    void testDeleteFournisseur()  {
+        Fournisseur op = new Fournisseur();
+        op.setCode("test");
+        op.setIdFournisseur(1L);
+        when(fournisseurRepository.findById(op.getIdFournisseur())).thenReturn(Optional.of(op));
+        Fournisseur o = fournisseurService.retrieveFournisseur(1L);
+        fournisseurService.deleteFournisseur(o.getIdFournisseur());
+        verify(fournisseurRepository).deleteById(o.getIdFournisseur());
+    }
+    @Test
+    void testupdateFournisseur( ) {
+        when(fournisseurRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(fournisseur));
+        Fournisseur pr =fournisseurService.retrieveFournisseur(1L);
+        pr.setLibelle("pass");
+        assertThat(pr.getLibelle()).isEqualTo("pass");
+    }
+
+    @Test
+    void  testretrieveAllFournisseurs(){
+        List<Fournisseur> f = new ArrayList<>();
+        f.add(new Fournisseur());
+        when(fournisseurRepository.findAll()).thenReturn(f);
+        List<Fournisseur> expected = fournisseurService.retrieveAllFournisseurs();
+        assertEquals(expected, f);
+        verify(fournisseurRepository).findAll();
+    }
+
+
+
+
+
 
 
 
