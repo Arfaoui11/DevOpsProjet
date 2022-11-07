@@ -19,5 +19,4 @@ public interface IOperateurService {
 
 	List<Operateur> getOperateurByDateNaissance(Date d1, Date d2);
 
-
 }

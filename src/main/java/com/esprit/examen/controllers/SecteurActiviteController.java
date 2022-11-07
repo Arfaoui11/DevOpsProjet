@@ -14,7 +14,6 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des secteurs activites")
 @RequestMapping("/secteurActivite")
-
 public class SecteurActiviteController {
 
 	@Autowired

@@ -9,9 +9,8 @@ import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.repositories.OperateurRepository;
 
-@Slf4j
-
 @Service
+@Slf4j
 public class OperateurServiceImpl implements IOperateurService {
 
 	@Autowired
@@ -22,9 +21,9 @@ public class OperateurServiceImpl implements IOperateurService {
 	}
 
 	@Override
-	public Operateur addOperateur(Operateur o) {
-
-		return operateurRepository.save(o);
+	public Operateur addOperateur(Operateur op) {
+		operateurRepository.save(op);
+		return op;
 	}
 
 	@Override
@@ -41,9 +40,9 @@ public class OperateurServiceImpl implements IOperateurService {
 
 	@Override
 	public Operateur retrieveOperateur(Long id) {
-		Operateur operateur = operateurRepository.findById(id).orElse(null);
-		return operateur;
+		return operateurRepository.findById(id).orElse(null);
 	}
+
 	@Override
 	public List<Operateur> getOperateurByDateNaissance(Date d1, Date d2) {
 		log.info("In method getOperateurByDateNaissance");

@@ -15,4 +15,6 @@ public interface OperateurRepository extends CrudRepository<Operateur, Long> {
 
     @Query("SELECT  o FROM Operateur o WHERE o.dateNaissance between :d1 AND :d2")
     List<Operateur> retrieveOperateursByDateNaissance(@Param("d1") Date startDate, @Param("d2") Date endDate);
+
+
 }

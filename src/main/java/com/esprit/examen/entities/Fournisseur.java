@@ -28,6 +28,10 @@ public class Fournisseur implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	public Fournisseur( String code, String libelle) {
+		this.code = code;
+		this.libelle = libelle;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idFournisseur;
@@ -38,18 +42,12 @@ public class Fournisseur implements Serializable {
 	@OneToMany(mappedBy="fournisseur")
 	@JsonIgnore
 	private Set<Facture> factures;
-    @ManyToMany
-    @JsonIgnore
-    private Set<SecteurActivite> secteurActivites;
-    @OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
-    private DetailFournisseur detailFournisseur;
+	@ManyToMany
+	@JsonIgnore
+	private Set<SecteurActivite> secteurActivites;
+	@OneToOne(cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	private DetailFournisseur detailFournisseur;
 
-	public Fournisseur(String code, String libelle) {
-		this.code=code;
-		this.libelle=libelle;
 
-	}
-    
 
-	
 }

@@ -51,7 +51,7 @@ public class StockServiceImplMockTest {
     @Test
     void testRetrieveAllProduit() {
 
-        List<Stock> stocks = new ArrayList<>();
+        List<Stock> stocks = new ArrayList();
         stocks.add(new Stock());
         when(stockRepository.findAll()).thenReturn(stocks);
         List<Stock> expected = stockService.retrieveAllStocks();
@@ -80,10 +80,10 @@ public class StockServiceImplMockTest {
 
     @Test
     void testDeleteObject() {
-        Stock stock = new Stock();
-        stock.setLibelleStock("new test");
-        stock.setIdStock(1L);
-        when(stockRepository.findById(stock.getIdStock())).thenReturn(Optional.of(stock));
+        Stock produite = new Stock();
+        produite.setLibelleStock("new test");
+        produite.setIdStock(1L);
+        when(stockRepository.findById(produite.getIdStock())).thenReturn(Optional.of(produite));
         Stock stockq = stockService.retrieveStock(1L);
         stockService.deleteStock(stockq.getIdStock());
         verify(stockRepository).deleteById(stockq.getIdStock());

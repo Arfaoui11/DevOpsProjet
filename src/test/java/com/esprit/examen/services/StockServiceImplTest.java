@@ -1,7 +1,10 @@
 package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
+
+
 import java.util.List;
+
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -27,7 +30,7 @@ public class StockServiceImplTest {
 	@Order(4)
 	public void testRetrieveAllStocks() {
 		List<Stock> listStocks = stockService.retrieveAllStocks();
-		Assertions.assertEquals(0, listStocks.size());
+		Assertions.assertNotEquals(0, listStocks.size());
 	}
 
 	@Test
@@ -65,4 +68,30 @@ public class StockServiceImplTest {
 		stockService.deleteStock(savedStock.getIdStock());
 		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
 	}
+
+	@Test
+	@Order(5)
+	public void testUpdateStock() {
+
+		Stock s = new Stock(" new stock ",10,100);
+		Stock savedStock= stockService.addStock(s);
+
+		savedStock.setLibelleStock("12345");
+		savedStock.setQte(2);
+		savedStock.setQteMin(1);
+		savedStock.setIdStock(1L);
+
+		Stock updatedStock = stockService.updateStock(savedStock);
+
+
+		assertNotNull(updatedStock.getIdStock());
+		assertSame("12345", updatedStock.getLibelleStock());
+		//	assertTrue(updatedStock.getQte()>2);
+
+		stockService.deleteStock(updatedStock.getIdStock());
+		//	stockService.deleteStock(savedStock.getIdStock());
+
+
+	}
+
 }

@@ -17,7 +17,6 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des stocks")
 @RequestMapping("/stock")
-
 public class StockRestController {
 
 	@Autowired

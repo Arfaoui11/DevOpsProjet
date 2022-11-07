@@ -4,9 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 
-import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.DetailFournisseur;
@@ -23,18 +20,17 @@ import lombok.extern.slf4j.Slf4j;
 public class FournisseurServiceImpl implements IFournisseurService {
 
 	@Autowired
-	 FournisseurRepository fournisseurRepository;
+	FournisseurRepository fournisseurRepository;
 	@Autowired
 	DetailFournisseurRepository detailFournisseurRepository;
 	@Autowired
 	ProduitRepository produitRepository;
 	@Autowired
 	SecteurActiviteRepository secteurActiviteRepository;
-	private static final Logger l = LogManager.getLogger(Fournisseur.class);
 
 	@Override
 	public List<Fournisseur> retrieveAllFournisseurs() {
-		List<Fournisseur> fournisseurs = (List<Fournisseur>) fournisseurRepository.findAll();
+		List<Fournisseur> fournisseurs =  fournisseurRepository.findAll();
 		for (Fournisseur fournisseur : fournisseurs) {
 			log.info(" fournisseur : " + fournisseur);
 		}
@@ -42,17 +38,12 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	}
 
 
-	public Fournisseur addFournisseur(Fournisseur f /*Master*/) {
-		try {
-			l.info("In Method addFournisseur :");
-		DetailFournisseur df= new DetailFournisseur();//Slave
-		df.setDateDebutCollaboration(new Date()); //util
-		//On affecte le "Slave" au "Master"
+	public Fournisseur addFournisseur(Fournisseur f ) {
+		DetailFournisseur df= new DetailFournisseur();
+		df.setDateDebutCollaboration(new Date());
+
 		f.setDetailFournisseur(df);	
 		fournisseurRepository.save(f);
-		}catch (Exception e) {
-			l.error("out of Method addFournisseur with Errors + e");
-		}
 		return f;
 	}
 	
@@ -63,14 +54,9 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	}
 
 	public Fournisseur updateFournisseur(Fournisseur f) {
-		try {
-			l.info("In Method UpdateFournisseur :");
 		DetailFournisseur df = saveDetailFournisseur(f);
 		f.setDetailFournisseur(df);	
 		fournisseurRepository.save(f);
-		}catch (Exception e) {
-			l.error("out of Method updateFournisseur with Errors + e");
-		}
 		return f;
 	}
 
@@ -83,8 +69,7 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	@Override
 	public Fournisseur retrieveFournisseur(Long fournisseurId) {
 
-		Fournisseur fournisseur = fournisseurRepository.findById(fournisseurId).orElse(null);
-		return fournisseur;
+		return fournisseurRepository.findById(fournisseurId).orElse(null);
 	}
 
 	@Override
@@ -97,7 +82,6 @@ public class FournisseurServiceImpl implements IFournisseurService {
 
 			fournisseurRepository.save(fournisseur);
 		}
-
 		
 		
 	}

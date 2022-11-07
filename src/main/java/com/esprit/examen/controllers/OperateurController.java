@@ -14,7 +14,6 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des opérateurs")
 @RequestMapping("/operateur")
-
 public class OperateurController {
 
 	@Autowired

@@ -8,7 +8,7 @@ public interface ISecteurActiviteService {
 
 	List<SecteurActivite> retrieveAllSecteurActivite();
 
-	SecteurActivite addSecteurActivite(SecteurActivite saa);
+	SecteurActivite addSecteurActivite(SecteurActivite sa);
 
 	void deleteSecteurActivite(Long id);
 

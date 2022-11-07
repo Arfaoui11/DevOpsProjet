@@ -35,9 +35,9 @@ public class ProduitServiceImplTest {
     @Order(4)
     public void testRetrieveAllProducts() {
         List<Produit> listProduits = produitService.retrieveAllProduits();
-        Assertions.assertEquals(1, listProduits.size());
-        log.info("liste Produits " + listProduits);
-        log.warn("liste Produits Not added" + listProduits);
+        Assertions.assertNotEquals(0, listProduits.size());
+        log.info("All Products ===>" + listProduits);
+        log.warn("List vide ===>" + listProduits);
 
     }
 
@@ -61,19 +61,17 @@ public class ProduitServiceImplTest {
 
         final Produit produit = new Produit("123", " test", 32.0F,myDate ,myDate1);
 
-       produit.setStock(savedStock);
-       Produit savedProduit = produitService.addProduit(produit);
+        produit.setStock(savedStock);
+        Produit savedProduit = produitService.addProduit(produit);
 
         assertEquals(expected+1, produitService.retrieveAllProduits().size());
         assertNotNull(savedProduit.getLibelleProduit());
 
-        log.info(" Produit Added " + savedProduit);
-        log.warn(" Produit Not Added" + savedProduit);
+        log.info(" Products  ajoutée ===>" + savedProduit);
+        log.warn("List vide ===>" + savedProduit);
 
-       produitService.deleteProduit(savedProduit.getIdProduit());
-       stockService.deleteStock(savedStock.getIdStock());
-
-        log.warn("Produit not deleted " + savedProduit);
+        produitService.deleteProduit(savedProduit.getIdProduit());
+        stockService.deleteStock(savedStock.getIdStock());
 
     }
 
@@ -102,9 +100,8 @@ public class ProduitServiceImplTest {
         assertSame("test", savedProduit.getLibelleProduit());
         assertTrue(savedProduit.getPrix()>31F);
 
-        log.info("Produit added " + savedProduit);
-        log.warn("Produit not added " + savedProduit);
-
+        log.info(" Produit  ajoutée ===>" + savedProduit);
+        log.warn("Produit non ajoutee ===>" + savedProduit);
         produitService.deleteProduit(savedProduit.getIdProduit());
         stockService.deleteStock(savedStock.getIdStock());
 
@@ -112,7 +109,7 @@ public class ProduitServiceImplTest {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     public void testUpdateProduct() {
 
         Stock s = new Stock(" new stock ",10,100);
@@ -142,8 +139,8 @@ public class ProduitServiceImplTest {
         assertSame("test 10:35", updatedProduit.getLibelleProduit());
         assertTrue(updatedProduit.getPrix()>221F);
 
-        log.info("Produit added " + updatedProduit);
-        log.warn("Produit not added " + updatedProduit);
+        log.info(" Produit  update ===>" + savedProduit);
+        log.warn("Produit non update ===>" + savedProduit);
 
         produitService.deleteProduit(savedProduit.getIdProduit());
         stockService.deleteStock(savedStock.getIdStock());
@@ -171,13 +168,12 @@ public class ProduitServiceImplTest {
         Produit savedProduit = produitService.addProduit(produit);
 
 
-
         produitService.deleteProduit(savedProduit.getIdProduit());
 
-        log.info("Produit deleted " + savedProduit);
-        log.warn("Produit not deleted " + savedProduit);
-
         assertNull(produitService.retrieveProduit(savedProduit.getIdProduit()));
+
+        log.info(" Products  delete ===>" + savedProduit);
+        log.warn("Produit non delete ===>" + savedProduit);
         stockService.deleteStock(savedStock.getIdStock());
     }
 
