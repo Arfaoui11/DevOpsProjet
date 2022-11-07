@@ -50,16 +50,17 @@ pipeline {
                 
             }
         }
-        stage("MVN Clean"){
-            steps {
-                sh """mvn clean -e """
-                
-            }
-        }
-       // stage("Build the package"){
-              //       steps {
-              //         sh 'docker-compose up -d --build'
-              //       }
-              //  }
+
+        stage("Build the package"){
+                                    steps {
+                                      sh 'docker-compose up -d --build'
+                                    }
+                               }
+               stage("MVN Clean"){
+                   steps {
+                       sh """mvn clean -e """
+
+                   }
+               }
         }
         }
