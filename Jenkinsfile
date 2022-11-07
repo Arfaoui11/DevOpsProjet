@@ -15,6 +15,11 @@ pipeline {
                           url: 'https://github.com/Arfaoui11/DevOpsProjet.git';
                       }
         }
+        stage('ansible'){
+                                      steps {
+                                          sh 'ansible-playbook ansible-playbook.yml'
+                                             }
+                                 }
         stage('clean package'){
                      steps{
                          sh 'mvn clean package'
