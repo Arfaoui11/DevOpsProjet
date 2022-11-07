@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+/*package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
 
@@ -124,7 +124,7 @@ public class FactureServiceImplTest {
 		Operateur operateurSaved =  operateurService.addOperateur(o);
 		factureService.assignOperateurToFacture(a,a); 	
 	}
-	/*
+
 	 @Test
 		public void  pourcentageRecouvrement() throws ParseException{
 			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -133,8 +133,10 @@ public class FactureServiceImplTest {
 			factureService.pourcentageRecouvrement(startDate, endDate);
 		}
 
-*/
+
 }
 
-*/
+
+ */
+
 
