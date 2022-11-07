@@ -2,7 +2,6 @@ package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
 
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -10,6 +9,7 @@ import java.util.List;
 
 import com.esprit.examen.entities.Produit;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
@@ -24,6 +24,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Slf4j
 public class ProduitServiceImplTest {
     @Autowired
     IProduitService produitService;
@@ -99,7 +100,7 @@ public class ProduitServiceImplTest {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     public void testUpdateProduct() {
 
         Stock s = new Stock(" new stock ",10,100);

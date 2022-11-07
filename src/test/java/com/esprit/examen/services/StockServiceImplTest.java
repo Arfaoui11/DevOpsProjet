@@ -1,10 +1,19 @@
 package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+
+import com.esprit.examen.entities.Produit;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +22,8 @@ import com.esprit.examen.entities.Stock;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Slf4j
 public class StockServiceImplTest {
 	@Autowired
 	IStockService stockService;
@@ -58,6 +69,31 @@ public class StockServiceImplTest {
 		Stock savedStock= stockService.addStock(s);
 		stockService.deleteStock(savedStock.getIdStock());
 		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
+	}
+
+	@Test
+	@Order(5)
+	public void testUpdateStock() {
+
+		Stock s = new Stock(" new stock ",10,100);
+		Stock savedStock= stockService.addStock(s);
+
+		savedStock.setLibelleStock("12345");
+		savedStock.setQte(2);
+		savedStock.setQteMin(1);
+		savedStock.setIdStock(1L);
+
+		Stock updatedStock = stockService.updateStock(savedStock);
+
+
+		assertNotNull(updatedStock.getIdStock());
+		assertSame("12345", updatedStock.getLibelleStock());
+		assertTrue(updatedStock.getQte()>1);
+
+		stockService.deleteStock(updatedStock.getIdStock());
+		stockService.deleteStock(savedStock.getIdStock());
+
+
 	}
 
 }
