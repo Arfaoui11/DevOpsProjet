@@ -127,12 +127,27 @@ pipeline {
     }
 
     post {
-            success {
-                mail bcc: '', body: 'Pipeline build successfully', cc: '', from: 'achref.benyoussef1@esprit.tn', replyTo: '', subject: 'The Pipeline success', to: 'achref.benyoussef1@esprit.tn'
-            }
-            failure {
-                mail bcc: '', body: 'Pipeline build not success', cc: '', from: 'achref.benyoussef1@esprit.tn', replyTo: '', subject: 'The Pipeline failed', to: 'achref.benyoussef1@esprit.tn'
-             }
+
+                        success {
+                            mail to: "achref.benyoussef1@esprit.tn",
+                            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n, More info at: ${env.BUILD_URL}",
+                            from: 'achref.benyoussef1@esprit.tn',
+                            subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}"
+                        }
+
+                        failure{
+                            mail to: "achref.benyoussef1@esprit.tn",
+                            subject: "Jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                            from: 'achref.benyoussef1@esprit.tn',
+                            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+                        }
+
+                        changed{
+                            mail to: "achref.benyoussef1@esprit.tn",
+                            subject: "Jenkins build:${currentBuild.currentResult}: ${env.JOB_NAME}",
+                            from: 'achref.benyoussef1@esprit.tn',
+                            body: "${currentBuild.currentResult}: Job ${env.JOB_NAME}\nMore Info can be found here: ${env.BUILD_URL}"
+                        }
         }
     }
 
