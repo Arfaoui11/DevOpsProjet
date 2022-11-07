@@ -3,14 +3,16 @@ package com.esprit.examen.services;
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.repositories.FactureRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -20,35 +22,22 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-
-//NOSONAR
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 @Slf4j
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+
 public class FactureServiceImplMock1Test {
-    @Autowired
-    IFactureService factureService;
-    @Autowired
-
-    @Test
-    public void testAddFacture () throws ParseException {
-        Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true);
-        Facture savedFactrure= factureService.addFacture(f);
-        System.out.print("client "+savedFactrure);
-        assertNotNull(savedFactrure);
-        Assertions.assertEquals(200f, savedFactrure.getMontantFacture());
-        Assertions.assertEquals(20f,savedFactrure.getMontantRemise());
-        assertEquals(new Date(10 / 10 / 2022),savedFactrure.getDateCreationFacture());
-        factureService.cancelFacture(savedFactrure.getIdFacture());
-        log.info("facture ajoutée ===>" + savedFactrure.toString());
-
-    }
 
 
     @Mock
     FactureRepository factureRepository;
     @InjectMocks
     FactureServiceImpl  FactureService;
-    Facture f = new Facture(1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
+
+
+
+    Facture   returned = new Facture(1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
 
     List<Facture> list = new ArrayList<Facture>() {
         {
@@ -57,32 +46,27 @@ public class FactureServiceImplMock1Test {
         }
     };
     @Test
-    void testRetrieveFacturesMock() throws Exception {
 
-        Facture returned = new Facture (1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
+    public  void  testRetrieveFacturesByIdMock() throws Exception {
+        Facture   returned = new Facture(1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
 
         Mockito.when(factureRepository.findById(1L)).thenReturn(Optional.of(returned));
-        Facture result =FactureService.retrieveFacture(1L);
 
+        Facture result =FactureService.retrieveFacture(1L);
         Assertions.assertEquals(200f, result.getMontantFacture());
         Assertions.assertEquals(20f, result.getMontantRemise());
         Assertions.assertEquals(new Date(10 / 10 / 2022), result.getDateCreationFacture());
-        log.info("get ===>" +  result.toString());
+        log.info("get ===>" + result.toString());
 
     }
     @Test
-    void testAddFactureMock() throws Exception {
-        Facture  input1 = new Facture (1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
+    public void testAddFactureMock() throws Exception {
+        Facture input1 = new Facture (1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
         Facture returned1 =  new  Facture (1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
-
-
         //stub the data
         Mockito.when(factureRepository.save(input1)).thenReturn(returned1);
-
         //actual method call
         Facture result1 =FactureService.addFacture(input1);
-
-
         Assertions.assertEquals(200f, result1.getMontantFacture());
         Assertions.assertEquals(20f, result1.getMontantRemise());
         Assertions.assertEquals(new Date(10 / 10 / 2022), result1.getDateCreationFacture());
@@ -90,15 +74,38 @@ public class FactureServiceImplMock1Test {
     }
 
     @Test
-    void testCancelFactureMock() throws Exception {
+    public void testCancelFactureMock() throws Exception {
         Facture  input = new Facture (1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
 
         //stub the data
         Mockito.when(factureRepository.findById(1L)).thenReturn(Optional.of(input));
         FactureService.cancelFacture(input.getIdFacture());
-        assertEquals( input.getArchivee(),true);
+        assertEquals( true,input.getArchivee());
 
     }
+    @Test
+    public void testRetrieveAllFactures() throws ParseException {
+        Mockito.when(factureRepository.findAll()).thenReturn(list);
+        List<Facture> facture =factureRepository.findAll();
+
+        assertNotNull(facture);
+
+
+
+    }
+    @Test
+    @Order(3)
+    public void testupdateFacture( ) {
+        Facture  input = new Facture (1L, 20f, 200f, new Date(10 / 10 / 2022), new Date(10 / 10 / 2022), true);
+
+        Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(input ));
+        Facture f =FactureService.retrieveFacture(1L);
+        f.setMontantFacture(300f);
+        Assertions.assertEquals( input.getMontantFacture(),f.getMontantFacture());
+
+    }
+
+
 
 
 }
