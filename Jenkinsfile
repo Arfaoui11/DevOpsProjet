@@ -27,7 +27,7 @@ pipeline {
                 
             }
         }
-    /*  stage("SONARQUBE"){
+      stage("SONARQUBE"){
             steps {
                 sh """mvn sonar:sonar """
                 
@@ -49,7 +49,7 @@ pipeline {
                 sh """mvn install """
                 
             }
-        }*/
+        }
          stage("Build the package"){
                              steps {
                                sh 'docker-compose up -d --build'
