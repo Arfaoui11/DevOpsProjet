@@ -55,4 +55,16 @@ public class Produit implements Serializable {
 		this.dateCreation = dateCreation;
 		this.dateDerniereModification = dateDerniereModification;
 	}
+
+	@Override
+	public String toString() {
+		return "Produit{" +
+				"idProduit=" + idProduit +
+				", codeProduit='" + codeProduit + '\'' +
+				", libelleProduit='" + libelleProduit + '\'' +
+				", prix=" + prix +
+				", dateCreation=" + dateCreation +
+				", dateDerniereModification=" + dateDerniereModification +
+				'}';
+	}
 }

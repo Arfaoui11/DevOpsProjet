@@ -8,8 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.esprit.examen.entities.Facture;
-import com.esprit.examen.entities.Produit;
+
 import com.esprit.examen.entities.Reglement;
 
 @Repository
