@@ -34,7 +34,11 @@ pipeline {
                              }
 
                              }
-
+     stage('ansible'){
+                                      steps {
+                                          sh 'ansible-playbook ansible-playbook.yml'
+                                             }
+                                 }
 
          stage("Build"){
            steps {
