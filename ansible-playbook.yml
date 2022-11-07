@@ -13,6 +13,7 @@
     - name: Run prometheus container
       command: docker start 781fcd2a414c
       ignore_errors: yes
+
     - name: Run grafana container
       command: docker start fbf38caf562b
       ignore_errors: yes
