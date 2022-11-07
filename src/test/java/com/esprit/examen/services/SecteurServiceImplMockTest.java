@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+/*package com.esprit.examen.services;
 
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
@@ -84,3 +84,5 @@ import static org.mockito.Mockito.*;
 
 
 }
+
+ */

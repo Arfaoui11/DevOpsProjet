@@ -1,4 +1,4 @@
-package com.esprit.examen.services;
+/*package com.esprit.examen.services;
 
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.repositories.OperateurRepository;
@@ -92,3 +92,6 @@ class OperateurServiceImplMockTest {
     }
 
 }
+
+
+ */
