@@ -31,8 +31,5 @@ public class Reglement implements Serializable{
 	private Boolean payee;
 	@Temporal(TemporalType.DATE)
 	private Date dateReglement;
-	@ManyToOne
-	@JsonIgnore
-	private Facture facture;
-	
+
 }

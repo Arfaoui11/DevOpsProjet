@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 
-import com.esprit.examen.dto.ReglementDTO;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -18,21 +16,17 @@ import io.swagger.annotations.Api;
 @RestController
 @Api(tags = "Gestion des reglements")
 @RequestMapping("/reglement")
-
 public class ReglementRestController {
 
     @Autowired
     IReglementService reglementService;
 
 
-    @Autowired
-    private ModelMapper modelMapper;
 
     @PostMapping("/add-reglement")
     @ResponseBody
-    public Reglement addReglement(@RequestBody ReglementDTO r) {
-        Reglement persistentR = modelMapper.map(r,  Reglement.class);
-        return reglementService.addReglement(persistentR);
+    public Reglement addReglement(@RequestBody Reglement r) {
+        return reglementService.addReglement(r);
     }
     @GetMapping("/retrieve-all-reglements")
     @ResponseBody
@@ -48,11 +42,6 @@ public class ReglementRestController {
     }
 
 
-    @GetMapping("/retrieveReglementByFacture/{facture-id}")
-    @ResponseBody
-    public List<Reglement> retrieveReglementByFacture(@PathVariable("facture-id") Long factureId) {
-        return reglementService.retrieveReglementByFacture(factureId);
-    }
 
 
     @GetMapping(value = "/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}")

@@ -13,9 +13,6 @@ import com.esprit.examen.entities.Reglement;
 
 @Repository
 public interface ReglementRepository extends CrudRepository<Reglement, Long>{
-	@Query("SELECT r FROM Reglement r where r.facture.idFacture=:idFacture")
-	List<Reglement> retrieveReglementByFacture(@Param("idFacture") Long idFacture);
-
 	
 	@Query("SELECT sum(r.montantPaye) FROM Reglement r where  r.dateReglement between :startDate"
 			+ " and :endDate and r.facture.archivee=false")
