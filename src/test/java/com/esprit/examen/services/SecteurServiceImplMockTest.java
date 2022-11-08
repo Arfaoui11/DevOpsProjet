@@ -79,7 +79,6 @@ import static org.mockito.Mockito.*;
         verify(SecteurRepository).deleteById(se1.getIdSecteurActivite());
 
 
-
     }
 
 
