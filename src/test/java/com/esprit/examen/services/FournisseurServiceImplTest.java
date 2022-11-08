@@ -70,7 +70,6 @@ public class FournisseurServiceImplTest {
 
         fournisseurService.deleteFournisseur(f.getIdFournisseur());
 
-
     }
 
 
