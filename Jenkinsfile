@@ -54,6 +54,7 @@ pipeline {
                                sh 'docker-compose up -d --build'
                              }
                         }
+               
        /* stage("MVN Clean"){
             steps {
                 sh """mvn clean -e """
