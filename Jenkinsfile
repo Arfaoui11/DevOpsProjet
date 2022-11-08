@@ -41,7 +41,8 @@ pipeline {
           }
 	 stage('MVN BUILD'){
               steps{
-                  sh  'mvn package && java -jar target/gs-spring-boot-docker-0.1.0.jar'
+                  sh  'mvn package'
+                  //sh 'java -jar target/gs-spring-boot-docker-0.1.0.jar'
               }
         }
 
@@ -50,18 +51,13 @@ pipeline {
                steps{
                         script {
                      sh 'ls target/'
-		     sh 'docker build -t achatapp .'      
+		     sh 'docker build -t gs-spring-boot-docker-0.1.0.jar .'      
                         }
                }
         }
 
       
          
-          stage("nexus deploy"){
-               steps{
-                       sh 'mvn  deploy'
-               }
-          }
 
 
          /* stage("Test JUnit /Mockito"){
@@ -76,9 +72,8 @@ pipeline {
             
                 sh 'echo docker hub'
                     sh 'docker login -u sywarbr -p siwarsiwar'
-                
-                sh 'docker tag achatapp sywarbr/achatapp'
-                sh 'docker push sywarbr/achatapp'
+                sh 'docker images'
+                sh 'docker push docker.io/sywarbr/devopsproject_app'
                 
         }
         
@@ -90,6 +85,11 @@ stage('docker compose'){
         sh 'docker-compose up -d'
     }
 }
+          stage("nexus deploy"){
+               steps{
+                       sh 'mvn  deploy'
+               }
+          }
 
     }
 
