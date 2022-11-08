@@ -16,5 +16,4 @@
     - name: Run grafana container
       command: docker start grafana
       ignore_errors: yes
-      
-      
+    
