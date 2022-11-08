@@ -83,7 +83,6 @@ public class StockServiceImplTest {
 
 		Stock updatedStock = stockService.updateStock(savedStock);
 
-
 		assertNotNull(updatedStock.getIdStock());
 		assertSame("12345", updatedStock.getLibelleStock());
 	//	assertTrue(updatedStock.getQte()>2);
