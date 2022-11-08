@@ -42,5 +42,6 @@ public class ReglementServiceImpl implements IReglementService {
 	public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
 		return reglementRepository.getChiffreAffaireEntreDeuxDate( startDate, endDate);
 	}
+	
 
 }
