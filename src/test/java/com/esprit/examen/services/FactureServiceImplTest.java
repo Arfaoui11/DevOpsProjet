@@ -118,7 +118,6 @@ public class FactureServiceImplTest {
 			factureService.pourcentageRecouvrement(startDate, endDate);
 		}
 
-
 }
 
 
