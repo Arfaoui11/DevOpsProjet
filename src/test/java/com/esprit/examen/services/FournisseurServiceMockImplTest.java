@@ -71,8 +71,6 @@ public class FournisseurServiceMockImplTest {
         assertEquals(1L, df.getIdDetailFournisseur());
     }
 
-
-
 }
 
  */
