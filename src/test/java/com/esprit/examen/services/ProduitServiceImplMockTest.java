@@ -1,7 +1,6 @@
 /*package com.esprit.examen.services;
 
 
-
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.repositories.ProduitRepository;
 import org.junit.jupiter.api.*;
@@ -26,10 +25,6 @@ import static org.mockito.Mockito.*;
 
     @InjectMocks
     IProduitService produitService = new ProduitServiceImpl();
-
-
-
-
 
 
     Produit produit = new Produit("f1", "l1",1F, new Date(), new Date());
