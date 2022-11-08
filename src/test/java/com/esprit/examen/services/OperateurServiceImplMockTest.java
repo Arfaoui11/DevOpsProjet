@@ -27,7 +27,6 @@ import org.mockito.Mockito;
 class OperateurServiceImplMockTest {
 
 
-
     @Mock
     OperateurRepository operateurRepo;
     @InjectMocks
