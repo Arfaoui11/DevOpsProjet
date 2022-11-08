@@ -69,7 +69,7 @@ pipeline {
          stage('Build docker image') {
                steps{
 
-                        sh 'docker build -t omardrissi/projectdevops2  .'
+                        sh 'docker build -t omardrissi/projectdevops3  .'
                }
          }
 
@@ -86,7 +86,7 @@ pipeline {
                steps {
 
                         sh 'echo "Docker is pushing ...."'
-                        sh 'docker push omardrissi/projectdevops2 '
+                        sh 'docker push omardrissi/projectdevops3'
                }
          }
 
