@@ -15,3 +15,4 @@ public class ReglementDTO {
     @Temporal(TemporalType.DATE)
     private Date dateReglement;
 }
+
