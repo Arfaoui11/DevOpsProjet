@@ -69,7 +69,7 @@ pipeline {
          stage('Build docker image') {
                steps{
 
-                        sh 'docker build -t omardrissi/projectdevops3  .'
+                        sh 'docker build -t omardrissi/springproject  .'
                }
          }
 
@@ -86,7 +86,7 @@ pipeline {
                steps {
 
                         sh 'echo "Docker is pushing ...."'
-                        sh 'docker push omardrissi/projectdevops3'
+                        sh 'docker push omardrissi/springproject'
                }
          }
 
