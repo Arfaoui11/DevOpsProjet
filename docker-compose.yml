@@ -12,7 +12,7 @@ services:
       - AppNet
 
   spring-boot:
-    image: omardrissi/projectdevops3
+    image: omardrissi/springproject
     container_name: spring
     ports:
       - 8089:8089
@@ -22,7 +22,7 @@ services:
       - AppNet
     restart: on-failure
   angular:
-    image: omardrissi/angularproject2
+    image: omardrissi/angularproject3
     container_name: angular
     ports:
       - 80:80
