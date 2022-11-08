@@ -4,6 +4,7 @@ import com.esprit.examen.entities.Fournisseur;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import lombok.extern.slf4j.Slf4j;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class FournisseurServiceImplTest {
 
 
@@ -27,7 +29,7 @@ public class FournisseurServiceImplTest {
      public void testAddFournisseur() throws ParseException {
         Fournisseur f = new Fournisseur("benyoussef", "achref");
         Fournisseur fournisseur = fournisseurService.addFournisseur(f);
-        System.out.print("fournisseur " + fournisseur);
+        log.info("fournisseur " + fournisseur);
         assertNotNull(fournisseur.getIdFournisseur());
         assertTrue(fournisseur.getCode().length() > 0);
         fournisseurService.deleteFournisseur(fournisseur.getIdFournisseur());
