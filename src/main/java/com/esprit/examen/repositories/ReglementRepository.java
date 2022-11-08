@@ -21,3 +21,5 @@ public interface ReglementRepository extends CrudRepository<Reglement, Long>{
 			+ " and :endDate and r.facture.archivee=false")
 	float getChiffreAffaireEntreDeuxDate(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 }
+
+
