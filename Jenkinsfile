@@ -2,6 +2,12 @@ import java.text.SimpleDateFormat
 pipeline {
     agent any
 
+     environment {
+                registry = "omardrissi/springproject"
+                registryCredential = 'dckr_pat_NX_qTIaloGguDSY22Ki8Jk04CJo'
+                dockerImage = ''
+     }
+
 
 
     stages {
@@ -66,7 +72,7 @@ pipeline {
 
          }*/
 
-         stage('Build docker image') {
+         /*stage('Build docker image') {
                steps{
 
                         sh 'docker build -t omardrissi/springproject  .'
@@ -100,6 +106,33 @@ pipeline {
                 steps {
                             sh 'docker-compose up -d '
                 }
+          }*/
+
+          stage('Building our image') {
+                         steps{
+                                  script {
+                                      dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                                  }
+                         }
+          }
+
+
+
+
+          stage('Deploy our image') {
+                         steps {
+                                  script {
+                                      docker.withRegistry( '', registryCredential ) {
+                                          dockerImage.push()
+                                      }
+                                  }
+                         }
+          }
+
+          /*stage('Cleaning up') {
+                         steps {
+                                   sh "docker rmi $registry:$BUILD_NUMBER"
+                         }
           }*/
 
 
