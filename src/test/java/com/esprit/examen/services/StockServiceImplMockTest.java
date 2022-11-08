@@ -26,9 +26,6 @@ import static org.mockito.Mockito.*;
 
 
 
-
-
-
     Stock stock = new Stock("f1", 1,2);
     List<Stock> listStocks = new ArrayList<Stock>() {
         {
