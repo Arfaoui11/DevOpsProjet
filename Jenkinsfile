@@ -6,7 +6,7 @@ pipeline{
 			        stage('Build docker image'){
                     steps{
 
-                           sh 'docker build -t omardrissi/angularproject3 . '
+                           sh 'docker build -t omardrissi/angularproject . '
                     }
               }
 
@@ -21,7 +21,7 @@ pipeline{
 		          stage('Docker push') {
                  steps {
                       sh 'echo "Docker is pushing ...."'
-                     	sh 'docker push omardrissi/angularproject3'
+                     	sh 'docker push omardrissi/angularproject'
                  }
               }
 
