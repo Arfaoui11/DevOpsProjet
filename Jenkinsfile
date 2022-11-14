@@ -29,6 +29,12 @@ pipeline {
                              }
                              }
                              }*/
+        stage('Start Containers with Ansible'){
+                     steps{
+                               sh  'ansible-playbook  ansible-playbook.yml'
+                     }
+
+        }
 
         stage('MVN CLEAN'){
             steps{
@@ -65,12 +71,7 @@ pipeline {
                   }
          }
 
-         stage('Start Containers with Ansible'){
-               steps{
-                          sh  'ansible-playbook  ansible-playbook.yml'
-               }
 
-         }
 
          stage('Build docker image') {
                steps{
