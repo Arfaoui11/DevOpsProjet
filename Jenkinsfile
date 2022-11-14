@@ -72,7 +72,7 @@ pipeline {
 
          }*/
 
-         /*stage('Build docker image') {
+         stage('Build docker image') {
                steps{
 
                         sh 'docker build -t omardrissi/springproject .'
@@ -94,7 +94,7 @@ pipeline {
                         sh 'echo "Docker is pushing ...."'
                         sh 'docker push omardrissi/springproject'
                }
-         }*/
+         }
 
          /*stage('Cleaning up') {
                steps {
