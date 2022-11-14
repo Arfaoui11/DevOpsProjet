@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        stage('Date') {
+        /*stage('Date') {
                 steps {
                      script{
                      def date = new Date()
@@ -28,7 +28,7 @@ pipeline {
                      println(sdf.format(date))
                              }
                              }
-                             }
+                             }*/
 
         stage('MVN CLEAN'){
             steps{
