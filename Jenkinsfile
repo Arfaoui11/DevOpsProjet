@@ -95,7 +95,7 @@ pipeline {
              }
          }
 
-
+    //new update
 
         stage('Building our image') {
             steps {
