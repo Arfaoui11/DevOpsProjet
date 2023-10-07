@@ -78,11 +78,6 @@ pipeline {
                     sh 'mvn -version'
                     }
                   }
-                  stage("mvn show version"){
-                              steps {
-                                      sh 'java -version'
-                                      }
-                                    }
 
       /*     stage("mvn clean package"){
                        steps {
