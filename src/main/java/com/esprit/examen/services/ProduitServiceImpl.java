@@ -5,10 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.List;
-import javax.activation.DataSource;
-import javax.mail.internet.InternetHeaders;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeUtility;
 import javax.transaction.Transactional;
 
 import com.documents4j.api.DocumentType;
@@ -52,14 +48,14 @@ public class ProduitServiceImpl implements IProduitService {
 
 		byte[] pdfByteArray = pdfByteArrayOutputStream.toByteArray();
 
-		MimeBodyPart attachment = new MimeBodyPart(new InternetHeaders(),pdfByteArray);
+	/*	MimeBodyPart attachment = new MimeBodyPart(new InternetHeaders(),pdfByteArray);
 		attachment.setHeader("Content-Type","application/pdf");
 		attachment.setHeader("Content-Disposition","attachment; filename=\"" + MimeUtility.encodeText("docs","UTF-8","B")+ "\"");
 
-		DataSource dataSource = attachment.getDataHandler().getDataSource();
+		DataSource dataSource = attachment.getDataHandler().getDataSource();*/
 		converter.kill();
 		document.close();
-		return new ByteArrayResource((dataSource).getInputStream().readAllBytes());
+		return new ByteArrayResource(pdfByteArray);
 	}catch (Exception e)
 	{
 		e.printStackTrace();
