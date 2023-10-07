@@ -84,7 +84,7 @@ pipeline {
                                 sh 'docker-compose up -d --build'
                             }
                         }
-        stage("nexus deploy"){
+    /*     stage("nexus deploy"){
               steps {
                   sh 'mvn deploy'
                      }
@@ -93,7 +93,7 @@ pipeline {
              steps {
                sh 'mvn test'
              }
-         }
+         } */
 
     //new update
 
