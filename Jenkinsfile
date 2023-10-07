@@ -73,11 +73,19 @@ pipeline {
                                   sh 'ansible-playbook ansible-playbook.yml'
                                      }
                          }
-          stage("mvn clean package"){
+          stage("mvn show version"){
+            steps {
+                    sh 'mvn -version'
+                    }
+                  }
+
+      /*     stage("mvn clean package"){
                        steps {
                            sh 'mvn clean package'
                               }
-                  }
+                  } */
+
+
 
          stage("Build the package"){
                             steps {
