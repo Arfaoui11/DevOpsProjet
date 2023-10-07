@@ -1,8 +1,22 @@
 package com.esprit.examen.services;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.List;
+import javax.activation.DataSource;
+import javax.mail.internet.InternetHeaders;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeUtility;
 import javax.transaction.Transactional;
+
+import com.documents4j.api.DocumentType;
+import com.documents4j.api.IConverter;
+import com.documents4j.job.LocalConverter;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.entities.Stock;
@@ -23,8 +37,60 @@ public class ProduitServiceImpl implements IProduitService {
 	CategorieProduitRepository categorieProduitRepository;
 
 
+	@Override
+	public ByteArrayResource convertDocxToPDF() {
+	try {
+		XWPFDocument document = new XWPFDocument(new FileInputStream("src/main/resources/static/Docx/word.docx"));
+		ByteArrayOutputStream pdfOutputStrem = new ByteArrayOutputStream();
 
-    @Override
+		document.write(pdfOutputStrem);
+
+		IConverter converter = LocalConverter.builder().build();
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(pdfOutputStrem.toByteArray());
+		ByteArrayOutputStream pdfByteArrayOutputStream = new ByteArrayOutputStream();
+		converter.convert(inputStream).as(DocumentType.DOCX).to(pdfByteArrayOutputStream).as(DocumentType.PDF).execute();
+
+		byte[] pdfByteArray = pdfByteArrayOutputStream.toByteArray();
+
+		MimeBodyPart attachment = new MimeBodyPart(new InternetHeaders(),pdfByteArray);
+		attachment.setHeader("Content-Type","application/pdf");
+		attachment.setHeader("Content-Disposition","attachment; filename=\"" + MimeUtility.encodeText("docs","UTF-8","B")+ "\"");
+
+		DataSource dataSource = attachment.getDataHandler().getDataSource();
+		converter.kill();
+		document.close();
+		return new ByteArrayResource((dataSource).getInputStream().readAllBytes());
+	}catch (Exception e)
+	{
+		e.printStackTrace();
+		return null;
+	}
+	}
+
+	@Override
+	public void convertDocx() {
+	try {
+		XWPFDocument document = new XWPFDocument(new FileInputStream("src/main/resources/static/Docx/word.docx"));
+		ByteArrayOutputStream pdfOutputStream = new ByteArrayOutputStream();
+
+		document.write(pdfOutputStream);
+
+		IConverter converter = LocalConverter.builder().build();
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(pdfOutputStream.toByteArray());
+		//converter.convert(inputStream).as(DocumentType.DOCX).to(pdfByteArrayOutputStream).as(DocumentType.PDF).execute();
+		converter.convert(inputStream).as(DocumentType.DOCX).to(new FileOutputStream("src/main/resources/static/Docx/doc.pdf")).as(DocumentType.PDF).execute();
+		converter.kill();
+		document.close();
+		pdfOutputStream.close();
+		inputStream.close();
+
+	}catch (Exception e)
+	{
+		e.printStackTrace();
+	}
+	}
+
+	@Override
 	public List<Produit> retrieveAllProduits() {
 		List<Produit> produits = produitRepository.findAll();
 		for (Produit produit : produits) {

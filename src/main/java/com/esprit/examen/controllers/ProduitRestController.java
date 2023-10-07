@@ -7,17 +7,22 @@ import com.esprit.examen.dto.ProduitDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.services.IProduitService;
 
 import io.swagger.annotations.Api;
+import org.springframework.web.client.HttpClientErrorException;
 
 
 @RestController
 @Api(tags = "Gestion des produits")
-@RequestMapping("/produit")
-
+@RequestMapping(value = "/produit",produces = "application/json;charset=UTF-8")
 public class ProduitRestController {
 
 	@Autowired
@@ -45,6 +50,34 @@ public class ProduitRestController {
 
 		return  produitService.addProduit( persistentProduit);
 	}
+
+
+	@GetMapping("/pdf")
+	@ResponseBody
+	public ResponseEntity<ByteArrayResource> generatePdf() {
+	try {
+		ByteArrayResource fileResponse = produitService.convertDocxToPDF();
+		return ResponseEntity.ok().contentType(MediaType.APPLICATION_PDF)
+				.header(HttpHeaders.CONTENT_DISPOSITION)
+				.body(fileResponse);
+	}catch (HttpClientErrorException ex)
+	{
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	}
+
+	@GetMapping("/savePDF")
+	@ResponseBody
+	public ResponseEntity<HttpStatus> generateAndSavePdf() {
+		try {
+			produitService.convertDocx();
+			return new ResponseEntity<>(HttpStatus.CREATED);
+		}catch (HttpClientErrorException ex)
+		{
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 
 	@DeleteMapping("/remove-produit/{produit-id}")
 	@ResponseBody

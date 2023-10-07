@@ -2,8 +2,13 @@ package com.esprit.examen.services;
 
 import java.util.List;
 import com.esprit.examen.entities.Produit;
+import org.springframework.core.io.ByteArrayResource;
 
 public interface IProduitService {
+
+	ByteArrayResource convertDocxToPDF();
+
+	void convertDocx();
 
 	List<Produit> retrieveAllProduits();
 
