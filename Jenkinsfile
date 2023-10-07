@@ -89,7 +89,7 @@ pipeline {
 
          stage("Build the package"){
                             steps {
-                                sh 'docker-compose up -d --build --remove-orphans'
+                                sh 'docker-compose up -d --build'
                             }
                         }
     /*     stage("nexus deploy"){
